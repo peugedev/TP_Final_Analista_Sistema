@@ -1,0 +1,11 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Data Source=PRADE\\PRADE516;initial catalog=PaymentConnected;user id=sa;password=516euge94324590;MultipleActiveResultSets=True;Trusted_Connection=SSPI;Encrypt=false;TrustServerCertificate=true;App=EntityFramework Timeout=3600"
+  },
+  "Runtimeenvironment": {
+    "environment": "dev"
+  },
+  "Password": {
+    "MasterPassword": "Mira que te mando que te esfuerces y seas valiente; no temas ni desmayes, porque Jehová tu Dios estará contigo en dondequiera que vayas."
+  }
+}
