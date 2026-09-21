@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BusinessEntities.Dtos.Empleado;
+using BusinessEntities.Dtos.Proveedor;
 using BusinessEntities.Entities;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,9 @@ namespace DataService.Profiles
             CreateMap<Empleado, DeleteEmpleadoDto>().ReverseMap();
             //CreateMap<BusinessEntities.Entities.Empleado, BusinessEntities.Dtos.Empleado.GetEmpleadoDto>().ReverseMap();
             //CreateMap<BusinessEntities.Entities.Empleado, BusinessEntities.Dtos.Empleado.GetAllEmpleadosDto>().ReverseMap();
+            CreateMap<Proveedor, CreateProveedorDto>().ReverseMap().ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+            CreateMap<Proveedor, UpdateProveedorDto>().ReverseMap();
+            CreateMap<Proveedor, DeleteProveedorDto>().ReverseMap();
         }
     }
 }
