@@ -1,16 +1,8 @@
 ﻿using AutoMapper;
-using BusinessEntities.Dtos.Empleado;
 using BusinessEntities.Dtos.Proveedor;
 using DataService.Services.IService;
 using DomainModel.Repositories.Interface;
 using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
-using Resolver.Security.Password;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataService.Services.Service
 {
@@ -18,22 +10,16 @@ namespace DataService.Services.Service
     {
         private readonly IProveedorRepository _proveedorRepository;
         private readonly IMapper _mapper;
-        private readonly IConfiguration _configuration;
 
-        public ProveedorService(IProveedorRepository proveedorRepository, IMapper mapper, IConfiguration configuration)
+        public ProveedorService(IProveedorRepository proveedorRepository, IMapper mapper)
         {
             _proveedorRepository = proveedorRepository;
             _mapper = mapper;
-            _configuration = configuration;
         }
         public async Task<string> CreateProveedor(CreateProveedorDto proveedorDto)
         {
             try
             {
-                string masterPassword = _configuration["Password:MasterPassword"];
-                if (string.IsNullOrEmpty(masterPassword))
-                    throw new Exception("La contraseña maestra no puede estar vacía. Por favor, configure una contraseña maestra en la sección de configuración.");
-
                 SqlParameter[] parameters = new SqlParameter[]
                 {
                     new SqlParameter("@Codigo", proveedorDto.Codigo),
@@ -45,7 +31,7 @@ namespace DataService.Services.Service
                     new SqlParameter("@Web", proveedorDto.Web)
                 };
                 var proveedor = _mapper.Map<BusinessEntities.Entities.Proveedor>(proveedorDto);
-                await this._proveedorRepository.Create("[dbo].[Sp_InsertProveedor]", null);
+                await this._proveedorRepository.Create("[dbo].[Sp_InsertProveedor]", parameters);
                 return "Proveedor creado correctamente";
             }
             catch (Exception ex)
