@@ -10,7 +10,7 @@ namespace BusinessEntities.Entities
     {
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
-        //public List<Producto> Productos { get; set; }
-        public List<SubCategoria> SubCategorias { get; set; }
+        public DateTime? FechaBaja { get; set; }
+        public List<Producto>? Productos { get; set; }
     }
 }

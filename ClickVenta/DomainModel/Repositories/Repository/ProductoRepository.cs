@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace DomainModel.Repositories.Repository
 {
-    public class CategoriaRepository : ICategoriaRepository
+    public class ProductoRepository: IProductoRepository
     {
-        private readonly IGenericRepository<Categoria> _genericRepository;
-        public CategoriaRepository(IGenericRepository<Categoria> genericRepository)
+        private readonly IGenericRepository<Producto> _genericRepository;
+        public ProductoRepository(IGenericRepository<Producto> genericRepository)
         {
             _genericRepository = genericRepository;
         }
-        public async Task<Categoria> Create(string query, SqlParameter[] parameters) 
+        public async Task<Producto> Create(string query, SqlParameter[] parameters)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace DomainModel.Repositories.Repository
                 throw ex;
             }
         }
-        public Task<IEnumerable<Categoria>> GetAll(string query, SqlParameter[] parameters)
+        public Task<IEnumerable<Producto>> GetAll(string query, SqlParameter[] parameters)
         {
             try
             {
@@ -50,7 +50,7 @@ namespace DomainModel.Repositories.Repository
                 throw ex;
             }
         }
-        public async Task<Categoria> GetById(string query, SqlParameter[] parameters)
+        public async Task<Producto> GetById(string query, SqlParameter[] parameters)
         {
             try
             {
@@ -61,7 +61,7 @@ namespace DomainModel.Repositories.Repository
                 throw ex;
             }
         }
-        public async Task<Categoria> Update(string query, SqlParameter[] parameters)
+        public async Task<Producto> Update(string query, SqlParameter[] parameters)
         {
             try
             {

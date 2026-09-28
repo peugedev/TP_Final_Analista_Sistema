@@ -1,4 +1,5 @@
 ﻿using BusinessEntities.Dtos.permision;
+using BusinessEntities.Dtos.Usuario;
 using BusinessEntities.Entities;
 using ClickVenta.forms.Menus;
 using ClickVenta.forms.Menus.menu;
@@ -68,7 +69,7 @@ namespace ClickVenta.forms
         {
             if (lstUsers.SelectedValue == null) return;
 
-            UserBE selectedUser = lstUsers.SelectedItem as UserBE;
+            BusinessEntities.Dtos.Usuario.Usuario selectedUser = lstUsers.SelectedItem as BusinessEntities.Dtos.Usuario.Usuario;
             currentUserId = selectedUser.Id;
             LoadPermissionsForUser(currentUserId);
         }
@@ -125,10 +126,10 @@ namespace ClickVenta.forms
                     //MenuId = GetParentMenuId(e.Node),
                     SubMenuId = subMenuId
                 };
-                if (isChecked)
-                    await Task.Run(() => Program.ServiceProvider.GetRequiredService<IPermissionService>().Add(be));
-                else
-                    await Task.Run(() => Program.ServiceProvider.GetRequiredService<IPermissionService>().Delete(currentUserId, subMenuId));
+                //if (isChecked)
+                //    await Task.Run(() => Program.ServiceProvider.GetRequiredService<IPermissionService>().Add(be));
+                //else
+                //    await Task.Run(() => Program.ServiceProvider.GetRequiredService<IPermissionService>().Delete(currentUserId, subMenuId));
 
                 lblStatus.Text = $"Permiso {(isChecked ? "asignado" : "desasignado")} correctamente.";
                 // Recargar para mantener consistencia (por si hubiera otros cambios externos)
@@ -176,8 +177,8 @@ namespace ClickVenta.forms
         }
         private void LoadUsers(string userId)
         {
-            var result = Program.ServiceProvider.GetRequiredService<IUserService>().GetById(userId)?.Result;
-            lstUsers.DataSource = new List<UserBE> { result };
+            var result = Program.ServiceProvider.GetRequiredService<IUsuarioService>().GetById(userId)?.Result;
+            //lstUsers.DataSource = new List<Usuarios> { result };
         }
     }
 }

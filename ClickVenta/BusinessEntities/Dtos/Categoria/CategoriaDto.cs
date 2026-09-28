@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessEntities.Dtos.Categoria
 {
-    public class UpdateCategoriaDto : BaseDto
+    public class CategoriaDto : BaseDto
     {
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
