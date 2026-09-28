@@ -28,12 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            clickVentaButton1 = new ClickVenta.CustomStyle.ClickVentaButton();
+            SuspendLayout();
+            // 
+            // clickVentaButton1
+            // 
+            clickVentaButton1.BackColor = Color.FromArgb(30, 79, 162);
+            clickVentaButton1.BorderColor = Color.FromArgb(30, 79, 162);
+            clickVentaButton1.BorderRadius = 5;
+            clickVentaButton1.BorderSize = 0;
+            clickVentaButton1.FlatAppearance.BorderSize = 0;
+            clickVentaButton1.FlatStyle = FlatStyle.Flat;
+            clickVentaButton1.ForeColor = Color.White;
+            clickVentaButton1.Location = new Point(234, 152);
+            clickVentaButton1.Name = "clickVentaButton1";
+            clickVentaButton1.Size = new Size(150, 40);
+            clickVentaButton1.TabIndex = 0;
+            clickVentaButton1.Text = "clickVentaButton1";
+            clickVentaButton1.TextColor = Color.White;
+            clickVentaButton1.UseVisualStyleBackColor = false;
+            // 
+            // frmlogin
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(clickVentaButton1);
+            Name = "frmlogin";
+            Text = "Form1";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private CustomStyle.ClickVentaButton clickVentaButton1;
     }
 }

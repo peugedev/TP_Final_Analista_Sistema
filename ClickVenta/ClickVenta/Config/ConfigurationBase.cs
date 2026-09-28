@@ -41,11 +41,14 @@ namespace ClickVenta.Config
                     // Aquí se inyecta los interfaces de los repositorios
                     services.AddScoped<IEmpleadoRepository, EmpleadoRepository>();
                     services.AddScoped<IProveedorRepository, ProveedorRepository>();
-
+                    services.AddScoped<IProductoRepository, ProductoRepository>();
+                    services.AddScoped<ICategoriaRepository, CategoriaRepository>();
 
                     // Aquí se inyecta los interfaces de los servicios
                     services.AddScoped<IEmpleadoService, EmpleadoService>();
                     services.AddScoped<IProveedorService, ProveedorService>();
+                    services.AddScoped<IProductoService, ProductoService>();
+                    services.AddScoped<ICategoriaService, CategoriaService>();
 
 
                     //Aqui se inyecta el automapper
