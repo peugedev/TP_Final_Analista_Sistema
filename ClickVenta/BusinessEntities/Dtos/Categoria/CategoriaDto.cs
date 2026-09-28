@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessEntities.Entities
+namespace BusinessEntities.Dtos.Categoria
 {
-    public class Categoria: BaseEntity
+    public class CategoriaDto : BaseDto
     {
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
-        public DateTime? FechaBaja { get; set; }
-        public List<Producto>? Productos { get; set; }
     }
 }
