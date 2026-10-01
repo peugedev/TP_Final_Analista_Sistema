@@ -63,6 +63,7 @@
             btnclose.TabIndex = 24;
             btnclose.Text = "X";
             btnclose.UseVisualStyleBackColor = false;
+            btnclose.Click += btnclose_Click;
             // 
             // label3
             // 
@@ -85,7 +86,9 @@
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmpermission";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmpermission";
+            Load += frmpermission_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);

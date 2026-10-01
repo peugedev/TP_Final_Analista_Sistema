@@ -10,7 +10,7 @@ namespace DataService.Services.IService
 {
     public interface IPermissionService
     {
-        Task<PermissionMenuDto> Add(PermissionMenuDto be);
+        Task<PermissionMenuDto> Add(PermissionMenuCreateDto be);
         Task<string> Delete(string UserId, string SubMenuId);
         Task<IEnumerable<PermissionMenuDto>> GetAllMenusWithSubmenus();
         Task<IEnumerable<PermissionMenuDto>> GetUserPermissions(string UserId);

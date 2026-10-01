@@ -9,6 +9,7 @@ namespace BusinessEntities.Dtos
     public class BaseDto
     {
         public string Id { get; set; }
+        public Int64 Count { get; set; }
         public DateTime FechaCreacion { get; set; }
         public DateTime FechaBaja { get; set; }
         public int Estado { get; set; }

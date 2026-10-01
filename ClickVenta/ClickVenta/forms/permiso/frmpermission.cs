@@ -4,18 +4,9 @@ using BusinessEntities.Entities;
 using ClickVenta.forms.Menus;
 using ClickVenta.forms.Menus.menu;
 using ClickVenta.forms.user;
+using ClickVenta.forndesign;
 using DataService.Services.IService;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualBasic.ApplicationServices;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace ClickVenta.forms
 {
@@ -122,14 +113,14 @@ namespace ClickVenta.forms
             {
                 PermissionMenuCreateDto be = new PermissionMenuCreateDto
                 {
-                    UserId = currentUserId,
+                    UsuarioId = currentUserId,
                     //MenuId = GetParentMenuId(e.Node),
                     SubMenuId = subMenuId
                 };
-                //if (isChecked)
-                //    await Task.Run(() => Program.ServiceProvider.GetRequiredService<IPermissionService>().Add(be));
-                //else
-                //    await Task.Run(() => Program.ServiceProvider.GetRequiredService<IPermissionService>().Delete(currentUserId, subMenuId));
+                if (isChecked)
+                    await Task.Run(() => Program.ServiceProvider.GetRequiredService<IPermissionService>().Add(be));
+                else
+                    await Task.Run(() => Program.ServiceProvider.GetRequiredService<IPermissionService>().Delete(currentUserId, subMenuId));
 
                 lblStatus.Text = $"Permiso {(isChecked ? "asignado" : "desasignado")} correctamente.";
                 // Recargar para mantener consistencia (por si hubiera otros cambios externos)
@@ -179,6 +170,16 @@ namespace ClickVenta.forms
         {
             var result = Program.ServiceProvider.GetRequiredService<IUsuarioService>().GetById(userId)?.Result;
             //lstUsers.DataSource = new List<Usuarios> { result };
+        }
+
+        private void frmpermission_Load(object sender, EventArgs e)
+        {
+            radiusform.GetRadius(this);
+        }
+
+        private void btnclose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

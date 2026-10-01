@@ -20,13 +20,13 @@ namespace DataService.Services.Service
             _permissionRepository = permissionRepository;
             _mapper = mapper;
         }
-        public async Task<PermissionMenuDto> Add(PermissionMenuDto be)
+        public async Task<PermissionMenuDto> Add(PermissionMenuCreateDto be)
         {
             try
             {
                 SqlParameter[] parameters = new SqlParameter[]
                 {
-                    new SqlParameter("@UserId", be.Id),
+                    new SqlParameter("@UserId", be.UsuarioId),
                     new SqlParameter("@SubMenuId", be.SubMenuId)
                 };
                 var result = await _permissionRepository.Create("sp_AddPermission", parameters);

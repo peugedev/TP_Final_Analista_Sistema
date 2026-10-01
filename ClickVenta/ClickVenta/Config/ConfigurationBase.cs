@@ -1,4 +1,5 @@
-﻿using DataService.Profiles;
+﻿using ClickVenta.forms;
+using DataService.Profiles;
 using DataService.Services.IService;
 using DataService.Services.Service;
 using DomainModel.GenericRepository.Generic;
@@ -32,7 +33,8 @@ namespace ClickVenta.Config
                     services.AddSingleton(Configuration);
 
                     //Aqui se inyecta los formulario
-                    services.AddTransient<frmlogin>(); 
+                    services.AddTransient<frmlogin>();
+                    services.AddTransient<frmpermission>();
 
                     //Aqui se inyecta los interfaces de los repositorios genericos
                     services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));

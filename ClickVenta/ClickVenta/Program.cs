@@ -1,4 +1,5 @@
 using ClickVenta.Config;
+using ClickVenta.forms;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ClickVenta
@@ -25,7 +26,7 @@ namespace ClickVenta
                 var host = ConfigurationBase.CreateHostBuilter().Build();
                 ServiceProvider = host.Services;
 
-                var mainForm = ServiceProvider.GetRequiredService<frmlogin>();
+                var mainForm = ServiceProvider.GetRequiredService<frmpermission>();
                 Application.Run(mainForm);
             }
             catch (Exception ex)
