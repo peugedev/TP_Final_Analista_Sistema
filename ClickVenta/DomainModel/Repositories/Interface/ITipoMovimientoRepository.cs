@@ -1,4 +1,5 @@
-﻿using DomainModel.GenericRepository.IGeneric;
+﻿using BusinessEntities.Entities;
+using DomainModel.GenericRepository.IGeneric;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DomainModel.Repositories.Interface
 {
-    public interface ITipoMovimientoRepository: IGenericRepository<BusinessEntities.Entities.TipoMovimiento>
+    public interface ITipoMovimientoRepository: IGenericRepository<TipoMovimiento>
     {
     }
 }
