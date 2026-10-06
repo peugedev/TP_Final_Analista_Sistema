@@ -46,6 +46,7 @@ namespace ClickVenta.Config
                     services.AddScoped<IProductoRepository, ProductoRepository>();
                     services.AddScoped<ICategoriaRepository, CategoriaRepository>();
                     services.AddScoped<ITipoMovimientoRepository, TipoMovimientoRepository>();
+                    services.AddScoped<IMovimientoRepository, MovimientoRepository>();
 
                     services.AddScoped<IPermissionRepository, PermissionRepository>();
                     services.AddScoped<IUsuarioRepository, UsuarioRepository>();
@@ -56,6 +57,7 @@ namespace ClickVenta.Config
                     services.AddScoped<IProductoService, ProductoService>();
                     services.AddScoped<ICategoriaService, CategoriaService>();
                     services.AddScoped<ITipoMovimientoService, TipoMovimientoService>();
+                    services.AddScoped<IMovimientoService, MovimientoService>();
 
                     services.AddScoped<IPermissionService, PermissionService>();
                     services.AddScoped<IUsuarioService, UsuarioService>();
