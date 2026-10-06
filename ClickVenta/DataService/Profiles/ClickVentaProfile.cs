@@ -25,7 +25,7 @@ namespace DataService.Profiles
                 .ForMember(dest => dest.TipoDocumentoId, opt => opt.MapFrom(src => src.TipoDocumentoId))
                 .ReverseMap();
 
-            CreateMap<BusinessEntities.Entities.Empleado, UpdateEmpleadoDto>()
+            CreateMap<Empleado, UpdateEmpleadoDto>()
                 .ForMember(dest => dest.Nombre, opt => opt.MapFrom(src => src.Nombre))
                 .ForMember(dest => dest.Apellido, opt => opt.MapFrom(src => src.Apellido))
                 .ForMember(dest => dest.CorreoElectronico, opt => opt.MapFrom(src => src.CorreoElectronico))
@@ -40,7 +40,7 @@ namespace DataService.Profiles
                  .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ReverseMap();
 
-            CreateMap<BusinessEntities.Entities.Empleado, BusinessEntities.Dtos.Empleado.EmpleadoDto>()
+            CreateMap<Empleado, EmpleadoDto>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Nombre, opt => opt.MapFrom(src => src.Nombre))
                 .ForMember(dest => dest.Apellido, opt => opt.MapFrom(src => src.Apellido))

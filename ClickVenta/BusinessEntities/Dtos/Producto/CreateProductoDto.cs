@@ -12,6 +12,6 @@ namespace BusinessEntities.Dtos.Producto
         public string Descripcion { get; set; }
         public string CodigoBarra { get; set; }
         public decimal PrecioCompra { get; set; }
-        public string CategoriaId { get; set; }
+        public string IdCategoria { get; set; }
     }
 }
