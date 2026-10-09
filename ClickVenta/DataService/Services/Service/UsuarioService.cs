@@ -17,28 +17,23 @@ namespace DataService.Services.Service
     {
         private readonly IUsuarioRepository _usuarioRepository;
         private readonly IMapper _mapper;
-        private readonly IConfiguration _configuration;
 
-        public UsuarioService(IUsuarioRepository usuarioRepository, IMapper mapper, IConfiguration configuration)
+        public UsuarioService(IUsuarioRepository usuarioRepository, IMapper mapper)
         {
             _usuarioRepository = usuarioRepository;
             _mapper = mapper;
-            _configuration = configuration;
         }
         public async Task<string> Add(CrearUsuarioDto be)
         {
             try
             {
-                string masterPassword = _configuration["Password:MasterPassword"];
-                if (string.IsNullOrEmpty(masterPassword))
-                    throw new Exception("La contraseña maestra no puede estar vacía. Por favor, configure una contraseña maestra en la sección de configuración.");
-
+               
                 SqlParameter[] parameters = new SqlParameter[]
                 {
                     new SqlParameter("@EmpleadoId", be.EmpleadoId),
                     new SqlParameter("@RolId", be.RolId),
                     new SqlParameter("@NombreUsuario", be.NombreUsuario),
-                    new SqlParameter("@Contrasena", PasswordEncryptor.Encrypt(be.Contrasena, masterPassword))
+                    new SqlParameter("@Contrasena", PasswordEncryptor.GetInstance().Encypt(be.Contrasena))
                 };
                 await _usuarioRepository.Create("sp_CreateUsuario", parameters);
                 return "Usuario creado correctamente";
@@ -106,16 +101,12 @@ namespace DataService.Services.Service
         public async Task<string> Update(ActualizarUsuario be)
         {
             try
-            {
-                string masterPassword = _configuration["Password:MasterPassword"];
-                if (string.IsNullOrEmpty(masterPassword))
-                    throw new Exception("La contraseña maestra no puede estar vacía. Por favor, configure una contraseña maestra en la sección de configuración.");
-
+            {     
                 SqlParameter[] sqlParameters = new SqlParameter[]
                 {
                     new SqlParameter("@EmpleadoId", be.EmpleadoId),
                     new SqlParameter("@RolId", be.RolId),
-                    new SqlParameter("@Contrasena", PasswordEncryptor.Encrypt(be.Contrasena, masterPassword))
+                    new SqlParameter("@Contrasena", PasswordEncryptor.GetInstance().Encypt(be.Contrasena))
                 };
                 await _usuarioRepository.Update("sp_UpdateUsuario", sqlParameters);
                 return "Usuario actualizado correctamente";

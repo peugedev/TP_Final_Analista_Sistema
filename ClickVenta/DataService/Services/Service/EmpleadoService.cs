@@ -17,34 +17,26 @@ namespace DataService.Services.Service
     {
         private readonly IEmpleadoRepository _empleadoRepository;
         private readonly IMapper _mapper;
-        private readonly IConfiguration _configuration;
 
-        public EmpleadoService(IEmpleadoRepository empleadoRepository, IMapper mapper, IConfiguration configuration)
+        public EmpleadoService(IEmpleadoRepository empleadoRepository, IMapper mapper)
         {
             _empleadoRepository = empleadoRepository;
             _mapper = mapper;
-            _configuration = configuration;
         }
         public async Task<string> CreateEmpleado(CreateEmpleadoDto empleadoDto)
         {
             try
             {
-                string masterPassword = _configuration["Password:MasterPassword"];
-                if (string.IsNullOrEmpty(masterPassword))
-                    throw new Exception("La contraseña maestra no puede estar vacía. Por favor, configure una contraseña maestra en la sección de configuración.");
-
                 SqlParameter[] parameters = new SqlParameter[]
                 {
                     new SqlParameter("@Nombre", empleadoDto.Nombre),
                     new SqlParameter("@Apellido", empleadoDto.Apellido),
-                    new SqlParameter("@CorreoElectronico", empleadoDto.CorreoElectronico),
+                    new SqlParameter("@DNI", empleadoDto.DNI),
                     new SqlParameter("@Telefono", empleadoDto.Telefono),
                     new SqlParameter("@Direccion", empleadoDto.Direccion),
-                    new SqlParameter("@FechaNacimiento", empleadoDto.FechaNacimiento),
-                    new SqlParameter("@NumeroDocumento", empleadoDto.NumeroDocumento),
-                    new SqlParameter("@TipoDocumentoId", empleadoDto.TipoDocumentoId),
+                    new SqlParameter("@RolId", empleadoDto.RolId),
                     new SqlParameter("@NombreUsuario", empleadoDto.NombreUsuario),
-                    new SqlParameter("@Contrasena", PasswordEncryptor.Encrypt(empleadoDto.Contrasena, masterPassword))
+                    new SqlParameter("@Contrasena", PasswordEncryptor.GetInstance().Encypt(empleadoDto.Contrasena))
                 };
                 await this._empleadoRepository.Create("[dbo].[Sp_InsertEmpleado]", parameters);
                 return "Empleado creado correctamente";
@@ -83,7 +75,7 @@ namespace DataService.Services.Service
                     new SqlParameter("@PageSize", pageSize),
                     new SqlParameter("@Filter", filter ?? (object)DBNull.Value)
                 };
-                var empleados = this._empleadoRepository.GetAll("[dbo].[Sp_GetAllEmpleados]", parameters);
+                var empleados = await this._empleadoRepository.GetAll("[dbo].[GetAllEmpleado]", parameters);
                 
                 return _mapper.Map<IEnumerable<EmpleadoDto>>(empleados);
             }
@@ -101,7 +93,7 @@ namespace DataService.Services.Service
                 {
                     new SqlParameter("@Id", id)
                 };
-                var empleado = await this._empleadoRepository.GetById("[dbo].[Sp_GetEmpleadoById]", parameters);
+                var empleado = await this._empleadoRepository.GetById("[dbo].[GetEmpleadoById]", parameters);
                 return _mapper.Map<EmpleadoDto>(empleado);
             }
             catch (Exception ex)
@@ -117,14 +109,11 @@ namespace DataService.Services.Service
                 SqlParameter[] parameters = new SqlParameter[]
                 {
                     new SqlParameter("@Id", empleadoDto.Id),
+                    new SqlParameter("@DNI", empleadoDto.DNI),
                     new SqlParameter("@Nombre", empleadoDto.Nombre),
                     new SqlParameter("@Apellido", empleadoDto.Apellido),
-                    new SqlParameter("@CorreoElectronico", empleadoDto.CorreoElectronico),
                     new SqlParameter("@Telefono", empleadoDto.Telefono),
-                    new SqlParameter("@Direccion", empleadoDto.Direccion),
-                    new SqlParameter("@FechaNacimiento", empleadoDto.FechaNacimiento),
-                    new SqlParameter("@NumeroDocumento", empleadoDto.NumeroDocumento),
-                    new SqlParameter("@TipoDocumentoId", empleadoDto.TipoDocumentoId)
+                    new SqlParameter("@Direccion", empleadoDto.Direccion)
                 };
                 await this._empleadoRepository.Update("[dbo].[Sp_UpdateEmpleado]", parameters);
                 return "Empleado actualizado correctamente";

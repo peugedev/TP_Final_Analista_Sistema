@@ -32,26 +32,30 @@
             btnclose = new Button();
             label3 = new Label();
             groupBox1 = new GroupBox();
+            txttelefono = new CustomControls.RJControls.ClickVentaTextBox();
+            txtdireccion = new CustomControls.RJControls.ClickVentaTextBox();
+            txtdni = new CustomControls.RJControls.ClickVentaTextBox();
+            txtapellido = new CustomControls.RJControls.ClickVentaTextBox();
+            txtnombre = new CustomControls.RJControls.ClickVentaTextBox();
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
             label2 = new Label();
             label1 = new Label();
             groupBox2 = new GroupBox();
+            cvcbrol = new ClickVenta.CustomStyle.ClickVentaComboBox();
+            txtcontrasenia = new CustomControls.RJControls.ClickVentaTextBox();
+            txtnombreusuario = new CustomControls.RJControls.ClickVentaTextBox();
             label9 = new Label();
             label10 = new Label();
             label11 = new Label();
-            clickVentaComboBox1 = new ClickVenta.CustomStyle.ClickVentaComboBox();
-            clickVentaTextBox1 = new CustomControls.RJControls.ClickVentaTextBox();
-            clickVentaTextBox2 = new CustomControls.RJControls.ClickVentaTextBox();
-            clickVentaTextBox3 = new CustomControls.RJControls.ClickVentaTextBox();
-            clickVentaTextBox4 = new CustomControls.RJControls.ClickVentaTextBox();
-            clickVentaTextBox5 = new CustomControls.RJControls.ClickVentaTextBox();
-            clickVentaTextBox6 = new CustomControls.RJControls.ClickVentaTextBox();
-            clickVentaTextBox7 = new CustomControls.RJControls.ClickVentaTextBox();
+            groupBox3 = new GroupBox();
+            clickVentaButton1 = new ClickVenta.CustomStyle.ClickVentaButton();
+            btnempleado = new ClickVenta.CustomStyle.ClickVentaButton();
             panel1.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -99,11 +103,11 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(clickVentaTextBox5);
-            groupBox1.Controls.Add(clickVentaTextBox4);
-            groupBox1.Controls.Add(clickVentaTextBox3);
-            groupBox1.Controls.Add(clickVentaTextBox2);
-            groupBox1.Controls.Add(clickVentaTextBox1);
+            groupBox1.Controls.Add(txttelefono);
+            groupBox1.Controls.Add(txtdireccion);
+            groupBox1.Controls.Add(txtdni);
+            groupBox1.Controls.Add(txtapellido);
+            groupBox1.Controls.Add(txtnombre);
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(label4);
@@ -115,6 +119,116 @@
             groupBox1.TabIndex = 21;
             groupBox1.TabStop = false;
             groupBox1.Text = "Datos empleados";
+            // 
+            // txttelefono
+            // 
+            txttelefono.BackColor = SystemColors.Window;
+            txttelefono.BorderColor = Color.MediumSlateBlue;
+            txttelefono.BorderFocusColor = Color.HotPink;
+            txttelefono.BorderRadius = 5;
+            txttelefono.BorderSize = 2;
+            txttelefono.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txttelefono.ForeColor = Color.FromArgb(64, 64, 64);
+            txttelefono.Location = new Point(99, 133);
+            txttelefono.Margin = new Padding(4);
+            txttelefono.Multiline = false;
+            txttelefono.Name = "txttelefono";
+            txttelefono.Padding = new Padding(10, 7, 10, 7);
+            txttelefono.PasswordChar = false;
+            txttelefono.PlaceholderColor = Color.DarkGray;
+            txttelefono.PlaceholderText = "";
+            txttelefono.Size = new Size(312, 35);
+            txttelefono.TabIndex = 13;
+            txttelefono.Texts = "";
+            txttelefono.UnderlinedStyle = false;
+            // 
+            // txtdireccion
+            // 
+            txtdireccion.BackColor = SystemColors.Window;
+            txtdireccion.BorderColor = Color.MediumSlateBlue;
+            txtdireccion.BorderFocusColor = Color.HotPink;
+            txtdireccion.BorderRadius = 5;
+            txtdireccion.BorderSize = 2;
+            txtdireccion.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtdireccion.ForeColor = Color.FromArgb(64, 64, 64);
+            txtdireccion.Location = new Point(558, 90);
+            txtdireccion.Margin = new Padding(4);
+            txtdireccion.Multiline = false;
+            txtdireccion.Name = "txtdireccion";
+            txtdireccion.Padding = new Padding(10, 7, 10, 7);
+            txtdireccion.PasswordChar = false;
+            txtdireccion.PlaceholderColor = Color.DarkGray;
+            txtdireccion.PlaceholderText = "";
+            txtdireccion.Size = new Size(312, 35);
+            txtdireccion.TabIndex = 12;
+            txtdireccion.Texts = "";
+            txtdireccion.UnderlinedStyle = false;
+            // 
+            // txtdni
+            // 
+            txtdni.BackColor = SystemColors.Window;
+            txtdni.BorderColor = Color.MediumSlateBlue;
+            txtdni.BorderFocusColor = Color.HotPink;
+            txtdni.BorderRadius = 5;
+            txtdni.BorderSize = 2;
+            txtdni.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtdni.ForeColor = Color.FromArgb(64, 64, 64);
+            txtdni.Location = new Point(99, 90);
+            txtdni.Margin = new Padding(4);
+            txtdni.Multiline = false;
+            txtdni.Name = "txtdni";
+            txtdni.Padding = new Padding(10, 7, 10, 7);
+            txtdni.PasswordChar = false;
+            txtdni.PlaceholderColor = Color.DarkGray;
+            txtdni.PlaceholderText = "";
+            txtdni.Size = new Size(312, 35);
+            txtdni.TabIndex = 11;
+            txtdni.Texts = "";
+            txtdni.UnderlinedStyle = false;
+            // 
+            // txtapellido
+            // 
+            txtapellido.BackColor = SystemColors.Window;
+            txtapellido.BorderColor = Color.MediumSlateBlue;
+            txtapellido.BorderFocusColor = Color.HotPink;
+            txtapellido.BorderRadius = 5;
+            txtapellido.BorderSize = 2;
+            txtapellido.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtapellido.ForeColor = Color.FromArgb(64, 64, 64);
+            txtapellido.Location = new Point(560, 38);
+            txtapellido.Margin = new Padding(4);
+            txtapellido.Multiline = false;
+            txtapellido.Name = "txtapellido";
+            txtapellido.Padding = new Padding(10, 7, 10, 7);
+            txtapellido.PasswordChar = false;
+            txtapellido.PlaceholderColor = Color.DarkGray;
+            txtapellido.PlaceholderText = "";
+            txtapellido.Size = new Size(312, 35);
+            txtapellido.TabIndex = 10;
+            txtapellido.Texts = "";
+            txtapellido.UnderlinedStyle = false;
+            // 
+            // txtnombre
+            // 
+            txtnombre.BackColor = SystemColors.Window;
+            txtnombre.BorderColor = Color.MediumSlateBlue;
+            txtnombre.BorderFocusColor = Color.HotPink;
+            txtnombre.BorderRadius = 5;
+            txtnombre.BorderSize = 2;
+            txtnombre.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtnombre.ForeColor = Color.FromArgb(64, 64, 64);
+            txtnombre.Location = new Point(99, 38);
+            txtnombre.Margin = new Padding(4);
+            txtnombre.Multiline = false;
+            txtnombre.Name = "txtnombre";
+            txtnombre.Padding = new Padding(10, 7, 10, 7);
+            txtnombre.PasswordChar = false;
+            txtnombre.PlaceholderColor = Color.DarkGray;
+            txtnombre.PlaceholderText = "";
+            txtnombre.Size = new Size(312, 35);
+            txtnombre.TabIndex = 9;
+            txtnombre.Texts = "";
+            txtnombre.UnderlinedStyle = false;
             // 
             // label6
             // 
@@ -168,18 +282,82 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(clickVentaTextBox7);
-            groupBox2.Controls.Add(clickVentaTextBox6);
-            groupBox2.Controls.Add(clickVentaComboBox1);
+            groupBox2.Controls.Add(cvcbrol);
+            groupBox2.Controls.Add(txtcontrasenia);
+            groupBox2.Controls.Add(txtnombreusuario);
             groupBox2.Controls.Add(label9);
             groupBox2.Controls.Add(label10);
             groupBox2.Controls.Add(label11);
             groupBox2.Location = new Point(12, 274);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(930, 202);
+            groupBox2.Size = new Size(930, 185);
             groupBox2.TabIndex = 22;
             groupBox2.TabStop = false;
             groupBox2.Text = "Datos usuarios";
+            // 
+            // cvcbrol
+            // 
+            cvcbrol.AutoCompleteCustomSource.AddRange(new string[] { "Seleccionar el permiso que desee dar al usuario" });
+            cvcbrol.BackColor = Color.WhiteSmoke;
+            cvcbrol.BorderColor = Color.MediumSlateBlue;
+            cvcbrol.BorderSize = 1;
+            cvcbrol.DropDownStyle = ComboBoxStyle.DropDown;
+            cvcbrol.Font = new Font("Segoe UI", 10F);
+            cvcbrol.ForeColor = Color.DimGray;
+            cvcbrol.IconColor = Color.MediumSlateBlue;
+            cvcbrol.ListBackColor = Color.FromArgb(230, 228, 245);
+            cvcbrol.ListTextColor = Color.DimGray;
+            cvcbrol.Location = new Point(212, 136);
+            cvcbrol.MinimumSize = new Size(200, 30);
+            cvcbrol.Name = "cvcbrol";
+            cvcbrol.Padding = new Padding(1);
+            cvcbrol.Size = new Size(388, 36);
+            cvcbrol.TabIndex = 16;
+            cvcbrol.Texts = "";
+            // 
+            // txtcontrasenia
+            // 
+            txtcontrasenia.BackColor = SystemColors.Window;
+            txtcontrasenia.BorderColor = Color.MediumSlateBlue;
+            txtcontrasenia.BorderFocusColor = Color.HotPink;
+            txtcontrasenia.BorderRadius = 5;
+            txtcontrasenia.BorderSize = 2;
+            txtcontrasenia.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtcontrasenia.ForeColor = Color.FromArgb(64, 64, 64);
+            txtcontrasenia.Location = new Point(212, 81);
+            txtcontrasenia.Margin = new Padding(4);
+            txtcontrasenia.Multiline = false;
+            txtcontrasenia.Name = "txtcontrasenia";
+            txtcontrasenia.Padding = new Padding(10, 7, 10, 7);
+            txtcontrasenia.PasswordChar = false;
+            txtcontrasenia.PlaceholderColor = Color.DarkGray;
+            txtcontrasenia.PlaceholderText = "*";
+            txtcontrasenia.Size = new Size(339, 35);
+            txtcontrasenia.TabIndex = 15;
+            txtcontrasenia.Texts = "";
+            txtcontrasenia.UnderlinedStyle = false;
+            // 
+            // txtnombreusuario
+            // 
+            txtnombreusuario.BackColor = SystemColors.Window;
+            txtnombreusuario.BorderColor = Color.MediumSlateBlue;
+            txtnombreusuario.BorderFocusColor = Color.HotPink;
+            txtnombreusuario.BorderRadius = 5;
+            txtnombreusuario.BorderSize = 2;
+            txtnombreusuario.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtnombreusuario.ForeColor = Color.FromArgb(64, 64, 64);
+            txtnombreusuario.Location = new Point(212, 28);
+            txtnombreusuario.Margin = new Padding(4);
+            txtnombreusuario.Multiline = false;
+            txtnombreusuario.Name = "txtnombreusuario";
+            txtnombreusuario.Padding = new Padding(10, 7, 10, 7);
+            txtnombreusuario.PasswordChar = false;
+            txtnombreusuario.PlaceholderColor = Color.DarkGray;
+            txtnombreusuario.PlaceholderText = "";
+            txtnombreusuario.Size = new Size(447, 35);
+            txtnombreusuario.TabIndex = 14;
+            txtnombreusuario.Texts = "";
+            txtnombreusuario.UnderlinedStyle = false;
             // 
             // label9
             // 
@@ -211,185 +389,59 @@
             label11.TabIndex = 0;
             label11.Text = "Nombre de usuario";
             // 
-            // clickVentaComboBox1
+            // groupBox3
             // 
-            clickVentaComboBox1.BackColor = Color.WhiteSmoke;
-            clickVentaComboBox1.BorderColor = Color.MediumSlateBlue;
-            clickVentaComboBox1.BorderSize = 1;
-            clickVentaComboBox1.DropDownStyle = ComboBoxStyle.DropDown;
-            clickVentaComboBox1.Font = new Font("Segoe UI", 10F);
-            clickVentaComboBox1.ForeColor = Color.DimGray;
-            clickVentaComboBox1.IconColor = Color.MediumSlateBlue;
-            clickVentaComboBox1.ListBackColor = Color.FromArgb(230, 228, 245);
-            clickVentaComboBox1.ListTextColor = Color.DimGray;
-            clickVentaComboBox1.Location = new Point(243, 134);
-            clickVentaComboBox1.MinimumSize = new Size(200, 30);
-            clickVentaComboBox1.Name = "clickVentaComboBox1";
-            clickVentaComboBox1.Padding = new Padding(1);
-            clickVentaComboBox1.Size = new Size(523, 38);
-            clickVentaComboBox1.TabIndex = 5;
-            clickVentaComboBox1.Texts = "";
+            groupBox3.Controls.Add(clickVentaButton1);
+            groupBox3.Controls.Add(btnempleado);
+            groupBox3.Location = new Point(1, 473);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(930, 86);
+            groupBox3.TabIndex = 23;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Accion";
             // 
-            // clickVentaTextBox1
+            // clickVentaButton1
             // 
-            clickVentaTextBox1.BackColor = SystemColors.Window;
-            clickVentaTextBox1.BorderColor = Color.MediumSlateBlue;
-            clickVentaTextBox1.BorderFocusColor = Color.HotPink;
-            clickVentaTextBox1.BorderRadius = 5;
-            clickVentaTextBox1.BorderSize = 2;
-            clickVentaTextBox1.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clickVentaTextBox1.ForeColor = Color.FromArgb(64, 64, 64);
-            clickVentaTextBox1.Location = new Point(112, 38);
-            clickVentaTextBox1.Margin = new Padding(4);
-            clickVentaTextBox1.Multiline = false;
-            clickVentaTextBox1.Name = "clickVentaTextBox1";
-            clickVentaTextBox1.Padding = new Padding(10, 7, 10, 7);
-            clickVentaTextBox1.PasswordChar = false;
-            clickVentaTextBox1.PlaceholderColor = Color.DarkGray;
-            clickVentaTextBox1.PlaceholderText = "";
-            clickVentaTextBox1.Size = new Size(312, 35);
-            clickVentaTextBox1.TabIndex = 9;
-            clickVentaTextBox1.Texts = "";
-            clickVentaTextBox1.UnderlinedStyle = false;
+            clickVentaButton1.BackColor = Color.Silver;
+            clickVentaButton1.BorderColor = Color.Silver;
+            clickVentaButton1.BorderRadius = 5;
+            clickVentaButton1.BorderSize = 0;
+            clickVentaButton1.FlatAppearance.BorderSize = 0;
+            clickVentaButton1.FlatStyle = FlatStyle.Flat;
+            clickVentaButton1.ForeColor = Color.White;
+            clickVentaButton1.Location = new Point(552, 26);
+            clickVentaButton1.Name = "clickVentaButton1";
+            clickVentaButton1.Size = new Size(183, 43);
+            clickVentaButton1.TabIndex = 5;
+            clickVentaButton1.Text = "Cancelar";
+            clickVentaButton1.TextColor = Color.White;
+            clickVentaButton1.UseVisualStyleBackColor = false;
             // 
-            // clickVentaTextBox2
+            // btnempleado
             // 
-            clickVentaTextBox2.BackColor = SystemColors.Window;
-            clickVentaTextBox2.BorderColor = Color.MediumSlateBlue;
-            clickVentaTextBox2.BorderFocusColor = Color.HotPink;
-            clickVentaTextBox2.BorderRadius = 5;
-            clickVentaTextBox2.BorderSize = 2;
-            clickVentaTextBox2.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clickVentaTextBox2.ForeColor = Color.FromArgb(64, 64, 64);
-            clickVentaTextBox2.Location = new Point(112, 90);
-            clickVentaTextBox2.Margin = new Padding(4);
-            clickVentaTextBox2.Multiline = false;
-            clickVentaTextBox2.Name = "clickVentaTextBox2";
-            clickVentaTextBox2.Padding = new Padding(10, 7, 10, 7);
-            clickVentaTextBox2.PasswordChar = false;
-            clickVentaTextBox2.PlaceholderColor = Color.DarkGray;
-            clickVentaTextBox2.PlaceholderText = "";
-            clickVentaTextBox2.Size = new Size(312, 35);
-            clickVentaTextBox2.TabIndex = 10;
-            clickVentaTextBox2.Texts = "";
-            clickVentaTextBox2.UnderlinedStyle = false;
-            // 
-            // clickVentaTextBox3
-            // 
-            clickVentaTextBox3.BackColor = SystemColors.Window;
-            clickVentaTextBox3.BorderColor = Color.MediumSlateBlue;
-            clickVentaTextBox3.BorderFocusColor = Color.HotPink;
-            clickVentaTextBox3.BorderRadius = 5;
-            clickVentaTextBox3.BorderSize = 2;
-            clickVentaTextBox3.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clickVentaTextBox3.ForeColor = Color.FromArgb(64, 64, 64);
-            clickVentaTextBox3.Location = new Point(112, 143);
-            clickVentaTextBox3.Margin = new Padding(4);
-            clickVentaTextBox3.Multiline = false;
-            clickVentaTextBox3.Name = "clickVentaTextBox3";
-            clickVentaTextBox3.Padding = new Padding(10, 7, 10, 7);
-            clickVentaTextBox3.PasswordChar = false;
-            clickVentaTextBox3.PlaceholderColor = Color.DarkGray;
-            clickVentaTextBox3.PlaceholderText = "";
-            clickVentaTextBox3.Size = new Size(312, 35);
-            clickVentaTextBox3.TabIndex = 11;
-            clickVentaTextBox3.Texts = "";
-            clickVentaTextBox3.UnderlinedStyle = false;
-            // 
-            // clickVentaTextBox4
-            // 
-            clickVentaTextBox4.BackColor = SystemColors.Window;
-            clickVentaTextBox4.BorderColor = Color.MediumSlateBlue;
-            clickVentaTextBox4.BorderFocusColor = Color.HotPink;
-            clickVentaTextBox4.BorderRadius = 5;
-            clickVentaTextBox4.BorderSize = 2;
-            clickVentaTextBox4.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clickVentaTextBox4.ForeColor = Color.FromArgb(64, 64, 64);
-            clickVentaTextBox4.Location = new Point(589, 38);
-            clickVentaTextBox4.Margin = new Padding(4);
-            clickVentaTextBox4.Multiline = false;
-            clickVentaTextBox4.Name = "clickVentaTextBox4";
-            clickVentaTextBox4.Padding = new Padding(10, 7, 10, 7);
-            clickVentaTextBox4.PasswordChar = false;
-            clickVentaTextBox4.PlaceholderColor = Color.DarkGray;
-            clickVentaTextBox4.PlaceholderText = "";
-            clickVentaTextBox4.Size = new Size(312, 35);
-            clickVentaTextBox4.TabIndex = 12;
-            clickVentaTextBox4.Texts = "";
-            clickVentaTextBox4.UnderlinedStyle = false;
-            // 
-            // clickVentaTextBox5
-            // 
-            clickVentaTextBox5.BackColor = SystemColors.Window;
-            clickVentaTextBox5.BorderColor = Color.MediumSlateBlue;
-            clickVentaTextBox5.BorderFocusColor = Color.HotPink;
-            clickVentaTextBox5.BorderRadius = 5;
-            clickVentaTextBox5.BorderSize = 2;
-            clickVentaTextBox5.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clickVentaTextBox5.ForeColor = Color.FromArgb(64, 64, 64);
-            clickVentaTextBox5.Location = new Point(589, 90);
-            clickVentaTextBox5.Margin = new Padding(4);
-            clickVentaTextBox5.Multiline = false;
-            clickVentaTextBox5.Name = "clickVentaTextBox5";
-            clickVentaTextBox5.Padding = new Padding(10, 7, 10, 7);
-            clickVentaTextBox5.PasswordChar = false;
-            clickVentaTextBox5.PlaceholderColor = Color.DarkGray;
-            clickVentaTextBox5.PlaceholderText = "";
-            clickVentaTextBox5.Size = new Size(312, 35);
-            clickVentaTextBox5.TabIndex = 13;
-            clickVentaTextBox5.Texts = "";
-            clickVentaTextBox5.UnderlinedStyle = false;
-            // 
-            // clickVentaTextBox6
-            // 
-            clickVentaTextBox6.BackColor = SystemColors.Window;
-            clickVentaTextBox6.BorderColor = Color.MediumSlateBlue;
-            clickVentaTextBox6.BorderFocusColor = Color.HotPink;
-            clickVentaTextBox6.BorderRadius = 5;
-            clickVentaTextBox6.BorderSize = 2;
-            clickVentaTextBox6.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clickVentaTextBox6.ForeColor = Color.FromArgb(64, 64, 64);
-            clickVentaTextBox6.Location = new Point(243, 81);
-            clickVentaTextBox6.Margin = new Padding(4);
-            clickVentaTextBox6.Multiline = false;
-            clickVentaTextBox6.Name = "clickVentaTextBox6";
-            clickVentaTextBox6.Padding = new Padding(10, 7, 10, 7);
-            clickVentaTextBox6.PasswordChar = false;
-            clickVentaTextBox6.PlaceholderColor = Color.DarkGray;
-            clickVentaTextBox6.PlaceholderText = "";
-            clickVentaTextBox6.Size = new Size(523, 35);
-            clickVentaTextBox6.TabIndex = 14;
-            clickVentaTextBox6.Texts = "";
-            clickVentaTextBox6.UnderlinedStyle = false;
-            // 
-            // clickVentaTextBox7
-            // 
-            clickVentaTextBox7.BackColor = SystemColors.Window;
-            clickVentaTextBox7.BorderColor = Color.MediumSlateBlue;
-            clickVentaTextBox7.BorderFocusColor = Color.HotPink;
-            clickVentaTextBox7.BorderRadius = 5;
-            clickVentaTextBox7.BorderSize = 2;
-            clickVentaTextBox7.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            clickVentaTextBox7.ForeColor = Color.FromArgb(64, 64, 64);
-            clickVentaTextBox7.Location = new Point(243, 38);
-            clickVentaTextBox7.Margin = new Padding(4);
-            clickVentaTextBox7.Multiline = false;
-            clickVentaTextBox7.Name = "clickVentaTextBox7";
-            clickVentaTextBox7.Padding = new Padding(10, 7, 10, 7);
-            clickVentaTextBox7.PasswordChar = false;
-            clickVentaTextBox7.PlaceholderColor = Color.DarkGray;
-            clickVentaTextBox7.PlaceholderText = "";
-            clickVentaTextBox7.Size = new Size(549, 35);
-            clickVentaTextBox7.TabIndex = 15;
-            clickVentaTextBox7.Texts = "";
-            clickVentaTextBox7.UnderlinedStyle = false;
+            btnempleado.BackColor = Color.FromArgb(128, 128, 255);
+            btnempleado.BorderColor = Color.FromArgb(128, 128, 255);
+            btnempleado.BorderRadius = 5;
+            btnempleado.BorderSize = 0;
+            btnempleado.FlatAppearance.BorderSize = 0;
+            btnempleado.FlatStyle = FlatStyle.Flat;
+            btnempleado.ForeColor = Color.White;
+            btnempleado.Location = new Point(741, 26);
+            btnempleado.Name = "btnempleado";
+            btnempleado.Size = new Size(183, 43);
+            btnempleado.TabIndex = 4;
+            btnempleado.Text = "Aceptar";
+            btnempleado.TextColor = Color.White;
+            btnempleado.UseVisualStyleBackColor = false;
+            btnempleado.Click += btnempleado_Click;
             // 
             // frmcrearsingleempleado
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(942, 647);
+            ClientSize = new Size(942, 567);
             ControlBox = false;
+            Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(panel1);
@@ -402,6 +454,7 @@
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            groupBox3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -413,22 +466,24 @@
         private GroupBox groupBox1;
         private Label label1;
         private Label label5;
-        private CustomControls.RJControls.ClickVentaTextBox clickVentaTextBox3;
+        private CustomControls.RJControls.ClickVentaTextBox txtdni;
         private Label label4;
-        private CustomControls.RJControls.ClickVentaTextBox clickVentaTextBox2;
-        private CustomControls.RJControls.ClickVentaTextBox clickVentaTextBox1;
+        private CustomControls.RJControls.ClickVentaTextBox txtapellido;
+        private CustomControls.RJControls.ClickVentaTextBox txtnombre;
         private Label label2;
-        private CustomControls.RJControls.ClickVentaTextBox clickVentaTextBox5;
+        private CustomControls.RJControls.ClickVentaTextBox txttelefono;
         private Label label6;
-        private CustomControls.RJControls.ClickVentaTextBox clickVentaTextBox4;
+        private CustomControls.RJControls.ClickVentaTextBox txtdireccion;
         private GroupBox groupBox2;
         private Label label9;
-        private CustomControls.RJControls.ClickVentaTextBox clickVentaTextBox9;
         private CustomControls.RJControls.ClickVentaTextBox clickVentaTextBox10;
         private Label label10;
         private Label label11;
-        private CustomStyle.ClickVentaComboBox clickVentaComboBox1;
-        private CustomControls.RJControls.ClickVentaTextBox clickVentaTextBox7;
-        private CustomControls.RJControls.ClickVentaTextBox clickVentaTextBox6;
+        private CustomStyle.ClickVentaComboBox cvcbrol;
+        private CustomControls.RJControls.ClickVentaTextBox txtcontrasenia;
+        private CustomControls.RJControls.ClickVentaTextBox txtnombreusuario;
+        private GroupBox groupBox3;
+        private CustomStyle.ClickVentaButton clickVentaButton1;
+        private CustomStyle.ClickVentaButton btnempleado;
     }
 }

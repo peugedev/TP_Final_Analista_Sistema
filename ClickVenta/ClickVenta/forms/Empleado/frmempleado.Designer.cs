@@ -41,12 +41,14 @@
             btnPrevious = new Button();
             btnFirst = new Button();
             datalist = new DataGridView();
-            FirstName = new DataGridViewTextBoxColumn();
-            LastName = new DataGridViewTextBoxColumn();
-            telefono = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            Apellido = new DataGridViewTextBoxColumn();
+            DNI = new DataGridViewTextBoxColumn();
             tableLayoutPanel2 = new TableLayoutPanel();
+            clickVentaButton3 = new ClickVenta.CustomStyle.ClickVentaButton();
             label1 = new Label();
             txtfilter = new TextBox();
+            btnempleado = new ClickVenta.CustomStyle.ClickVentaButton();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             groupBox5.SuspendLayout();
@@ -215,7 +217,7 @@
             datalist.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             datalist.BackgroundColor = Color.White;
             datalist.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            datalist.Columns.AddRange(new DataGridViewColumn[] { FirstName, LastName, telefono });
+            datalist.Columns.AddRange(new DataGridViewColumn[] { Nombre, Apellido, DNI });
             datalist.Cursor = Cursors.Hand;
             datalist.Dock = DockStyle.Fill;
             datalist.Location = new Point(3, 88);
@@ -226,29 +228,29 @@
             datalist.Size = new Size(978, 359);
             datalist.TabIndex = 19;
             // 
-            // FirstName
+            // Nombre
             // 
-            FirstName.DataPropertyName = "FirstName";
-            FirstName.HeaderText = "Nombre";
-            FirstName.MinimumWidth = 6;
-            FirstName.Name = "FirstName";
-            FirstName.ReadOnly = true;
+            Nombre.DataPropertyName = "Nombre";
+            Nombre.HeaderText = "Nombre";
+            Nombre.MinimumWidth = 6;
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
             // 
-            // LastName
+            // Apellido
             // 
-            LastName.DataPropertyName = "LastName";
-            LastName.HeaderText = "Apellido";
-            LastName.MinimumWidth = 6;
-            LastName.Name = "LastName";
-            LastName.ReadOnly = true;
+            Apellido.DataPropertyName = "Apellido";
+            Apellido.HeaderText = "Apellido";
+            Apellido.MinimumWidth = 6;
+            Apellido.Name = "Apellido";
+            Apellido.ReadOnly = true;
             // 
-            // telefono
+            // DNI
             // 
-            telefono.DataPropertyName = "telefono";
-            telefono.HeaderText = "Telefono";
-            telefono.MinimumWidth = 6;
-            telefono.Name = "telefono";
-            telefono.ReadOnly = true;
+            DNI.DataPropertyName = "DNI";
+            DNI.HeaderText = "Documento";
+            DNI.MinimumWidth = 6;
+            DNI.Name = "DNI";
+            DNI.ReadOnly = true;
             // 
             // tableLayoutPanel2
             // 
@@ -256,8 +258,10 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 36.71233F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 63.28767F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 188F));
+            tableLayoutPanel2.Controls.Add(clickVentaButton3, 2, 0);
             tableLayoutPanel2.Controls.Add(label1, 0, 0);
             tableLayoutPanel2.Controls.Add(txtfilter, 1, 0);
+            tableLayoutPanel2.Controls.Add(btnempleado, 2, 1);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(3, 3);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -266,6 +270,24 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 37F));
             tableLayoutPanel2.Size = new Size(978, 79);
             tableLayoutPanel2.TabIndex = 0;
+            // 
+            // clickVentaButton3
+            // 
+            clickVentaButton3.BackColor = Color.FromArgb(128, 128, 255);
+            clickVentaButton3.BorderColor = Color.FromArgb(128, 128, 255);
+            clickVentaButton3.BorderRadius = 5;
+            clickVentaButton3.BorderSize = 0;
+            clickVentaButton3.Dock = DockStyle.Fill;
+            clickVentaButton3.FlatAppearance.BorderSize = 0;
+            clickVentaButton3.FlatStyle = FlatStyle.Flat;
+            clickVentaButton3.ForeColor = Color.White;
+            clickVentaButton3.Location = new Point(792, 3);
+            clickVentaButton3.Name = "clickVentaButton3";
+            clickVentaButton3.Size = new Size(183, 36);
+            clickVentaButton3.TabIndex = 4;
+            clickVentaButton3.Text = "Filtrar";
+            clickVentaButton3.TextColor = Color.White;
+            clickVentaButton3.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -290,6 +312,25 @@
             txtfilter.TabIndex = 2;
             txtfilter.TextAlign = HorizontalAlignment.Right;
             // 
+            // btnempleado
+            // 
+            btnempleado.BackColor = Color.FromArgb(128, 128, 255);
+            btnempleado.BorderColor = Color.FromArgb(128, 128, 255);
+            btnempleado.BorderRadius = 5;
+            btnempleado.BorderSize = 0;
+            btnempleado.Dock = DockStyle.Fill;
+            btnempleado.FlatAppearance.BorderSize = 0;
+            btnempleado.FlatStyle = FlatStyle.Flat;
+            btnempleado.ForeColor = Color.White;
+            btnempleado.Location = new Point(792, 45);
+            btnempleado.Name = "btnempleado";
+            btnempleado.Size = new Size(183, 31);
+            btnempleado.TabIndex = 3;
+            btnempleado.Text = "Nuevo empleado";
+            btnempleado.TextColor = Color.White;
+            btnempleado.UseVisualStyleBackColor = false;
+            btnempleado.Click += btnempleado_Click;
+            // 
             // frmempleado
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -300,6 +341,8 @@
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmempleado";
+            StartPosition = FormStartPosition.CenterScreen;
+            Load += frmempleado_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
@@ -325,13 +368,15 @@
         private Button btnPrevious;
         private Button btnFirst;
         private DataGridView datalist;
-        private DataGridViewTextBoxColumn FirstName;
-        private DataGridViewTextBoxColumn LastName;
-        private DataGridViewTextBoxColumn telefono;
         private TableLayoutPanel tableLayoutPanel2;
         private Label label1;
         private TextBox txtfilter;
         private CustomStyle.ClickVentaButton clickVentaButton1;
         private CustomStyle.ClickVentaButton clickVentaButton2;
+        private CustomStyle.ClickVentaButton btnempleado;
+        private CustomStyle.ClickVentaButton clickVentaButton3;
+        private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn Apellido;
+        private DataGridViewTextBoxColumn DNI;
     }
 }

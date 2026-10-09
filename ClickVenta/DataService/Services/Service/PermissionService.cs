@@ -75,7 +75,7 @@ namespace DataService.Services.Service
             {
                 SqlParameter[] sqlParameters = new SqlParameter[]
                 {
-                    new SqlParameter("@UserId", UserId)
+                    new SqlParameter("@usuarioId", UserId)
                 };
                 var result = await _permissionRepository.GetAll("sp_GetUserPermissions", sqlParameters);
                 return _mapper.Map<IEnumerable<PermissionMenuDto>>(result);

@@ -1,4 +1,5 @@
 ﻿using ClickVenta.forms;
+using ClickVenta.forms.Empleado;
 using DataService.Profiles;
 using DataService.Services.IService;
 using DataService.Services.Service;
@@ -35,6 +36,10 @@ namespace ClickVenta.Config
                     //Aqui se inyecta los formulario
                     services.AddTransient<frmlogin>();
                     services.AddTransient<frmpermission>();
+                    services.AddTransient<frmempleado>();
+                    //services.AddTransient<frmrol>();
+                    //services.AddTransient<frmproducto>();
+                    //services.AddTransient<frmcategoria>();
 
                     //Aqui se inyecta los interfaces de los repositorios genericos
                     services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
@@ -48,6 +53,7 @@ namespace ClickVenta.Config
 
                     services.AddScoped<IPermissionRepository, PermissionRepository>();
                     services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+                    services.AddScoped<IRolRepository, RolRepository>();
 
                     // Aquí se inyecta los interfaces de los servicios
                     services.AddScoped<IEmpleadoService, EmpleadoService>();
@@ -57,6 +63,8 @@ namespace ClickVenta.Config
 
                     services.AddScoped<IPermissionService, PermissionService>();
                     services.AddScoped<IUsuarioService, UsuarioService>();
+                    services.AddScoped<IRolService, RolService>();
+                    services.AddScoped<ILoginService, LoginService>();
 
                     //Aqui se inyecta el automapper
                     services.AddAutoMapper(auto => auto.AddProfile<ClickVentaProfile>());

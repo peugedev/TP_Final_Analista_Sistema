@@ -12,6 +12,7 @@ namespace BusinessEntities.Dtos.permision
         public string Name { get; set; }
         public string SubMenuId { get; set; }
         public string SubMenuName { get; set; }
+        public string? FormAssociation { get; set; }
         public int IsAssigned { get; set; }
     }
 }

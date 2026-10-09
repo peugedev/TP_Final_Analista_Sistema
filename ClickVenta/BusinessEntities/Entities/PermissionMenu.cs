@@ -8,10 +8,10 @@ namespace BusinessEntities.Entities
 {
     public class PermissionMenu: BaseEntity
     {
-        public string Id { get; set; }
         public string Name { get; set; }
         public string SubMenuId { get; set; }
         public string SubMenuName { get; set; }
+        public string formAssociation { get; set; }
         public int IsAssigned { get; set; }
     }
 }

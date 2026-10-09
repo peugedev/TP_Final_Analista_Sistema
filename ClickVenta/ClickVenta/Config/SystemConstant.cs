@@ -8,11 +8,9 @@ namespace ClickVenta.Config
 {
     public static class SystemConstant
     {
-        public static string UserId;
-        public static string TurnId;
-        public static string OpenWorkTurnId;
+        public static string UsuarioId;
         public static string RoleId;
-        public static string CompanyId;
+        public static string EmpleadoId;
         public static string UserName;
         public static string FirstName;
         public static string LastName;

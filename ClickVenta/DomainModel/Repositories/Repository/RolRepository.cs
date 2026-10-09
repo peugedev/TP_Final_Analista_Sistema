@@ -5,19 +5,19 @@ using Microsoft.Data.SqlClient;
 
 namespace DomainModel.Repositories.Repository
 {
-    public class UsuarioRepository : IUsuarioRepository
+    public class RolRepository : IRolRepository
     {
-        private readonly IGenericRepository<Usuario> _genericRepository;
+        private readonly IGenericRepository<Rol> _genericRepository;
 
-        public UsuarioRepository(IGenericRepository<Usuario> genericRepository)
+        public RolRepository(IGenericRepository<Rol> genericRepository)
         {
             _genericRepository = genericRepository;
         }
-        public async Task<Usuario> Create(string query, SqlParameter[] parameters)
+        public async Task<Rol> Create(string query, SqlParameter[] parameters)
         {
             try
             {
-                return await this._genericRepository.Create(query, parameters);
+                return await _genericRepository.Create(query, parameters);
             }
             catch (Exception ex)
             {
@@ -29,7 +29,7 @@ namespace DomainModel.Repositories.Repository
         {
             try
             {
-                return await this._genericRepository.Delete(query, parameters);
+                return await _genericRepository.Delete(query, parameters);
             }
             catch (Exception ex)
             {
@@ -37,11 +37,11 @@ namespace DomainModel.Repositories.Repository
             }
         }
 
-        public async Task<IEnumerable<Usuario>> GetAll(string query, SqlParameter[] parameters)
+        public async Task<IEnumerable<Rol>> GetAll(string query, SqlParameter[] parameters)
         {
             try
             {
-                return await this._genericRepository.GetAll(query, parameters);
+                return await _genericRepository.GetAll(query, parameters);
             }
             catch (Exception ex)
             {
@@ -49,11 +49,11 @@ namespace DomainModel.Repositories.Repository
             }
         }
 
-        public async Task<Usuario> GetById(string query, SqlParameter[] parameters)
+        public async Task<Rol> GetById(string query, SqlParameter[] parameters)
         {
             try
             {
-                return await this._genericRepository.GetById(query, parameters);
+                return await _genericRepository.GetById(query, parameters);
             }
             catch (Exception ex)
             {
@@ -61,11 +61,11 @@ namespace DomainModel.Repositories.Repository
             }
         }
 
-        public async Task<Usuario> Update(string query, SqlParameter[] parameters)
+        public async Task<Rol> Update(string query, SqlParameter[] parameters)
         {
             try
             {
-                return await this._genericRepository.Update(query, parameters);
+                return await _genericRepository.Update(query, parameters);
             }
             catch (Exception ex)
             {

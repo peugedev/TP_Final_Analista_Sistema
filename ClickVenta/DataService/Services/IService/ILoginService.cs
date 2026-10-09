@@ -1,0 +1,15 @@
+﻿using BusinessEntities.Dtos.Login;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DataService.Services.IService
+{
+    public interface ILoginService
+    {
+        Task<LoginReturnDto> Login(LoginDto dto);
+        Task<string> CambiarPassword(LoginDto dto);
+    }
+}
