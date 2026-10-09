@@ -9,7 +9,7 @@ namespace BusinessEntities.Dtos.Venta
 {
     public class UpdateVentaDto : BaseDto
     {
-        public int IdUsuario { get; set; }
+        public string? IdUsuario { get; set; }
         public string NroTicket { get; set; }
         public decimal Total { get; set; }
         public DateTime FechaVenta { get; set; }
