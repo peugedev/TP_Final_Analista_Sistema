@@ -29,8 +29,8 @@ namespace DataService.Services.Service
             {
                 SqlParameter[] parameters = new SqlParameter[]
                 {
-                    new SqlParameter("@ProductoId", detalleVentaDto.IdProducto),
-                    new SqlParameter("@VentaId", detalleVentaDto.IdVenta),
+                    new SqlParameter("@ProductoId", detalleVentaDto.ProductoId),
+                    new SqlParameter("@VentaId", detalleVentaDto.VentaId),
                     new SqlParameter("@Cantidad", detalleVentaDto.Cantidad),
                     new SqlParameter("@Precio", detalleVentaDto.Precio),
                     new SqlParameter("@SubTotal", detalleVentaDto.Subtotal)
@@ -107,8 +107,8 @@ namespace DataService.Services.Service
                 SqlParameter[] parameters = new SqlParameter[]
                 {
                     new SqlParameter("@Id", detalleVentaDto.Id),
-                    new SqlParameter("@ProductoId", detalleVentaDto.IdProducto),
-                    new SqlParameter("@VentaId", detalleVentaDto.IdVenta),
+                    new SqlParameter("@ProductoId", detalleVentaDto.ProductoId),
+                    new SqlParameter("@VentaId", detalleVentaDto.VentaId),
                     new SqlParameter("@Cantidad", detalleVentaDto.Cantidad),
                     new SqlParameter("@Precio", detalleVentaDto.Precio),
                     new SqlParameter("@SubTotal", detalleVentaDto.Subtotal)
