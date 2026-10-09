@@ -7,6 +7,6 @@
         public string Nombre { get; set; }
         public decimal PrecioCompra { get; set; }
         public string IdCategoria { get; set; }
-        //public string IdPresentacion { get; set; }
+        public int IdDetalleVenta { get; set; }
     }
 }
