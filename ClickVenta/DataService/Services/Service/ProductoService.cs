@@ -3,11 +3,6 @@ using BusinessEntities.Dtos.Producto;
 using DataService.Services.IService;
 using DomainModel.Repositories.Interface;
 using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataService.Services.Service
 {
@@ -31,7 +26,7 @@ namespace DataService.Services.Service
                     new SqlParameter("@CodigoBarra", productoDto.CodigoBarra),
                     new SqlParameter("@Nombre", productoDto.Nombre),
                     new SqlParameter("@PrecioCompra", productoDto.PrecioCompra),
-                    //new SqlParameter("@IdCategoria", productoDto.IdCategoria)
+                    new SqlParameter("@IdCategoria", productoDto.IdCategoria)
                 };
                 var producto = _mapper.Map<BusinessEntities.Entities.Producto>(productoDto);
                 await this._productoRepository.Create("[dbo].[Sp_InsertProducto]", parameters);
@@ -103,7 +98,7 @@ namespace DataService.Services.Service
                     new SqlParameter("@CodigoBarra", productoDto.CodigoBarra),
                     new SqlParameter("@Nombre", productoDto.Nombre),
                     new SqlParameter("@PrecioCompra", productoDto.PrecioCompra),
-                    //new SqlParameter("@IdCategoria", productoDto.IdCategoria)
+                    new SqlParameter("@IdCategoria", productoDto.IdCategoria)
                 };
                 var producto = _mapper.Map<BusinessEntities.Entities.Producto>(productoDto);
                 await this._productoRepository.Update("[dbo].[Sp_UpdateProducto]", parameters);

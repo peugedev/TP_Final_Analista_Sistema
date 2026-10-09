@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
-using BusinessEntities.Dtos.Empleado;
-using BusinessEntities.Dtos.Roles;
-using BusinessEntities.Entities;
+using BusinessEntities.Dtos.Rol;
 using DataService.Services.IService;
 using DomainModel.Repositories.Interface;
 using Microsoft.Data.SqlClient;
@@ -23,57 +21,53 @@ namespace DataService.Services.Service
             _rolRepository = rolRepository;
             _mapper = mapper;
         }
-
-        public async Task<string> CreateRolA(CrearRolDto rol)
+        public async Task<string> CreateRol(CreateRolDto productoDto)
         {
             try
             {
                 SqlParameter[] parameters = new SqlParameter[]
                 {
-                    new SqlParameter("@Nombre", rol.Nombre),
-                    new SqlParameter("@Descripcion", rol.Descripcion)
+                    new SqlParameter("@Descripcion", productoDto.Descripcion),
+                    new SqlParameter("@Nombre", productoDto.Nombre)
                 };
-                await this._rolRepository.Create("sp_CreateRol",parameters);
-                return "Rol creado exitosamente";
+                var producto = _mapper.Map<BusinessEntities.Entities.Rol>(productoDto);
+                await this._rolRepository.Create("[dbo].[Sp_InsertRol]", parameters);
+                return "Rol creado correctamente";
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-
-        public async Task<bool> DeleteRol(EliminarRodDto id)
+        public async Task<string> DeleteRol(DeleteRolDto rolDto)
         {
             try
             {
                 SqlParameter[] parameters = new SqlParameter[]
                 {
-                    new SqlParameter("@Id", id.Id)
+                    new SqlParameter("@Id", rolDto.Id)
                 };
-                await this._rolRepository.Delete("sp_DeleteRol", parameters);
-                return true;
+                await this._rolRepository.Delete("[dbo].[Sp_DeleteRol]", parameters);
+                return "Rol eliminado correctamente";
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-
         public async Task<IEnumerable<RolDto>> GetAllRoles(int state, int page, int pageSize, string filter = null)
         {
             try
             {
-                SqlParameter[] sqlParameters = new SqlParameter[]
+                SqlParameter[] parameters = new SqlParameter[]
                 {
                     new SqlParameter("@State", state),
                     new SqlParameter("@Page", page),
                     new SqlParameter("@PageSize", pageSize),
                     new SqlParameter("@Filter", filter ?? (object)DBNull.Value)
                 };
-                var result = await this._rolRepository.GetAll("sp_GetAllRoles", sqlParameters);
-                //var rolesList = _mapper.Map<IEnumerable<RolDto>>(result);
-                //return new RolesDto { Roles = rolesList.ToList() };
-                return _mapper.Map<IEnumerable<RolDto>>(result);
+                var roles = await this._rolRepository.GetAll("[dbo].[Sp_GetAllRoles]", parameters);
+                return _mapper.Map<IEnumerable<RolDto>>(roles);
             }
             catch (Exception ex)
             {

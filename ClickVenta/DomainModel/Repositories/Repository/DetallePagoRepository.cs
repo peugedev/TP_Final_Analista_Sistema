@@ -10,15 +10,14 @@ using System.Threading.Tasks;
 
 namespace DomainModel.Repositories.Repository
 {
-    public class RolRepository : IRolRepository
+    public class DetallePagoRepository : IDetallePagoRepository
     {
-        private readonly IGenericRepository<Rol> _genericRepository;
-
-        public RolRepository(IGenericRepository<Rol> genericRepository)
+        private readonly IGenericRepository<DetallePago> _genericRepository;
+        public DetallePagoRepository(IGenericRepository<DetallePago> genericRepository)
         {
             _genericRepository = genericRepository;
         }
-        public async Task<Rol> Create(string query, SqlParameter[] parameters)
+        public async Task<DetallePago> Create(string query, SqlParameter[] parameters)
         {
             try
             {
@@ -29,7 +28,6 @@ namespace DomainModel.Repositories.Repository
                 throw ex;
             }
         }
-
         public async Task<bool> Delete(string query, SqlParameter[] parameters)
         {
             try
@@ -41,36 +39,33 @@ namespace DomainModel.Repositories.Repository
                 throw ex;
             }
         }
-
-        public async Task<IEnumerable<Rol>> GetAll(string query, SqlParameter[] parameters)
+        public Task<IEnumerable<DetallePago>> GetAll(string query, SqlParameter[] parameters)
         {
             try
             {
-                return await _genericRepository.GetAll(query, parameters);
+                return this._genericRepository.GetAll(query, parameters);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-
-        public async Task<Rol> GetById(string query, SqlParameter[] parameters)
+        public async Task<DetallePago> GetById(string query, SqlParameter[] parameters)
         {
             try
             {
-                return await _genericRepository.GetById(query, parameters);
+                return await this._genericRepository.GetById(query, parameters);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-
-        public async Task<Rol> Update(string query, SqlParameter[] parameters)
+        public async Task<DetallePago> Update(string query, SqlParameter[] parameters)
         {
             try
             {
-                return await _genericRepository.Update(query, parameters);
+                return await this._genericRepository.Update(query, parameters);
             }
             catch (Exception ex)
             {

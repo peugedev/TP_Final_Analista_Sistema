@@ -38,7 +38,7 @@ namespace DataService.Profiles
                  .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ReverseMap().ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
-            CreateMap<BusinessEntities.Entities.Empleado, BusinessEntities.Dtos.Empleado.EmpleadoDto>()
+            CreateMap<Empleado, EmpleadoDto>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Nombre, opt => opt.MapFrom(src => src.Nombre))
                 .ForMember(dest => dest.Apellido, opt => opt.MapFrom(src => src.Apellido))

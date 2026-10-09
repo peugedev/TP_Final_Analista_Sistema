@@ -10,15 +10,14 @@ using System.Threading.Tasks;
 
 namespace DomainModel.Repositories.Repository
 {
-    public class RolRepository : IRolRepository
+    public class MovimientoRepository : IMovimientoRepository
     {
-        private readonly IGenericRepository<Rol> _genericRepository;
-
-        public RolRepository(IGenericRepository<Rol> genericRepository)
+        private readonly IGenericRepository<Movimiento> _genericRepository;
+        public MovimientoRepository(IGenericRepository<Movimiento> genericRepository)
         {
             _genericRepository = genericRepository;
         }
-        public async Task<Rol> Create(string query, SqlParameter[] parameters)
+        public async Task<Movimiento> Create(string query, SqlParameter[] parameters)
         {
             try
             {
@@ -29,7 +28,6 @@ namespace DomainModel.Repositories.Repository
                 throw ex;
             }
         }
-
         public async Task<bool> Delete(string query, SqlParameter[] parameters)
         {
             try
@@ -41,36 +39,33 @@ namespace DomainModel.Repositories.Repository
                 throw ex;
             }
         }
-
-        public async Task<IEnumerable<Rol>> GetAll(string query, SqlParameter[] parameters)
+        public Task<IEnumerable<Movimiento>> GetAll(string query, SqlParameter[] parameters)
         {
             try
             {
-                return await _genericRepository.GetAll(query, parameters);
+                return this._genericRepository.GetAll(query, parameters);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-
-        public async Task<Rol> GetById(string query, SqlParameter[] parameters)
+        public async Task<Movimiento> GetById(string query, SqlParameter[] parameters)
         {
             try
             {
-                return await _genericRepository.GetById(query, parameters);
+                return await this._genericRepository.GetById(query, parameters);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-
-        public async Task<Rol> Update(string query, SqlParameter[] parameters)
+        public async Task<Movimiento> Update(string query, SqlParameter[] parameters)
         {
             try
             {
-                return await _genericRepository.Update(query, parameters);
+                return await this._genericRepository.Update(query, parameters);
             }
             catch (Exception ex)
             {

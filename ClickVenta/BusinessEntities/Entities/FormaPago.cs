@@ -4,14 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessEntities.Dtos.Producto
+namespace BusinessEntities.Entities
 {
-    public class CreateProductoDto
+    public class FormaPago: BaseEntity
     {
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
-        public string CodigoBarra { get; set; }
-        public decimal PrecioCompra { get; set; }
-        public string IdCategoria { get; set; }
     }
 }
