@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessEntities.Dtos.Lote
 {
-    public class CreateLoteDto
+    public class CreateLoteDto : BaseDto
     {
         public string ProductoId { get; set; }
         public DateTime FechaVencimiento { get; set; }
