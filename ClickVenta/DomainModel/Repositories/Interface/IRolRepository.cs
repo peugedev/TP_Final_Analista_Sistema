@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DomainModel.Repositories.Interface
 {
-    public interface IProductoRepository: IGenericRepository<Producto>
+    public interface IRolRepository: IGenericRepository<Rol>
     {
     }
 }
