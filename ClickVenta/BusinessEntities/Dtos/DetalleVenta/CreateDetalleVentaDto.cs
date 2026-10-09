@@ -9,8 +9,8 @@ namespace BusinessEntities.Dtos.DetalleVenta
 {
     public class CreateDetalleVentaDto
     {
-        public int IdProducto { get; set; }
-        public int IdVenta { get; set; }
+        public string ProductoId { get; set; }
+        public string VentaId { get; set; }
         public int Cantidad { get; set; }
         public decimal Precio { get; set; }
         public decimal Subtotal { get; set; }
