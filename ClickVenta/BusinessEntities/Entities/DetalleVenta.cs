@@ -8,7 +8,8 @@ namespace BusinessEntities.Entities
 {
     public class DetalleVenta : BaseEntity
     {
-        public int  IdProducto { get; set; }
+        public string ProductoId { get; set; }
+        public string VentaId { get; set; }
         public int Cantidad { get; set; }
         public decimal Precio { get; set; }
         public decimal Subtotal { get; set; }

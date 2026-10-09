@@ -8,10 +8,13 @@ namespace BusinessEntities.Entities
 {
     public class Venta: BaseEntity
     {
-        public int IdUsuario{ get; set; }
-        public int NroTicket { get; set; }
+        // Usuario Id can be null
+        public string? IdUsuario{ get; set; }
+        public string NroTicket { get; set; }
         public decimal Total { get; set; }
         public DateTime FechaVenta { get; set; }
+
+        public Usuario? Usuario { get; set; }
         public List<DetallePago> DetallesPago { get; set; } = new List<DetallePago>();
         public List<DetalleVenta> DetallesVenta { get; set; } = new List<DetalleVenta>();
     }

@@ -17,6 +17,7 @@ namespace BusinessEntities.Entities
         public string NumeroDocumento { get; set; }
         public string TipoDocumentoId { get; set; }
 
-        public List<Usuario> Usuarios { get; set; }
+        // One-to-one with Usuario
+        public Usuario Usuario { get; set; }
     }
 }
