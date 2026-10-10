@@ -1,4 +1,10 @@
-﻿namespace BusinessEntities.Entities
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BusinessEntities.Entities
 {
     public class Producto : BaseEntity
     {
@@ -7,6 +13,6 @@
         public string Nombre { get; set; }
         public decimal PrecioCompra { get; set; }
         public string IdCategoria { get; set; }
-        //public string IdPresentacion { get; set; }
+        public string IdPresentacion { get; set; }
     }
 }

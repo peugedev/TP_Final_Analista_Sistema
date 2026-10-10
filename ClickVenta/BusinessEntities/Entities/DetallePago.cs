@@ -8,8 +8,11 @@ namespace BusinessEntities.Entities
 {
     public class DetallePago : BaseEntity
     {
-        public int IdFormaPago { get; set; }
-        public int IdVenta { get; set; }
+        public string FormaPagoId { get; set; }
+        public string VentaId { get; set; }
         public string? Observaciones { get; set; }
+
+        public FormaPago FormaPago { get; set; }
+        public Venta Venta { get; set; }
     }
 }
