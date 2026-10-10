@@ -36,6 +36,11 @@ namespace ClickVenta
 
         private async void btnentrar_Click(object sender, EventArgs e)
         {
+            this.login();
+        }
+
+        private async void login()
+        {
             try
             {
                 if (string.IsNullOrEmpty(this.txtusuario.Texts))
@@ -75,6 +80,10 @@ namespace ClickVenta
                 RJMessageBox.Show(ex.Message, "Sistema click venta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+        }
+        private void btnentrar_Enter(object sender, EventArgs e)
+        {
+            this.login();
         }
     }
 }

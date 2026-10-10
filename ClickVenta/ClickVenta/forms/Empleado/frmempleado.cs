@@ -1,4 +1,6 @@
-﻿using ClickVenta.Config;
+﻿using BusinessEntities.Dtos.Empleado;
+using BusinessEntities.Entities;
+using ClickVenta.Config;
 using ClickVenta.forms.Empleado.single;
 using ClickVenta.forndesign;
 using DataService.Services.IService;
@@ -26,6 +28,7 @@ namespace ClickVenta.forms.Empleado
         {
             frmcrearsingleempleado frm = new frmcrearsingleempleado();
             frm.ShowDialog();
+            this.LoadList();
         }
 
         private void frmempleado_Load(object sender, EventArgs e)
@@ -49,6 +52,7 @@ namespace ClickVenta.forms.Empleado
                     this.filter = this.txtfilter.Text;
 
                 this.txtfilter.Text = string.Empty;
+                this.HideColumn();
                 this.GetPagination();
             }
             catch (ApiBusinessException ex)
@@ -65,6 +69,10 @@ namespace ClickVenta.forms.Empleado
                     RJMessageBox.Show("No se pudo conectar! Contacte al administrador.", "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+        }
+        private void HideColumn()
+        {
+            this.datalist.Columns["ckdelete"].Visible = false;
         }
         private void GetPagination()
         {
@@ -99,6 +107,140 @@ namespace ClickVenta.forms.Empleado
                 this.lblStatus.Text = (0 + " / " + 0);
                 this.lblTotal.Text = (0).ToString();
             }
+        }
+
+        private void datalist_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var selectedRow = this.datalist.SelectedRows[0];
+            var emp = (EmpleadoDto)selectedRow.DataBoundItem;
+            UpdateEmpleadoDto dto = new UpdateEmpleadoDto()
+            {
+                Apellido = emp.Apellido,
+                Direccion = emp.Direccion,
+                DNI = emp.DNI,
+                Id = emp.Id,
+                Nombre = emp.Nombre,
+                Telefono = emp.Telefono
+            };
+
+            frmcrearsingleempleado frmcrearsingleempleado = new frmcrearsingleempleado(dto);
+            frmcrearsingleempleado.ShowDialog();
+            this.LoadList();
+        }
+
+        private void DeseabledComponent(bool val)
+        {
+            this.txtfilter.Enabled = val;
+            this.btnfilter.Enabled = val;
+            this.btnempleado.Enabled = val;
+        }
+        private void chkEliminar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkEliminar.Checked)
+            {
+                this.datalist.Columns[0].Visible = true;
+                this.DeseabledComponent(false);
+            }
+            else
+            {
+                foreach (DataGridViewRow row in datalist.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells[0].Value))
+                    {
+                        row.Cells[0].Value = false;
+                    }
+                }
+                this.datalist.Columns[0].Visible = false;
+                this.DeseabledComponent(true);
+            }
+        }
+
+        private void datalist_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == datalist.Columns["ckdelete"].Index /*&& e.ColumnIndex != this.dataList.Columns["colExpandir"].Index*/)
+            {
+                DataGridViewCheckBoxCell ChkEliminar = (DataGridViewCheckBoxCell)datalist.Rows[e.RowIndex].Cells["ckdelete"];
+                ChkEliminar.Value = !Convert.ToBoolean(ChkEliminar.Value);
+            }
+        }
+
+        private void clickVentaButton4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Boolean isdelate = false;
+                Boolean ischeked = false;
+
+                foreach (DataGridViewRow row in datalist.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells[0].Value))
+                    {
+                        ischeked = true;
+                    }
+                }
+                if (chkEliminar.Checked && ischeked)
+                {
+                    DialogResult Opcion;
+                    Opcion = RJMessageBox.Show("Realmente Desea Eliminar los Registros", "Click venta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (Opcion == DialogResult.OK)
+                    {
+                        //String Codigo;
+                        string resp = "";
+
+                        foreach (DataGridViewRow row in datalist.Rows)
+                        {
+                            if (Convert.ToBoolean(row.Cells[0].Value))
+                            {
+                                DeleteEmpleadoDto dto = new DeleteEmpleadoDto()
+                                {
+                                    Id = ((EmpleadoDto)row.DataBoundItem).Id
+                                };
+
+                                resp = Program.ServiceProvider.GetRequiredService<DataService.Services.IService.IEmpleadoService>().DeleteEmpleado(dto)?.Result;
+
+
+                                if (!string.IsNullOrEmpty(resp))
+                                {
+                                    isdelate = true;
+                                }
+                                else
+                                {
+                                    isdelate = false;
+                                }
+                            }
+                        }
+                        if (isdelate)
+                        {
+                            RJMessageBox.Show(resp, "Click venta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            chkEliminar.Checked = false;
+
+                        }
+                        else
+                        {
+                            RJMessageBox.Show("El archivo no fue eliminado", "Click venta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            chkEliminar.Checked = false;
+                        }
+                        this.LoadList();
+                    }
+                }
+                else
+                    RJMessageBox.Show("Debe chequear el checkbox eliminar, si deseas eliminar uno o mas registro", "Click venta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ApiBusinessException ex)
+            {
+                this.txtfilter.Text = string.Empty;
+                RJMessageBox.Show(ex.MessageError, "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                this.txtfilter.Text = string.Empty;
+                RJMessageBox.Show(ex.Message, "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnfilter_Click(object sender, EventArgs e)
+        {
+            this.LoadList();
         }
     }
 }

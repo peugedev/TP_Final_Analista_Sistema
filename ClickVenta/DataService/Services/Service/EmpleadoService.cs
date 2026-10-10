@@ -112,14 +112,14 @@ namespace DataService.Services.Service
                     new SqlParameter("@DNI", empleadoDto.DNI),
                     new SqlParameter("@Nombre", empleadoDto.Nombre),
                     new SqlParameter("@Apellido", empleadoDto.Apellido),
-                    new SqlParameter("@Telefono", empleadoDto.Telefono),
-                    new SqlParameter("@Direccion", empleadoDto.Direccion)
+                    new SqlParameter("@Direccion", empleadoDto.Direccion),
+                    new SqlParameter("@Telefono", empleadoDto.Telefono)
                 };
                 await this._empleadoRepository.Update("[dbo].[Sp_UpdateEmpleado]", parameters);
                 return "Empleado actualizado correctamente";
             }
             catch (Exception ex)
-            {
+             {
                 throw ex;
             }
         }

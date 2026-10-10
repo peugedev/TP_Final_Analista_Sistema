@@ -1,6 +1,7 @@
 ﻿using BusinessEntities.Dtos.Empleado;
 using BusinessEntities.Dtos.Rol;
 using ClickVenta.Config;
+using ClickVenta.forndesign;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -16,10 +17,30 @@ namespace ClickVenta.forms.Empleado.single
 {
     public partial class frmcrearsingleempleado : Form
     {
-        public frmcrearsingleempleado()
+        public frmcrearsingleempleado(UpdateEmpleadoDto dto = null)
         {
             InitializeComponent();
             this.UpdateRoleAutocomplete();
+
+            if (dto != null)
+            {
+                this.groupBox2.Visible = false;
+                this.label3.Text = "Actualiza empleado";
+                this.Height = this.Height - (this.groupBox2.Height + this.groupBox3.Height);
+                this.groupBox3.Location = new System.Drawing.Point(1, this.groupBox2.Height);
+
+                this.txtnombre.Texts = dto.Nombre;
+                this.txtdireccion.Texts = dto.Direccion;
+                this.txtapellido.Texts = dto.Apellido;
+                this.txttelefono.Texts = dto.Telefono;
+                this.txtdni.Texts = dto.DNI;
+                this.txtid.Texts = dto.Id;
+
+            }
+            else
+            {
+                this.groupBox2.Visible = true;
+            }
         }
 
         private void btnclose_Click(object sender, EventArgs e)
@@ -71,17 +92,17 @@ namespace ClickVenta.forms.Empleado.single
                     MessageBox.Show("El apellido es requerido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (string.IsNullOrEmpty(this.txtnombreusuario.Texts))
+                if (string.IsNullOrEmpty(this.txtnombreusuario.Texts) && string.IsNullOrEmpty(this.txtid.Texts))
                 {
                     MessageBox.Show("El nombre de usuario es requerido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (string.IsNullOrEmpty(this.txtcontrasenia.Texts))
+                if (string.IsNullOrEmpty(this.txtcontrasenia.Texts) && string.IsNullOrEmpty(this.txtid.Texts))
                 {
                     MessageBox.Show("La contraseña es requerida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (this.cvcbrol.SelectedIndex < 0 ||  string.IsNullOrEmpty(this.cvcbrol.Texts))
+                if ((this.cvcbrol.SelectedIndex < 0 || string.IsNullOrEmpty(this.cvcbrol.Texts)) && string.IsNullOrEmpty(this.txtid.Texts))
                 {
                     MessageBox.Show(
                         "Debe seleccionar un rol antes de guardar.",
@@ -101,12 +122,27 @@ namespace ClickVenta.forms.Empleado.single
                     Direccion = this.txtdireccion.Texts,
                     NombreUsuario = this.txtnombreusuario.Texts,
                     Contrasena = this.txtcontrasenia.Texts,
-                    RolId = ((RolDto)(this.cvcbrol.SelectedItem)).Id
+                    RolId = ((RolDto)(this.cvcbrol?.SelectedItem))?.Id
                 };
-                var result = Program.ServiceProvider.GetRequiredService<DataService.Services.IService.IEmpleadoService>().CreateEmpleado(empleado)?.Result;
+                string result;
+                if (string.IsNullOrEmpty(this.txtid.Texts))
+                    result = Program.ServiceProvider.GetRequiredService<DataService.Services.IService.IEmpleadoService>().CreateEmpleado(empleado)?.Result;
+                else
+                {
+                    UpdateEmpleadoDto dto = new UpdateEmpleadoDto()
+                    {
+                        Apellido = empleado.Apellido,
+                        Direccion = empleado.Direccion,
+                        DNI = empleado.DNI,
+                        Id = this.txtid.Texts,
+                        Nombre = empleado.Nombre,
+                        Telefono = empleado.Telefono
+                    };
+                    result = Program.ServiceProvider.GetRequiredService<DataService.Services.IService.IEmpleadoService>().UpdateEmpleado(dto)?.Result;
+                }
                 if (result != null)
                 {
-                    MessageBox.Show("Empleado creado correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(result, "Click venta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
             }
@@ -116,54 +152,15 @@ namespace ClickVenta.forms.Empleado.single
                 return;
             }
         }
-        //private void btnsave_Click(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (string.IsNullOrEmpty(this.txtnombre.Text))
-        //        {
-        //            MessageBox.Show("El nombre es requerido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            return;
-        //        }
-        //        if (string.IsNullOrEmpty(this.txtapellido.Text))
-        //        {
-        //            MessageBox.Show("El apellido es requerido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            return;
-        //        }
-        //        if (string.IsNullOrEmpty(this.txtdni.Text))
-        //        {
-        //            MessageBox.Show("El DNI es requerido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            return;
-        //        }
-        //        if (string.IsNullOrEmpty(this.txttelefono.Text))
-        //        {
-        //            MessageBox.Show("El telefono es requerido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            return;
-        //        }
-        //        if (string.IsNullOrEmpty(this.txtdireccion.Text))
-        //        {
-        //            MessageBox.Show("La direccion es requerida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            return;
-        //        }
-        //        var empleado = new BusinessEntities.Entities.Empleado
-        //        {
-        //            Nombre = this.txtnombre.Text,
-        //            Apellido = this.txtapellido.Text,
-        //            DNI = this.txtdni.Text,
-        //            Telefono = this.txttelefono.Text,
-        //            Direccion = this.txtdireccion.Text
-        //        };
-        //        var result = Program.ServiceProvider.GetRequiredService<DataService.Services.IService.IEmpleadoService>().CreateEmpleado(empleado)?.Result;
-        //        if (result != null)
-        //        {
-        //            MessageBox.Show("Empleado creado correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //            this.Close();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Resolver.HelperError.Exceptions.ExceptionHandler.HandleException(ex);
-        //    }
-        //}
+
+        private void clickVentaButton1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void frmcrearsingleempleado_Load(object sender, EventArgs e)
+        {
+            radiusform.GetRadius(this);
+        }
     }
 }

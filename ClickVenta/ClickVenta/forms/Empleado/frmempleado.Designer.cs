@@ -41,14 +41,17 @@
             btnPrevious = new Button();
             btnFirst = new Button();
             datalist = new DataGridView();
+            ckdelete = new DataGridViewCheckBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             Apellido = new DataGridViewTextBoxColumn();
             DNI = new DataGridViewTextBoxColumn();
             tableLayoutPanel2 = new TableLayoutPanel();
-            clickVentaButton3 = new ClickVenta.CustomStyle.ClickVentaButton();
+            btnfilter = new ClickVenta.CustomStyle.ClickVentaButton();
             label1 = new Label();
             txtfilter = new TextBox();
+            chkEliminar = new CheckBox();
             btnempleado = new ClickVenta.CustomStyle.ClickVentaButton();
+            clickVentaButton4 = new ClickVenta.CustomStyle.ClickVentaButton();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             groupBox5.SuspendLayout();
@@ -217,7 +220,7 @@
             datalist.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             datalist.BackgroundColor = Color.White;
             datalist.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            datalist.Columns.AddRange(new DataGridViewColumn[] { Nombre, Apellido, DNI });
+            datalist.Columns.AddRange(new DataGridViewColumn[] { ckdelete, Nombre, Apellido, DNI });
             datalist.Cursor = Cursors.Hand;
             datalist.Dock = DockStyle.Fill;
             datalist.Location = new Point(3, 88);
@@ -227,6 +230,15 @@
             datalist.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             datalist.Size = new Size(978, 359);
             datalist.TabIndex = 19;
+            datalist.CellContentClick += datalist_CellContentClick;
+            datalist.CellContentDoubleClick += datalist_CellContentDoubleClick;
+            // 
+            // ckdelete
+            // 
+            ckdelete.HeaderText = "Eliminar";
+            ckdelete.MinimumWidth = 6;
+            ckdelete.Name = "ckdelete";
+            ckdelete.ReadOnly = true;
             // 
             // Nombre
             // 
@@ -254,14 +266,17 @@
             // 
             // tableLayoutPanel2
             // 
-            tableLayoutPanel2.ColumnCount = 3;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 36.71233F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 63.28767F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 188F));
-            tableLayoutPanel2.Controls.Add(clickVentaButton3, 2, 0);
+            tableLayoutPanel2.ColumnCount = 4;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 55.25114F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 44.74886F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 145F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 175F));
+            tableLayoutPanel2.Controls.Add(btnfilter, 2, 0);
             tableLayoutPanel2.Controls.Add(label1, 0, 0);
             tableLayoutPanel2.Controls.Add(txtfilter, 1, 0);
-            tableLayoutPanel2.Controls.Add(btnempleado, 2, 1);
+            tableLayoutPanel2.Controls.Add(chkEliminar, 0, 1);
+            tableLayoutPanel2.Controls.Add(btnempleado, 3, 1);
+            tableLayoutPanel2.Controls.Add(clickVentaButton4, 2, 1);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(3, 3);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -271,23 +286,24 @@
             tableLayoutPanel2.Size = new Size(978, 79);
             tableLayoutPanel2.TabIndex = 0;
             // 
-            // clickVentaButton3
+            // btnfilter
             // 
-            clickVentaButton3.BackColor = Color.FromArgb(128, 128, 255);
-            clickVentaButton3.BorderColor = Color.FromArgb(128, 128, 255);
-            clickVentaButton3.BorderRadius = 5;
-            clickVentaButton3.BorderSize = 0;
-            clickVentaButton3.Dock = DockStyle.Fill;
-            clickVentaButton3.FlatAppearance.BorderSize = 0;
-            clickVentaButton3.FlatStyle = FlatStyle.Flat;
-            clickVentaButton3.ForeColor = Color.White;
-            clickVentaButton3.Location = new Point(792, 3);
-            clickVentaButton3.Name = "clickVentaButton3";
-            clickVentaButton3.Size = new Size(183, 36);
-            clickVentaButton3.TabIndex = 4;
-            clickVentaButton3.Text = "Filtrar";
-            clickVentaButton3.TextColor = Color.White;
-            clickVentaButton3.UseVisualStyleBackColor = false;
+            btnfilter.BackColor = Color.FromArgb(128, 128, 255);
+            btnfilter.BorderColor = Color.FromArgb(128, 128, 255);
+            btnfilter.BorderRadius = 5;
+            btnfilter.BorderSize = 0;
+            btnfilter.Dock = DockStyle.Fill;
+            btnfilter.FlatAppearance.BorderSize = 0;
+            btnfilter.FlatStyle = FlatStyle.Flat;
+            btnfilter.ForeColor = Color.White;
+            btnfilter.Location = new Point(660, 3);
+            btnfilter.Name = "btnfilter";
+            btnfilter.Size = new Size(139, 36);
+            btnfilter.TabIndex = 4;
+            btnfilter.Text = "Filtrar";
+            btnfilter.TextColor = Color.White;
+            btnfilter.UseVisualStyleBackColor = false;
+            btnfilter.Click += btnfilter_Click;
             // 
             // label1
             // 
@@ -296,21 +312,35 @@
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
-            label1.Size = new Size(284, 42);
+            label1.Size = new Size(357, 42);
             label1.TabIndex = 1;
-            label1.Text = "Buscar por nombre";
+            label1.Text = "Buscar por (nombre,DNI,Apellido)";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // txtfilter
             // 
             txtfilter.Dock = DockStyle.Fill;
             txtfilter.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtfilter.Location = new Point(293, 3);
+            txtfilter.Location = new Point(366, 3);
             txtfilter.Multiline = true;
             txtfilter.Name = "txtfilter";
-            txtfilter.Size = new Size(493, 36);
+            txtfilter.Size = new Size(288, 36);
             txtfilter.TabIndex = 2;
             txtfilter.TextAlign = HorizontalAlignment.Right;
+            // 
+            // chkEliminar
+            // 
+            chkEliminar.AutoSize = true;
+            chkEliminar.Dock = DockStyle.Bottom;
+            chkEliminar.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            chkEliminar.Location = new Point(2, 45);
+            chkEliminar.Margin = new Padding(2);
+            chkEliminar.Name = "chkEliminar";
+            chkEliminar.Size = new Size(359, 32);
+            chkEliminar.TabIndex = 19;
+            chkEliminar.Text = "Eliminar";
+            chkEliminar.UseVisualStyleBackColor = true;
+            chkEliminar.CheckedChanged += chkEliminar_CheckedChanged;
             // 
             // btnempleado
             // 
@@ -322,14 +352,33 @@
             btnempleado.FlatAppearance.BorderSize = 0;
             btnempleado.FlatStyle = FlatStyle.Flat;
             btnempleado.ForeColor = Color.White;
-            btnempleado.Location = new Point(792, 45);
+            btnempleado.Location = new Point(805, 45);
             btnempleado.Name = "btnempleado";
-            btnempleado.Size = new Size(183, 31);
+            btnempleado.Size = new Size(170, 31);
             btnempleado.TabIndex = 3;
             btnempleado.Text = "Nuevo empleado";
             btnempleado.TextColor = Color.White;
             btnempleado.UseVisualStyleBackColor = false;
             btnempleado.Click += btnempleado_Click;
+            // 
+            // clickVentaButton4
+            // 
+            clickVentaButton4.BackColor = Color.Silver;
+            clickVentaButton4.BorderColor = Color.FromArgb(224, 224, 224);
+            clickVentaButton4.BorderRadius = 5;
+            clickVentaButton4.BorderSize = 0;
+            clickVentaButton4.Dock = DockStyle.Fill;
+            clickVentaButton4.FlatAppearance.BorderSize = 0;
+            clickVentaButton4.FlatStyle = FlatStyle.Flat;
+            clickVentaButton4.ForeColor = Color.White;
+            clickVentaButton4.Location = new Point(660, 45);
+            clickVentaButton4.Name = "clickVentaButton4";
+            clickVentaButton4.Size = new Size(139, 31);
+            clickVentaButton4.TabIndex = 20;
+            clickVentaButton4.Text = "Eliminar";
+            clickVentaButton4.TextColor = Color.White;
+            clickVentaButton4.UseVisualStyleBackColor = false;
+            clickVentaButton4.Click += clickVentaButton4_Click;
             // 
             // frmempleado
             // 
@@ -374,9 +423,12 @@
         private CustomStyle.ClickVentaButton clickVentaButton1;
         private CustomStyle.ClickVentaButton clickVentaButton2;
         private CustomStyle.ClickVentaButton btnempleado;
-        private CustomStyle.ClickVentaButton clickVentaButton3;
+        private CustomStyle.ClickVentaButton btnfilter;
+        private CheckBox chkEliminar;
+        private DataGridViewCheckBoxColumn ckdelete;
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn Apellido;
         private DataGridViewTextBoxColumn DNI;
+        private CustomStyle.ClickVentaButton clickVentaButton4;
     }
 }

@@ -32,6 +32,7 @@
             btnclose = new Button();
             label3 = new Label();
             groupBox1 = new GroupBox();
+            txtid = new CustomControls.RJControls.ClickVentaTextBox();
             txttelefono = new CustomControls.RJControls.ClickVentaTextBox();
             txtdireccion = new CustomControls.RJControls.ClickVentaTextBox();
             txtdni = new CustomControls.RJControls.ClickVentaTextBox();
@@ -103,6 +104,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(txtid);
             groupBox1.Controls.Add(txttelefono);
             groupBox1.Controls.Add(txtdireccion);
             groupBox1.Controls.Add(txtdni);
@@ -119,6 +121,28 @@
             groupBox1.TabIndex = 21;
             groupBox1.TabStop = false;
             groupBox1.Text = "Datos empleados";
+            // 
+            // txtid
+            // 
+            txtid.BackColor = SystemColors.Window;
+            txtid.BorderColor = Color.MediumSlateBlue;
+            txtid.BorderFocusColor = Color.HotPink;
+            txtid.BorderRadius = 5;
+            txtid.BorderSize = 2;
+            txtid.Font = new Font("Microsoft Sans Serif", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtid.ForeColor = Color.FromArgb(64, 64, 64);
+            txtid.Location = new Point(558, 143);
+            txtid.Margin = new Padding(4);
+            txtid.Multiline = false;
+            txtid.Name = "txtid";
+            txtid.Padding = new Padding(10, 7, 10, 7);
+            txtid.PasswordChar = false;
+            txtid.PlaceholderColor = Color.DarkGray;
+            txtid.PlaceholderText = "";
+            txtid.Size = new Size(312, 35);
+            txtid.TabIndex = 14;
+            txtid.Texts = "";
+            txtid.UnderlinedStyle = false;
             // 
             // txttelefono
             // 
@@ -416,6 +440,7 @@
             clickVentaButton1.Text = "Cancelar";
             clickVentaButton1.TextColor = Color.White;
             clickVentaButton1.UseVisualStyleBackColor = false;
+            clickVentaButton1.Click += clickVentaButton1_Click;
             // 
             // btnempleado
             // 
@@ -448,6 +473,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmcrearsingleempleado";
             StartPosition = FormStartPosition.CenterScreen;
+            Load += frmcrearsingleempleado_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             groupBox1.ResumeLayout(false);
@@ -485,5 +511,6 @@
         private GroupBox groupBox3;
         private CustomStyle.ClickVentaButton clickVentaButton1;
         private CustomStyle.ClickVentaButton btnempleado;
+        private CustomControls.RJControls.ClickVentaTextBox txtid;
     }
 }

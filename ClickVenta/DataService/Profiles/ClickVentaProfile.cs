@@ -80,6 +80,12 @@ namespace DataService.Profiles
                 .ForMember(dest => dest.IsAssigned, opt => opt.MapFrom(src => src.IsAssigned))
                 .ForMember(dest => dest.FormAssociation, opt => opt.MapFrom(src => src.formAssociation))
                 .ReverseMap();
+
+            CreateMap<BusinessEntities.Entities.Categoria, CategoriaDto>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom( src => src.Id))
+                .ForMember(dest => dest.Descripcion, opt => opt.MapFrom(src => src.Descripcion))
+                .ForMember(dest => dest.Nombre, opt => opt.MapFrom(src => src.Nombre))
+                .ReverseMap();
         }
     }
 }

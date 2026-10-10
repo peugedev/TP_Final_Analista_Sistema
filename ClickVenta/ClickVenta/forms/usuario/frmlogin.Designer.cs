@@ -204,6 +204,7 @@
             btnentrar.TextColor = Color.White;
             btnentrar.UseVisualStyleBackColor = false;
             btnentrar.Click += btnentrar_Click;
+            btnentrar.Enter += btnentrar_Enter;
             // 
             // frmlogin
             // 
