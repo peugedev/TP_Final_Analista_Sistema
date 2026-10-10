@@ -1,34 +1,21 @@
 ﻿using ClickVenta.Config;
-using ClickVenta.forms.Empleado.single;
 using ClickVenta.forndesign;
 using DataService.Services.IService;
 using Microsoft.Extensions.DependencyInjection;
 using Resolver.HelperError.IExceptions;
 
-namespace ClickVenta.forms.Empleado
+namespace ClickVenta.forms.Producto
 {
-    public partial class frmempleado : Form
+    public partial class frmproducto : Form
     {
         Int64 count = 0;
         string filter = null;
-        public frmempleado()
+        public frmproducto()
         {
             InitializeComponent();
-            this.datalist.AutoGenerateColumns = false;
         }
 
-        private void btnclose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnempleado_Click(object sender, EventArgs e)
-        {
-            frmcrearsingleempleado frm = new frmcrearsingleempleado();
-            frm.ShowDialog();
-        }
-
-        private void frmempleado_Load(object sender, EventArgs e)
+        private void frmproducto_Load(object sender, EventArgs e)
         {
             radiusform.GetRadius(this);
             this.LoadList();
@@ -40,7 +27,7 @@ namespace ClickVenta.forms.Empleado
                 string filter = null;
                 if (!string.IsNullOrEmpty(this.txtfilter.Text))
                     filter = this.txtfilter.Text;
-                var result = Program.ServiceProvider.GetRequiredService<IEmpleadoService>().GetAllEmpleados(1, SystemConstant.pageactual, SystemConstant.pagesize, filter)?.Result;
+                var result = Program.ServiceProvider.GetRequiredService<IProductoService>().GetAllProductos(1, SystemConstant.pageactual, SystemConstant.pagesize, filter)?.Result;
                 if (result.Any())
                     this.count = result.FirstOrDefault().Count;
                 this.datalist.DataSource = result;
@@ -49,6 +36,7 @@ namespace ClickVenta.forms.Empleado
                     this.filter = this.txtfilter.Text;
 
                 this.txtfilter.Text = string.Empty;
+                this.HideColumn();
                 this.GetPagination();
             }
             catch (ApiBusinessException ex)
@@ -65,6 +53,24 @@ namespace ClickVenta.forms.Empleado
                     RJMessageBox.Show("No se pudo conectar! Contacte al administrador.", "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+        }
+        private void HideColumn()
+        {
+            this.datalist.Columns["Id"].Visible = false;
+            this.datalist.Columns["Descripcion"].Visible = false;
+            this.datalist.Columns["CodigoBarra"].Visible = false;
+            this.datalist.Columns["IdCategoria"].Visible = false;
+            this.datalist.Columns["Count"].Visible = false;
+            this.datalist.Columns["FechaCreacion"].Visible = false;
+            this.datalist.Columns["FechaBaja"].Visible = false;
+            this.datalist.Columns["Estado"].Visible = false;
+            //this.datalist.Columns["ModifiedDate"].Visible = false;
+            //this.datalist.Columns["IsContainExpiredDate"].Visible = false;
+            //this.datalist.Columns["MinimumStock"].Visible = false;
+            //this.datalist.Columns["Product"].Visible = false;
+            //this.datalist.Columns["LotProductCode"].Visible = false;
+            //this.datalist.Columns["SalePriceSpecial"].Visible = false;
+            ////this.datalot.Columns["LotCode"].Visible = false;
         }
         private void GetPagination()
         {

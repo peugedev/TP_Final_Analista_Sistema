@@ -194,7 +194,12 @@ namespace ClickVenta.forms.Principal
 
             foreach (var menuGroup in menuGroups)
             {
-                var menuItem = new ToolStripMenuItem(menuGroup.Key.MenuName)
+                // Fix: Use a local variable to allow modification
+                var menuName = menuGroup.Key.MenuName;
+                if (menuName.Equals("Productos con imagen"))
+                    menuName = "Productos";
+
+                var menuItem = new ToolStripMenuItem(menuName)
                 {
                     Tag = menuGroup.Key.MenuId
                 };
@@ -213,7 +218,7 @@ namespace ClickVenta.forms.Principal
                     subItem.Click += SubItem_Click;
                     menuItem.DropDownItems.Add(subItem);
                 }
-               var subMenuItems = menuGroup.Where(row => row.IsAssigned == 1 && row.Id == menuGroup.Key.MenuId).ToList();
+                var subMenuItems = menuGroup.Where(row => row.IsAssigned == 1 && row.Id == menuGroup.Key.MenuId).ToList();
                 if (subMenuItems.Count > 0)
                     menuStrip1.Items.Add(menuItem);
             }

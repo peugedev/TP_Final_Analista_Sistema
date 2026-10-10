@@ -1,5 +1,5 @@
 ﻿using BusinessEntities.Dtos.Empleado;
-using BusinessEntities.Dtos.Roles;
+using BusinessEntities.Dtos.Rol;
 using ClickVenta.Config;
 using Microsoft.Extensions.DependencyInjection;
 using System;

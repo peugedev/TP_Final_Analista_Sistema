@@ -3,7 +3,7 @@ using BusinessEntities.Dtos.Categoria;
 using BusinessEntities.Dtos.Empleado;
 using BusinessEntities.Dtos.Login;
 using BusinessEntities.Dtos.permision;
-using BusinessEntities.Dtos.Roles;
+using BusinessEntities.Dtos.Rol;
 using BusinessEntities.Entities;
 using System;
 using System.Collections.Generic;
@@ -47,7 +47,7 @@ namespace DataService.Profiles
                 .ForMember(dest => dest.Direccion, opt => opt.MapFrom(src => src.Direccion))
                 .ReverseMap().ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
-            CreateMap<Rol, CrearRolDto>()
+            CreateMap<Rol, CreateRolDto>()
                 .ForMember(dest => dest.Nombre, opt => opt.MapFrom(src => src.Nombre))
                 .ForMember(dest => dest.Descripcion, opt => opt.MapFrom(src => src.Descripcion))
                 .ReverseMap();
@@ -56,7 +56,7 @@ namespace DataService.Profiles
                 .ForMember(dest => dest.Nombre, opt => opt.MapFrom(src => src.Nombre))
                 .ForMember(dest => dest.Descripcion, opt => opt.MapFrom(src => src.Descripcion))
                 .ReverseMap();
-            CreateMap<Rol, EliminarRodDto>()
+            CreateMap<Rol, DeleteRolDto>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ReverseMap();
 
