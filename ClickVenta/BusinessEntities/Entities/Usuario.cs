@@ -15,5 +15,7 @@ namespace BusinessEntities.Entities
 
         public Empleado Empleado { get; set; }
         public Rol Rol { get; set; }
+        public List<Venta> Ventas { get; set; } = new List<Venta>();
+        public List<Movimiento> Movimientos { get; set; } = new List<Movimiento>();
     }
 }

@@ -14,6 +14,7 @@ namespace BusinessEntities.Entities
         public string Telefono { get; set; }
         public string Direccion { get; set; }
 
-        public List<Usuario> Usuarios { get; set; }
+        // One-to-one with Usuario
+        public Usuario Usuario { get; set; }
     }
 }
