@@ -146,6 +146,7 @@
             txtusuario.TabIndex = 4;
             txtusuario.Texts = "";
             txtusuario.UnderlinedStyle = false;
+            txtusuario.KeyDown += txtusuario_KeyDown;
             // 
             // txtpassword
             // 
@@ -168,6 +169,7 @@
             txtpassword.TabIndex = 5;
             txtpassword.Texts = "";
             txtpassword.UnderlinedStyle = false;
+            txtpassword.KeyDown += frmlogin_KeyDown;
             // 
             // btncancelar
             // 
@@ -181,7 +183,7 @@
             btncancelar.Location = new Point(599, 313);
             btncancelar.Name = "btncancelar";
             btncancelar.Size = new Size(144, 41);
-            btncancelar.TabIndex = 6;
+            btncancelar.TabIndex = 2;
             btncancelar.Text = "Cancelar";
             btncancelar.TextColor = Color.White;
             btncancelar.UseVisualStyleBackColor = false;
@@ -199,7 +201,7 @@
             btnentrar.Location = new Point(758, 313);
             btnentrar.Name = "btnentrar";
             btnentrar.Size = new Size(144, 41);
-            btnentrar.TabIndex = 7;
+            btnentrar.TabIndex = 1;
             btnentrar.Text = "Aceptar";
             btnentrar.TextColor = Color.White;
             btnentrar.UseVisualStyleBackColor = false;
@@ -226,6 +228,7 @@
             Name = "frmlogin";
             StartPosition = FormStartPosition.CenterScreen;
             Load += frmlogin_Load;
+            KeyDown += frmlogin_KeyDown;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             ResumeLayout(false);

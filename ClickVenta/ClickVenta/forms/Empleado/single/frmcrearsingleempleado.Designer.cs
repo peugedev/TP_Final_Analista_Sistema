@@ -472,7 +472,7 @@
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmcrearsingleempleado";
-            StartPosition = FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.Manual;
             Load += frmcrearsingleempleado_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

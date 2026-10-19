@@ -1,5 +1,6 @@
 ﻿using BusinessEntities.Dtos.permision;
 using ClickVenta.Config;
+using ClickVenta.forms.basehelper;
 using DataService.Services.IService;
 using Microsoft.Extensions.DependencyInjection;
 using System.Data;
@@ -7,7 +8,7 @@ using System.Reflection;
 
 namespace ClickVenta.forms.Principal
 {
-    public partial class frmprincipal : Form
+    public partial class frmprincipal : baseform
     {
         private readonly string _usuarioId;
 
@@ -19,6 +20,7 @@ namespace ClickVenta.forms.Principal
         public frmprincipal(string usuarioId)
         {
             InitializeComponent();
+            this.Size = new Size(1000, 700);
             IsMdiContainer = true;
             WindowState = FormWindowState.Maximized;
             //this.Text = "Sistema - Click venta";
@@ -31,6 +33,7 @@ namespace ClickVenta.forms.Principal
             AgregarBotonesVentana();
             ConfigurarCabeceraPersonalizada();
         }
+
 
         #region MenuStrip   
         private void CrearEstructura()
@@ -257,9 +260,9 @@ namespace ClickVenta.forms.Principal
         private void AbrirFormulario(string nombreForm, string titulo)
         {
             // 1) Resolver el Type
-            var tipo = FormResolver.ResolverFormType(nombreForm);
+            Type? tipo = FormResolver.ResolverFormType(nombreForm);
 
-            if (tipo == null || !typeof(Form).IsAssignableFrom(tipo))
+            if (tipo is null || !typeof(Form).IsAssignableFrom(tipo))
             {
                 MessageBox.Show(
                     $"No se encontró el formulario '{nombreForm}'.\n" +
@@ -268,19 +271,25 @@ namespace ClickVenta.forms.Principal
                 return;
             }
 
-            // 2) Reutilizar instancia abierta (no abre duplicados)
-            foreach (var frmAbierto in MdiChildren)
+            // 2) Cerrar formularios hijos abiertos antes de abrir el nuevo
+            //    Usamos ToList() para evitar modificar la colección MdiChildren mientras iteramos.
+            foreach (var frmAbierto in MdiChildren.ToList())
             {
+                // Si ya está abierto el mismo formulario, solo lo activamos (opcional)
                 if (frmAbierto.GetType() == tipo)
                 {
                     if (frmAbierto.WindowState == FormWindowState.Minimized)
                         frmAbierto.WindowState = FormWindowState.Normal;
+
                     frmAbierto.Activate();
                     return;
                 }
+
+                // Si es otro formulario, lo cerramos
+                frmAbierto.Close();
             }
 
-            // 3) Crear instancia
+            // 3) Crear instancia y mostrar
             try
             {
                 var form = (Form)Activator.CreateInstance(tipo)!;
@@ -290,7 +299,8 @@ namespace ClickVenta.forms.Principal
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al abrir '{titulo}':\n{ex.Message}",
+                MessageBox.Show(
+                    $"Error al abrir '{titulo}':\n{ex.Message}",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

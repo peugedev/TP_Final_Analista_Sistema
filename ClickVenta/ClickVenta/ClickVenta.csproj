@@ -20,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BusinessEntities\BusinessEntities.csproj" />
     <ProjectReference Include="..\DataService\DataService.csproj" />
+    <ProjectReference Include="..\DomainModel\DomainModel.csproj" />
     <ProjectReference Include="..\Resolver\Resolver.csproj" />
   </ItemGroup>
 

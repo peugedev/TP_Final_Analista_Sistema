@@ -1,4 +1,6 @@
 ﻿using BusinessEntities.Entities;
+using DomainModel.Connection.Data.Abstractions;
+using DomainModel.GenericRepository.Generic;
 using DomainModel.GenericRepository.IGeneric;
 using DomainModel.Repositories.Interface;
 using Microsoft.Data.SqlClient;
@@ -10,18 +12,18 @@ using System.Threading.Tasks;
 
 namespace DomainModel.Repositories.Repository
 {
-    public class ProductoRepository: IProductoRepository
+    public class ProductoRepository: GenericRepository<Producto>, IProductoRepository
     {
         private readonly IGenericRepository<Producto> _genericRepository;
-        public ProductoRepository(IGenericRepository<Producto> genericRepository)
+        public ProductoRepository(IGenericRepository<Producto> genericRepository, ISqlConnectionFactory factory):base(factory)
         {
             _genericRepository = genericRepository;
         }
-        public async Task<Producto> Create(string query, SqlParameter[] parameters)
+        public async Task<Producto> Create(string query, SqlParameter[] parameters,CancellationToken ct = default)
         {
             try
             {
-                return await this._genericRepository.Create(query, parameters);
+                return await this._genericRepository.Create(query, parameters,ct);
             }
             catch (Exception ex)
             {
@@ -39,33 +41,33 @@ namespace DomainModel.Repositories.Repository
                 throw ex;
             }
         }
-        public Task<IEnumerable<Producto>> GetAll(string query, SqlParameter[] parameters)
+        public Task<IEnumerable<Producto>> GetAll(string query, SqlParameter[] parameters,CancellationToken ct = default)
         {
             try
             {
-                return this._genericRepository.GetAll(query, parameters);
+                return this._genericRepository.GetAll(query, parameters,ct);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-        public async Task<Producto> GetById(string query, SqlParameter[] parameters)
+        public async Task<Producto> GetById(string query, SqlParameter[] parameters,CancellationToken ct = default)
         {
             try
             {
-                return await this._genericRepository.GetById(query, parameters);
+                return await this._genericRepository.GetById(query, parameters,ct);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-        public async Task<Producto> Update(string query, SqlParameter[] parameters)
+        public async Task<Producto> Update(string query, SqlParameter[] parameters,CancellationToken ct = default)
         {
             try
             {
-                return await this._genericRepository.Update(query, parameters);
+                return await this._genericRepository.Update(query, parameters,ct);
             }
             catch (Exception ex)
             {

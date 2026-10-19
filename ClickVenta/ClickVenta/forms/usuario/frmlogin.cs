@@ -1,5 +1,6 @@
 using BusinessEntities.Dtos.Login;
 using ClickVenta.Config;
+using ClickVenta.forms.basehelper;
 using ClickVenta.forms.Principal;
 using ClickVenta.forndesign;
 using DataService.Services.IService;
@@ -11,12 +12,14 @@ namespace ClickVenta
     {
         public frmlogin()
         {
+            //this.Size = new Size(914, 366);
             InitializeComponent();
         }
 
         private void frmlogin_Load(object sender, EventArgs e)
         {
             radiusform.GetRadius(this);
+            //this.KeyPreview = true;
         }
 
         private void btnclose_Click(object sender, EventArgs e)
@@ -83,7 +86,31 @@ namespace ClickVenta
         }
         private void btnentrar_Enter(object sender, EventArgs e)
         {
-            this.login();
+            //this.login();
+        }
+
+        private void frmlogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Evita el sonido de "beep" por defecto de Windows
+                e.SuppressKeyPress = true;
+
+                // Aquí pones el código que quieres ejecutar o llamas al botón
+                btnentrar_Click(sender, e);
+            }
+        }
+
+        private void txtusuario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Evita el sonido de "beep" por defecto de Windows
+                e.SuppressKeyPress = true;
+
+                // Aquí pones el código que quieres ejecutar o llamas al botón
+                btnentrar_Click(sender, e);
+            }
         }
     }
 }

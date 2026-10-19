@@ -22,11 +22,16 @@ namespace DataService.Services.Service
             {
                 SqlParameter[] parameters = new SqlParameter[]
                 {
+                    new SqlParameter("@CategoriaId", productoDto.CategoriaId),
+                    new SqlParameter("@PresentacionId", productoDto.PresentacionId),
+                    new SqlParameter("@ProveedorId", productoDto.ProveedorId),
                     new SqlParameter("@Descripcion", productoDto.Descripcion),
+                    new SqlParameter("@Stock", productoDto.Stock),
                     new SqlParameter("@CodigoBarra", productoDto.CodigoBarra),
                     new SqlParameter("@Nombre", productoDto.Nombre),
                     new SqlParameter("@PrecioCompra", productoDto.PrecioCompra),
-                    new SqlParameter("@IdCategoria", productoDto.IdCategoria)
+                    new SqlParameter("@PrecioVenta", productoDto.PrecioVenta),
+                    new SqlParameter("@FechaVencimiento", productoDto.FechaVencimiento)
                 };
                 var producto = _mapper.Map<BusinessEntities.Entities.Producto>(productoDto);
                 await this._productoRepository.Create("[dbo].[Sp_InsertProducto]", parameters);
@@ -94,11 +99,17 @@ namespace DataService.Services.Service
             {
                 SqlParameter[] parameters = new SqlParameter[]
                 {
+                    new SqlParameter("@Id", productoDto.Id),
+                    new SqlParameter("@CategoriaId", productoDto.CategoriaId),
+                    new SqlParameter("@PresentacionId", productoDto.PresentacionId),
+                    new SqlParameter("@ProveedorId", productoDto.ProveedorId),
                     new SqlParameter("@Descripcion", productoDto.Descripcion),
+                    new SqlParameter("@Stock", productoDto.Stock),
                     new SqlParameter("@CodigoBarra", productoDto.CodigoBarra),
                     new SqlParameter("@Nombre", productoDto.Nombre),
                     new SqlParameter("@PrecioCompra", productoDto.PrecioCompra),
-                    new SqlParameter("@IdCategoria", productoDto.IdCategoria)
+                    new SqlParameter("@PrecioVenta", productoDto.PrecioVenta),
+                    new SqlParameter("@FechaVencimiento", productoDto.FechaVencimiento)
                 };
                 var producto = _mapper.Map<BusinessEntities.Entities.Producto>(productoDto);
                 await this._productoRepository.Update("[dbo].[Sp_UpdateProducto]", parameters);

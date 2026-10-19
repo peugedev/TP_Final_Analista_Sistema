@@ -1,4 +1,6 @@
 ﻿using BusinessEntities.Entities;
+using DomainModel.Connection.Data.Abstractions;
+using DomainModel.GenericRepository.Generic;
 using DomainModel.GenericRepository.IGeneric;
 using DomainModel.Repositories.Interface;
 using Microsoft.Data.SqlClient;
@@ -10,20 +12,20 @@ using System.Threading.Tasks;
 
 namespace DomainModel.Repositories.Repository
 {
-    public class PermissionRepository : IPermissionRepository
+    public class PermissionRepository : GenericRepository<PermissionMenu>, IPermissionRepository
     {
         private readonly IGenericRepository<PermissionMenu> _genericRepository;
 
-        public PermissionRepository(IGenericRepository<PermissionMenu> genericRepository)
+        public PermissionRepository(IGenericRepository<PermissionMenu> genericRepository, ISqlConnectionFactory factory):base(factory)
         {
             _genericRepository = genericRepository;
         }
 
-        public async Task<PermissionMenu> Create(string query, SqlParameter[] parameters)
+        public async Task<PermissionMenu> Create(string query, SqlParameter[] parameters,CancellationToken ct = default)
         {
             try
             {
-                return await this._genericRepository.Create(query,parameters);
+                return await this._genericRepository.Create(query,parameters,ct);
             }
             catch (Exception ex)
             {

@@ -1,4 +1,5 @@
-﻿using ClickVenta.forndesign;
+﻿using ClickVenta.forms.basehelper;
+using ClickVenta.forndesign;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace ClickVenta.Message
 {
-    public partial class FormMessageBox : Form
+    public partial class FormMessageBox : Form 
     {
         //Fields
         private Color primaryColor = Color.CornflowerBlue;

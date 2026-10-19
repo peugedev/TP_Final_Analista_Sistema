@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Resolver.HelperError.IExceptions
+namespace ClickVenta.HelperError.IExceptions
 {
     public class ApiBusinessException : Exception, IApiExceptions
     {

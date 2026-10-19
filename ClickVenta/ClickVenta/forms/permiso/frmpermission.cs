@@ -1,6 +1,7 @@
 ﻿using BusinessEntities.Dtos.permision;
 using BusinessEntities.Dtos.Usuario;
 using BusinessEntities.Entities;
+using ClickVenta.forms.basehelper;
 using ClickVenta.forms.Menus;
 using ClickVenta.forms.Menus.menu;
 using ClickVenta.forms.user;
@@ -10,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ClickVenta.forms
 {
-    public partial class frmpermission : Form
+    public partial class frmpermission : Form   
     {
         private IEnumerable<PermissionMenuDto> permissionsTable;
         private string currentUserId = "-1";
