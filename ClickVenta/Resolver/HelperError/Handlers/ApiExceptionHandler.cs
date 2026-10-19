@@ -1,11 +1,11 @@
-﻿using Resolver.HelperError.IExceptions;
+﻿using ClickVenta.HelperError.IExceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Resolver.HelperError.Handlers
+namespace ClickVenta.HelperError.Handlers
 {
     public class ApiExceptionHandler : BaseExceptionHandler
     {

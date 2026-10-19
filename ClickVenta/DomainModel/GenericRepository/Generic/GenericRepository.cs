@@ -1,8 +1,9 @@
-﻿using DomainModel.Connection;
+﻿using ClickVenta.HelperError.Handlers;
+using DomainModel.Connection;
+using DomainModel.Connection.Data.Abstractions;
 using DomainModel.GenericRepository.IGeneric;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Resolver.HelperError.Handlers;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,13 +14,15 @@ using System.Threading.Tasks;
 
 namespace DomainModel.GenericRepository.Generic
 {
-    public class GenericRepository<Entitty> : ConnectionSQL, IGenericRepository<Entitty> where Entitty : class
+    public class GenericRepository<Entitty> : IGenericRepository<Entitty> where Entitty : class
     {
-        public GenericRepository(IConfiguration configuration) : base(configuration)
+        private readonly ISqlConnectionFactory _factory;
+        public GenericRepository(ISqlConnectionFactory factory)
         {
+            _factory = factory ?? throw new ArgumentNullException(nameof(factory));
         }
 
-        public Task<Entitty> Create(string query, SqlParameter[] parameters)
+        public Task<Entitty> Create(string query, SqlParameter[] parameters, CancellationToken ct = default)
         {
             try
             {
@@ -32,7 +35,7 @@ namespace DomainModel.GenericRepository.Generic
             }
         }
 
-        public Task<bool> Delete(string query, SqlParameter[] parameters)
+        public Task<bool> Delete(string query, SqlParameter[] parameters, CancellationToken ct = default)
         {
             try
             {
@@ -45,12 +48,12 @@ namespace DomainModel.GenericRepository.Generic
             }
         }
 
-        public Task<IEnumerable<Entitty>> GetAll(string query, SqlParameter[] parameters)
+        public async Task<IEnumerable<Entitty>> GetAll(string query, SqlParameter[] parameters, CancellationToken ct = default)
         {
             List<Entitty> entities = new List<Entitty>();
-            using (var connection = GetConnection())
+            using (var connection = await _factory.CreateConnectionAsync(ct))
             {
-                connection.Open();
+                //await connection.OpenAsync(ct);
                 try
                 {
                     using (var command = new SqlCommand())
@@ -72,22 +75,17 @@ namespace DomainModel.GenericRepository.Generic
                 }
                 catch (Exception ex)
                 {
-                    CloseConnection(connection);
                     throw ex;
                 }
-                finally
-                {
-                    CloseConnection(connection);
-                }
             }
-            return Task.FromResult<IEnumerable<Entitty>>(entities);
+            return entities;
         }
 
-        public Task<Entitty> GetById(string query, SqlParameter[] parameters)
+        public async Task<Entitty> GetById(string query, SqlParameter[] parameters, CancellationToken ct = default)
         {
-            using (var connection = GetConnection())
+            using (var connection = await _factory.CreateConnectionAsync(ct))
             {
-                connection.Open();
+                //await connection.OpenAsync(ct);
                 try
                 {
                     using (var command = new SqlCommand())
@@ -104,29 +102,24 @@ namespace DomainModel.GenericRepository.Generic
                         using (var reader = command.ExecuteReader())
                         {                            
                             var entity = MapearReader(reader);
-                            return Task.FromResult<Entitty>(entity?.FirstOrDefault());
+                            return entity?.FirstOrDefault();
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    CloseConnection(connection);
                     throw ex;
                 }
-                finally
-                {
-                    CloseConnection(connection);
-                }
             }
-            return Task.FromResult<Entitty>(null);  
+            return null;  
         }
 
-        public Task<Entitty> Update(string query, SqlParameter[] parameters)
+        public async Task<Entitty> Update(string query, SqlParameter[] parameters, CancellationToken ct = default)
         {
             try
             {
-                ExecuteNonQuery(query, parameters);
-                return Task.FromResult<Entitty>(null);
+                await ExecuteNonQuery(query, parameters);
+                return null;
             }
             catch (Exception ex)
             {
@@ -134,13 +127,13 @@ namespace DomainModel.GenericRepository.Generic
             }
         }
 
-        private void ExecuteNonQuery(string query, SqlParameter[] parameters)
+        private async Task ExecuteNonQuery(string query, SqlParameter[] parameters, CancellationToken ct = default)
         {
-            using (SqlConnection connection = GetConnection())
+            using (var connection = await _factory.CreateConnectionAsync(ct))
             {
                 try
                 {
-                    connection.Open();
+                    //await connection.OpenAsync(ct);
                     using (var command = new SqlCommand())
                     {
                         command.Connection = connection;
@@ -155,12 +148,7 @@ namespace DomainModel.GenericRepository.Generic
                 }
                 catch (Exception ex)
                 {
-                    CloseConnection(connection);
                     throw ex;
-                }
-                finally
-                {
-                    CloseConnection(connection);
                 }
             }
         }

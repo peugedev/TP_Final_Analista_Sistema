@@ -9,7 +9,7 @@ namespace BusinessEntities.Entities
     public class Venta: BaseEntity
     {
         // Usuario Id can be null
-        public string? IdUsuario{ get; set; }
+        public string? UsuarioId { get; set; }
         public string NroTicket { get; set; }
         public decimal Total { get; set; }
         public DateTime FechaVenta { get; set; }

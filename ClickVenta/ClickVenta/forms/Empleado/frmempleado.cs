@@ -1,11 +1,12 @@
 ﻿using BusinessEntities.Dtos.Empleado;
 using BusinessEntities.Entities;
 using ClickVenta.Config;
+using ClickVenta.forms.basehelper;
 using ClickVenta.forms.Empleado.single;
 using ClickVenta.forndesign;
+using ClickVenta.HelperError.IExceptions;
 using DataService.Services.IService;
 using Microsoft.Extensions.DependencyInjection;
-using Resolver.HelperError.IExceptions;
 
 namespace ClickVenta.forms.Empleado
 {

@@ -1,6 +1,7 @@
-using ClickVenta.Config;
+﻿using ClickVenta.Config;
 using ClickVenta.forms;
 using ClickVenta.forms.Empleado;
+using ClickVenta.HelperResolucion;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ClickVenta
@@ -20,9 +21,11 @@ namespace ClickVenta
             //Application.Run(new frmlogin());
             try
             {
+                //Application.EnableVisualStyles();
+                //Application.SetCompatibleTextRenderingDefault(false);
+
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.SetDefaultFont(new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point));
 
                 var host = ConfigurationBase.CreateHostBuilter().Build();
                 ServiceProvider = host.Services;

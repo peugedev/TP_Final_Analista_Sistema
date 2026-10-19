@@ -4,7 +4,7 @@ using DataService.Services.IService;
 using DomainModel.Repositories.Interface;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Resolver.Security.Password;
+using ClickVenta.Security.Password;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,12 +1,14 @@
 ﻿using ClickVenta.Config;
+using ClickVenta.forms.basehelper;
 using ClickVenta.forndesign;
+using ClickVenta.HelperError.IExceptions;
+using ClickVenta.Producto.single;
 using DataService.Services.IService;
 using Microsoft.Extensions.DependencyInjection;
-using Resolver.HelperError.IExceptions;
 
 namespace ClickVenta.forms.Producto
 {
-    public partial class frmproducto : Form
+    public partial class frmproducto : Form 
     {
         Int64 count = 0;
         string filter = null;
@@ -59,14 +61,14 @@ namespace ClickVenta.forms.Producto
             this.datalist.Columns["Id"].Visible = false;
             this.datalist.Columns["Descripcion"].Visible = false;
             this.datalist.Columns["CodigoBarra"].Visible = false;
-            this.datalist.Columns["IdCategoria"].Visible = false;
+            this.datalist.Columns["CategoriaId"].Visible = false;
             this.datalist.Columns["Count"].Visible = false;
             this.datalist.Columns["FechaCreacion"].Visible = false;
             this.datalist.Columns["FechaBaja"].Visible = false;
             this.datalist.Columns["Estado"].Visible = false;
-            //this.datalist.Columns["ModifiedDate"].Visible = false;
-            //this.datalist.Columns["IsContainExpiredDate"].Visible = false;
-            //this.datalist.Columns["MinimumStock"].Visible = false;
+            this.datalist.Columns["PresentacionId"].Visible = false;
+            this.datalist.Columns["ProveedorProductoId"].Visible = false;
+            this.datalist.Columns["CategoriaId"].Visible = false;
             //this.datalist.Columns["Product"].Visible = false;
             //this.datalist.Columns["LotProductCode"].Visible = false;
             //this.datalist.Columns["SalePriceSpecial"].Visible = false;
@@ -105,6 +107,18 @@ namespace ClickVenta.forms.Producto
                 this.lblStatus.Text = (0 + " / " + 0);
                 this.lblTotal.Text = (0).ToString();
             }
+        }
+
+        private void btnclose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnempleado_Click(object sender, EventArgs e)
+        {
+            frmsingleproduct frm = new frmsingleproduct();
+            frm.ShowDialog();
+            this.LoadList();
         }
     }
 }

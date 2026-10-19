@@ -29,10 +29,16 @@ namespace DataService.Services.Service
             {
                 SqlParameter[] parameters = new SqlParameter[]
                 {
-                    new SqlParameter("@IdUsuario", ventaDto.IdUsuario),
+                    new SqlParameter("@UsuarioId", ventaDto.UsuarioId),
                     new SqlParameter("@NroTicket", ventaDto.NroTicket),
                     new SqlParameter("@Total", ventaDto.Total),
-                    new SqlParameter("@FechaVenta", ventaDto.FechaVenta)
+                    new SqlParameter("@FechaVenta", ventaDto.FechaVenta),
+
+                    /* Detalle venta */
+                    new SqlParameter("@ProductoId", ventaDto.ProductoId),
+                    new SqlParameter("@Cantidad", ventaDto.Cantidad),
+                    new SqlParameter("@Precio", ventaDto.Precio),
+                    new SqlParameter("@Subtotal", ventaDto.Subtotal)
                 };
 
                 var venta = _mapper.Map<BusinessEntities.Entities.Venta>(ventaDto);

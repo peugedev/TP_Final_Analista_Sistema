@@ -5,7 +5,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Resolver.HelperError.IExceptions
+namespace ClickVenta.HelperError.IExceptions
 {
     public interface IApiExceptions
     {

@@ -1,8 +1,9 @@
 ﻿using ClickVenta.Config;
+using ClickVenta.forms.basehelper;
 using ClickVenta.forndesign;
+using ClickVenta.HelperError.IExceptions;
 using DataService.Services.IService;
 using Microsoft.Extensions.DependencyInjection;
-using Resolver.HelperError.IExceptions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,7 @@ using System.Windows.Forms;
 
 namespace ClickVenta.forms.user
 {
-    public partial class frmselectuser : Form
+    public partial class frmselectuser : Form   
     {
         private TextBox txtUsername;
         Int64 count = 0;

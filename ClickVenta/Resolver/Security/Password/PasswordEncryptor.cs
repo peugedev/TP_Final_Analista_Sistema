@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Resolver.Security.Password
+namespace ClickVenta.Security.Password
 {
     public class PasswordEncryptor
     {

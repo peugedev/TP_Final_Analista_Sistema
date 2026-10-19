@@ -9,10 +9,10 @@ namespace DomainModel.GenericRepository.IGeneric
 {
     public interface IGenericRepository <Entity> where Entity : class
     {
-        Task<IEnumerable<Entity>> GetAll(string query, SqlParameter[] parameters);
-        Task<Entity> GetById(string query, SqlParameter[] parameters);
-        Task<Entity> Create(string query, SqlParameter[] parameters);
-        Task<Entity> Update(string query, SqlParameter[] parameters);
-        Task<bool> Delete(string query, SqlParameter[] parameters);
+        Task<IEnumerable<Entity>> GetAll(string query, SqlParameter[] parameters, CancellationToken ct = default);
+        Task<Entity> GetById(string query, SqlParameter[] parameters, CancellationToken ct = default);
+        Task<Entity> Create(string query, SqlParameter[] parameters, CancellationToken ct = default);
+        Task<Entity> Update(string query, SqlParameter[] parameters, CancellationToken ct = default);
+        Task<bool> Delete(string query, SqlParameter[] parameters, CancellationToken ct = default);        
     }
 }

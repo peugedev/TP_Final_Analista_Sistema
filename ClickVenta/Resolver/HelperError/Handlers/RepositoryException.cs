@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Resolver.HelperError.Handlers
+namespace ClickVenta.HelperError.Handlers
 {
     public class RepositoryException : Exception
     {

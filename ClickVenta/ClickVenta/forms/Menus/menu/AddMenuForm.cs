@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClickVenta.forms.basehelper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace ClickVenta.forms.Menus.menu
 {
-    public partial class AddMenuForm : Form
+    public partial class AddMenuForm : Form 
     {
         public AddMenuForm()
         {
