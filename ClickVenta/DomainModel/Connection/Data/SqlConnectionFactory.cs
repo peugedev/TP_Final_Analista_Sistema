@@ -58,6 +58,14 @@ namespace DomainModel.Connection.Data
                 {
                     lastException = ex;
 
+                    // 🧹 CLAVE: Si el error parece indicar un pool "envenenado",
+                    //    forzamos la limpieza del pool ANTES de reintentar.
+                    //    Así el próximo intento creará una conexión física nueva.
+                    if (ex is SqlException ||
+                    (ex is InvalidOperationException && ex.Message.Contains("pool", StringComparison.OrdinalIgnoreCase)))
+                    {
+                        SqlConnection.ClearAllPools();
+                    }
                     // 🧹 Descartamos la conexión fallida (puede quedar en Open post-login)
                     await cn.DisposeAsync().ConfigureAwait(false);
 
