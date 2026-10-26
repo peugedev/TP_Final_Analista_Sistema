@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BusinessEntities.Dtos.Cabecera;
 using BusinessEntities.Dtos.Categoria;
 using BusinessEntities.Dtos.Empleado;
 using BusinessEntities.Dtos.Login;
@@ -212,6 +213,16 @@ namespace DataService.Profiles
                 .ForMember(dest => dest.Direccion, opt => opt.MapFrom(src => src.Direccion))
                 .ForMember(dest => dest.Telefono, opt => opt.MapFrom(src => src.Telefono))
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+                .ReverseMap();
+            #endregion
+
+            #region Cabecero venta
+            CreateMap<CabeceraVenta,CabeceraVentaDto>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.NroTicket, opt => opt.MapFrom(src => src.NroTicket))
+                .ForMember(dest => dest.total, opt => opt.MapFrom(src => src.total))
+                .ForMember(dest => dest.FormaPago, opt => opt.MapFrom(src => src.FormaPago))
+                .ForMember(dest => dest.Count, opt => opt.MapFrom(src => src.Count))
                 .ReverseMap();
             #endregion
         }

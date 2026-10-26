@@ -1,5 +1,6 @@
 ﻿using ClickVenta.forms;
 using ClickVenta.forms.Empleado;
+using ClickVenta.forms.ventas;
 using DataService.Profiles;
 using DataService.Services.IService;
 using DataService.Services.Service;
@@ -59,7 +60,8 @@ namespace ClickVenta.Config
                         typeof(IPermissionRepository), typeof(PermissionRepository),
                         typeof(IUsuarioRepository), typeof(UsuarioRepository),
                         typeof(IEmpleadoRepository), typeof(EmpleadoRepository),
-                       
+                        typeof(ICabeceraVentaRepository), typeof(CabeceraVentaRepository),
+
                         /* Aqui se inyecta los servicios*/
                         typeof(IEmpleadoService), typeof(EmpleadoService),
                         typeof(IProveedorService), typeof(ProveedorService),
@@ -77,14 +79,15 @@ namespace ClickVenta.Config
                         typeof(IProveedorProductoService), typeof(ProveedorProductoService),
                         typeof(IPermissionService), typeof(PermissionService),
                         typeof(IUsuarioService), typeof(UsuarioService),
-                        typeof(ILoginService), typeof(LoginService)
+                        typeof(ILoginService), typeof(LoginService),
+                        typeof(ICabeceraVentaService), typeof(CabeceraVentaService)
                     );
 
                     //Aqui se inyecta los formulario
                     services.AddTransient<frmlogin>();
                     services.AddTransient<frmpermission>();
                     services.AddTransient<frmempleado>();
-                    //services.AddTransient<frmrol>();
+                    services.AddTransient<frmventa>();
                     //services.AddTransient<frmproducto>();
                     //services.AddTransient<frmcategoria>();
 

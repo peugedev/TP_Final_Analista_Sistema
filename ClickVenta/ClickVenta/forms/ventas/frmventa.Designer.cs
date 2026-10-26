@@ -33,20 +33,20 @@
             label3 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
             label8 = new Label();
-            label7 = new Label();
+            lblusername = new Label();
             label4 = new Label();
             label2 = new Label();
             label1 = new Label();
-            label5 = new Label();
+            lblticket = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
             label10 = new Label();
             label9 = new Label();
             checkBox2 = new CheckBox();
             groupBox1 = new GroupBox();
             tableLayoutPanel3 = new TableLayoutPanel();
-            label13 = new Label();
+            lblformapago = new Label();
             label12 = new Label();
-            label11 = new Label();
+            lbltotalultimoventa = new Label();
             label6 = new Label();
             dataGridView1 = new DataGridView();
             nombre = new DataGridViewTextBoxColumn();
@@ -120,11 +120,11 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 54.0433922F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 263F));
             tableLayoutPanel1.Controls.Add(label8, 2, 1);
-            tableLayoutPanel1.Controls.Add(label7, 1, 1);
+            tableLayoutPanel1.Controls.Add(lblusername, 1, 1);
             tableLayoutPanel1.Controls.Add(label4, 2, 0);
             tableLayoutPanel1.Controls.Add(label2, 0, 0);
             tableLayoutPanel1.Controls.Add(label1, 1, 0);
-            tableLayoutPanel1.Controls.Add(label5, 0, 1);
+            tableLayoutPanel1.Controls.Add(lblticket, 0, 1);
             tableLayoutPanel1.Dock = DockStyle.Top;
             tableLayoutPanel1.Location = new Point(0, 51);
             tableLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
@@ -149,19 +149,19 @@
             label8.TabIndex = 6;
             label8.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // label7
+            // lblusername
             // 
-            label7.AutoSize = true;
-            label7.BackColor = SystemColors.ActiveCaptionText;
-            label7.Dock = DockStyle.Fill;
-            label7.FlatStyle = FlatStyle.Popup;
-            label7.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.ForeColor = SystemColors.ControlLightLight;
-            label7.Location = new Point(419, 48);
-            label7.Name = "label7";
-            label7.Size = new Size(483, 49);
-            label7.TabIndex = 5;
-            label7.TextAlign = ContentAlignment.MiddleRight;
+            lblusername.AutoSize = true;
+            lblusername.BackColor = SystemColors.ActiveCaptionText;
+            lblusername.Dock = DockStyle.Fill;
+            lblusername.FlatStyle = FlatStyle.Popup;
+            lblusername.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblusername.ForeColor = SystemColors.ControlLightLight;
+            lblusername.Location = new Point(419, 48);
+            lblusername.Name = "lblusername";
+            lblusername.Size = new Size(483, 49);
+            lblusername.TabIndex = 5;
+            lblusername.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label4
             // 
@@ -199,19 +199,19 @@
             label1.Text = "Cajero(a)";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label5
+            // lblticket
             // 
-            label5.AutoSize = true;
-            label5.BackColor = SystemColors.ActiveCaptionText;
-            label5.Dock = DockStyle.Fill;
-            label5.FlatStyle = FlatStyle.Popup;
-            label5.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.ForeColor = SystemColors.ControlLightLight;
-            label5.Location = new Point(3, 48);
-            label5.Name = "label5";
-            label5.Size = new Size(410, 49);
-            label5.TabIndex = 3;
-            label5.TextAlign = ContentAlignment.MiddleRight;
+            lblticket.AutoSize = true;
+            lblticket.BackColor = SystemColors.ActiveCaptionText;
+            lblticket.Dock = DockStyle.Fill;
+            lblticket.FlatStyle = FlatStyle.Popup;
+            lblticket.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblticket.ForeColor = SystemColors.ControlLightLight;
+            lblticket.Location = new Point(3, 48);
+            lblticket.Name = "lblticket";
+            lblticket.Size = new Size(410, 49);
+            lblticket.TabIndex = 3;
+            lblticket.TextAlign = ContentAlignment.MiddleRight;
             // 
             // tableLayoutPanel2
             // 
@@ -292,9 +292,9 @@
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70.60755F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 227F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 435F));
-            tableLayoutPanel3.Controls.Add(label13, 3, 0);
+            tableLayoutPanel3.Controls.Add(lblformapago, 3, 0);
             tableLayoutPanel3.Controls.Add(label12, 2, 0);
-            tableLayoutPanel3.Controls.Add(label11, 1, 0);
+            tableLayoutPanel3.Controls.Add(lbltotalultimoventa, 1, 0);
             tableLayoutPanel3.Controls.Add(label6, 0, 0);
             tableLayoutPanel3.Dock = DockStyle.Top;
             tableLayoutPanel3.Location = new Point(3, 24);
@@ -305,19 +305,19 @@
             tableLayoutPanel3.Size = new Size(1163, 68);
             tableLayoutPanel3.TabIndex = 24;
             // 
-            // label13
+            // lblformapago
             // 
-            label13.AutoSize = true;
-            label13.BackColor = SystemColors.ActiveCaptionText;
-            label13.Dock = DockStyle.Fill;
-            label13.FlatStyle = FlatStyle.Popup;
-            label13.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.ForeColor = SystemColors.ControlLightLight;
-            label13.Location = new Point(730, 0);
-            label13.Name = "label13";
-            label13.Size = new Size(430, 68);
-            label13.TabIndex = 12;
-            label13.TextAlign = ContentAlignment.MiddleRight;
+            lblformapago.AutoSize = true;
+            lblformapago.BackColor = SystemColors.ActiveCaptionText;
+            lblformapago.Dock = DockStyle.Fill;
+            lblformapago.FlatStyle = FlatStyle.Popup;
+            lblformapago.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblformapago.ForeColor = SystemColors.ControlLightLight;
+            lblformapago.Location = new Point(730, 0);
+            lblformapago.Name = "lblformapago";
+            lblformapago.Size = new Size(430, 68);
+            lblformapago.TabIndex = 12;
+            lblformapago.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label12
             // 
@@ -331,19 +331,19 @@
             label12.Text = "Forma de pago";
             label12.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label11
+            // lbltotalultimoventa
             // 
-            label11.AutoSize = true;
-            label11.BackColor = SystemColors.ActiveCaptionText;
-            label11.Dock = DockStyle.Fill;
-            label11.FlatStyle = FlatStyle.Popup;
-            label11.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.ForeColor = SystemColors.ControlLightLight;
-            label11.Location = new Point(150, 0);
-            label11.Name = "label11";
-            label11.Size = new Size(347, 68);
-            label11.TabIndex = 10;
-            label11.TextAlign = ContentAlignment.MiddleRight;
+            lbltotalultimoventa.AutoSize = true;
+            lbltotalultimoventa.BackColor = SystemColors.ActiveCaptionText;
+            lbltotalultimoventa.Dock = DockStyle.Fill;
+            lbltotalultimoventa.FlatStyle = FlatStyle.Popup;
+            lbltotalultimoventa.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbltotalultimoventa.ForeColor = SystemColors.ControlLightLight;
+            lbltotalultimoventa.Location = new Point(150, 0);
+            lbltotalultimoventa.Name = "lbltotalultimoventa";
+            lbltotalultimoventa.Size = new Size(347, 68);
+            lbltotalultimoventa.TabIndex = 10;
+            lbltotalultimoventa.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label6
             // 
@@ -536,17 +536,17 @@
         private Label label2;
         private Label label1;
         private Label label8;
-        private Label label7;
-        private Label label5;
+        private Label lblusername;
+        private Label lblticket;
         private TableLayoutPanel tableLayoutPanel2;
         private Label label10;
         private Label label9;
         private CheckBox checkBox2;
         private GroupBox groupBox1;
         private TableLayoutPanel tableLayoutPanel3;
-        private Label label13;
+        private Label lblformapago;
         private Label label12;
-        private Label label11;
+        private Label lbltotalultimoventa;
         private Label label6;
         private DataGridView dataGridView1;
         private GroupBox groupBox2;
