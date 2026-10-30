@@ -1,4 +1,5 @@
-﻿using BusinessEntities.Dtos.DetalleVenta;
+﻿using BusinessEntities.Dtos.cobrar;
+using BusinessEntities.Dtos.DetalleVenta;
 using BusinessEntities.Dtos.Empleado;
 using BusinessEntities.Dtos.Venta;
 using ClickVenta.Config;
@@ -178,11 +179,22 @@ namespace ClickVenta.forms.ventas
             catch (Exception ex)
             {
                 RJMessageBox.Show(ex.Message, "Sistema click venta", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } 
+            }
         }
-        private void UpdateHeade(List<DetalleVentaDto> Listdto) {
-            this.lblcantidad.Text = Listdto.Sum( u => u.Cantidad).ToString();
+        private void UpdateHeade(List<DetalleVentaDto> Listdto)
+        {
+            this.lblcantidad.Text = Listdto.Sum(u => u.Cantidad).ToString();
             this.lblcobrar.Text = Listdto.Sum(u => u.Subtotal).ToString();
+        }
+
+        private void btncobrar_Click(object sender, EventArgs e)
+        {
+            frmcobrar form = new frmcobrar(new CobrarDTO
+            {
+                VentaId = this.VentaList.FirstOrDefault().Id,
+                Total = this.VentaList.Sum(u => u.Subtotal).ToString()
+            });
+            form.ShowDialog();
         }
     }
 }
