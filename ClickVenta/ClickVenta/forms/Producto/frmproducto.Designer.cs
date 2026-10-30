@@ -45,10 +45,8 @@
             PrecioCompra = new DataGridViewTextBoxColumn();
             PrecioVenta = new DataGridViewTextBoxColumn();
             tableLayoutPanel2 = new TableLayoutPanel();
-            clickVentaButton3 = new ClickVenta.CustomStyle.ClickVentaButton();
             label1 = new Label();
             txtfilter = new TextBox();
-            btnempleado = new ClickVenta.CustomStyle.ClickVentaButton();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             groupBox5.SuspendLayout();
@@ -63,9 +61,9 @@
             panel1.Controls.Add(label3);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(2, 3, 2, 3);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1045, 51);
+            panel1.Size = new Size(914, 38);
             panel1.TabIndex = 20;
             // 
             // btnclose
@@ -78,10 +76,10 @@
             btnclose.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold);
             btnclose.ForeColor = Color.White;
             btnclose.ImageAlign = ContentAlignment.MiddleLeft;
-            btnclose.Location = new Point(1005, 0);
-            btnclose.Margin = new Padding(2, 3, 2, 3);
+            btnclose.Location = new Point(879, 0);
+            btnclose.Margin = new Padding(2);
             btnclose.Name = "btnclose";
-            btnclose.Size = new Size(40, 51);
+            btnclose.Size = new Size(35, 38);
             btnclose.TabIndex = 24;
             btnclose.Text = "X";
             btnclose.UseVisualStyleBackColor = false;
@@ -95,7 +93,7 @@
             label3.Location = new Point(0, 0);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(341, 39);
+            label3.Size = new Size(277, 31);
             label3.TabIndex = 9;
             label3.Text = "Gestion de producto";
             // 
@@ -107,13 +105,14 @@
             tableLayoutPanel1.Controls.Add(datalist, 0, 1);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(0, 51);
+            tableLayoutPanel1.Location = new Point(0, 38);
+            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 18.88889F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 81.1111145F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 71F));
-            tableLayoutPanel1.Size = new Size(1045, 578);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 53F));
+            tableLayoutPanel1.Size = new Size(914, 434);
             tableLayoutPanel1.TabIndex = 24;
             // 
             // groupBox5
@@ -126,18 +125,20 @@
             groupBox5.Controls.Add(btnPrevious);
             groupBox5.Controls.Add(btnFirst);
             groupBox5.Dock = DockStyle.Fill;
-            groupBox5.Location = new Point(3, 509);
+            groupBox5.Location = new Point(3, 382);
+            groupBox5.Margin = new Padding(3, 2, 3, 2);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(1039, 66);
+            groupBox5.Padding = new Padding(3, 2, 3, 2);
+            groupBox5.Size = new Size(908, 50);
             groupBox5.TabIndex = 26;
             groupBox5.TabStop = false;
             // 
             // label12
             // 
             label12.Anchor = AnchorStyles.Top;
-            label12.Location = new Point(685, 28);
+            label12.Location = new Point(599, 21);
             label12.Name = "label12";
-            label12.Size = new Size(209, 27);
+            label12.Size = new Size(183, 20);
             label12.TabIndex = 8;
             label12.Text = " Cantidad de registros";
             // 
@@ -145,9 +146,9 @@
             // 
             lblTotal.Anchor = AnchorStyles.Top;
             lblTotal.BorderStyle = BorderStyle.Fixed3D;
-            lblTotal.Location = new Point(896, 25);
+            lblTotal.Location = new Point(784, 19);
             lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(120, 29);
+            lblTotal.Size = new Size(105, 22);
             lblTotal.TabIndex = 7;
             lblTotal.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -156,9 +157,9 @@
             lblStatus.Anchor = AnchorStyles.Top;
             lblStatus.BorderStyle = BorderStyle.Fixed3D;
             lblStatus.FlatStyle = FlatStyle.Flat;
-            lblStatus.Location = new Point(434, 21);
+            lblStatus.Location = new Point(380, 16);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(150, 33);
+            lblStatus.Size = new Size(131, 25);
             lblStatus.TabIndex = 4;
             lblStatus.Text = "0 / 0";
             lblStatus.TextAlign = ContentAlignment.MiddleCenter;
@@ -166,9 +167,10 @@
             // btnNext
             // 
             btnNext.Anchor = AnchorStyles.Top;
-            btnNext.Location = new Point(593, 21);
+            btnNext.Location = new Point(519, 16);
+            btnNext.Margin = new Padding(3, 2, 3, 2);
             btnNext.Name = "btnNext";
-            btnNext.Size = new Size(37, 35);
+            btnNext.Size = new Size(32, 26);
             btnNext.TabIndex = 3;
             btnNext.Text = ">";
             btnNext.UseVisualStyleBackColor = true;
@@ -176,9 +178,10 @@
             // btnLast
             // 
             btnLast.Anchor = AnchorStyles.Top;
-            btnLast.Location = new Point(632, 21);
+            btnLast.Location = new Point(553, 16);
+            btnLast.Margin = new Padding(3, 2, 3, 2);
             btnLast.Name = "btnLast";
-            btnLast.Size = new Size(45, 35);
+            btnLast.Size = new Size(39, 26);
             btnLast.TabIndex = 2;
             btnLast.Text = ">|";
             btnLast.UseVisualStyleBackColor = true;
@@ -186,9 +189,10 @@
             // btnPrevious
             // 
             btnPrevious.Anchor = AnchorStyles.Top;
-            btnPrevious.Location = new Point(386, 21);
+            btnPrevious.Location = new Point(338, 16);
+            btnPrevious.Margin = new Padding(3, 2, 3, 2);
             btnPrevious.Name = "btnPrevious";
-            btnPrevious.Size = new Size(37, 35);
+            btnPrevious.Size = new Size(32, 26);
             btnPrevious.TabIndex = 1;
             btnPrevious.Text = "<";
             btnPrevious.UseVisualStyleBackColor = true;
@@ -196,9 +200,10 @@
             // btnFirst
             // 
             btnFirst.Anchor = AnchorStyles.Top;
-            btnFirst.Location = new Point(341, 20);
+            btnFirst.Location = new Point(298, 15);
+            btnFirst.Margin = new Padding(3, 2, 3, 2);
             btnFirst.Name = "btnFirst";
-            btnFirst.Size = new Size(43, 35);
+            btnFirst.Size = new Size(38, 26);
             btnFirst.TabIndex = 0;
             btnFirst.Text = "|<";
             btnFirst.UseVisualStyleBackColor = true;
@@ -214,12 +219,13 @@
             datalist.Columns.AddRange(new DataGridViewColumn[] { Nombre, PrecioCompra, PrecioVenta });
             datalist.Cursor = Cursors.Hand;
             datalist.Dock = DockStyle.Fill;
-            datalist.Location = new Point(3, 98);
+            datalist.Location = new Point(3, 73);
+            datalist.Margin = new Padding(3, 2, 3, 2);
             datalist.Name = "datalist";
             datalist.ReadOnly = true;
             datalist.RowHeadersWidth = 51;
             datalist.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            datalist.Size = new Size(1039, 405);
+            datalist.Size = new Size(908, 305);
             datalist.TabIndex = 19;
             // 
             // Nombre
@@ -251,37 +257,18 @@
             tableLayoutPanel2.ColumnCount = 3;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 36.71233F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 63.28767F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 190F));
-            tableLayoutPanel2.Controls.Add(clickVentaButton3, 2, 0);
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 167F));
             tableLayoutPanel2.Controls.Add(label1, 0, 0);
             tableLayoutPanel2.Controls.Add(txtfilter, 1, 0);
-            tableLayoutPanel2.Controls.Add(btnempleado, 2, 1);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(3, 3);
+            tableLayoutPanel2.Location = new Point(3, 2);
+            tableLayoutPanel2.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 43F));
-            tableLayoutPanel2.Size = new Size(1039, 89);
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
+            tableLayoutPanel2.Size = new Size(908, 67);
             tableLayoutPanel2.TabIndex = 0;
-            // 
-            // clickVentaButton3
-            // 
-            clickVentaButton3.BackColor = Color.FromArgb(128, 128, 255);
-            clickVentaButton3.BorderColor = Color.FromArgb(128, 128, 255);
-            clickVentaButton3.BorderRadius = 1;
-            clickVentaButton3.BorderSize = 0;
-            clickVentaButton3.Dock = DockStyle.Fill;
-            clickVentaButton3.FlatAppearance.BorderSize = 0;
-            clickVentaButton3.FlatStyle = FlatStyle.Flat;
-            clickVentaButton3.ForeColor = Color.White;
-            clickVentaButton3.Location = new Point(851, 3);
-            clickVentaButton3.Name = "clickVentaButton3";
-            clickVentaButton3.Size = new Size(185, 40);
-            clickVentaButton3.TabIndex = 4;
-            clickVentaButton3.Text = "Filtrar";
-            clickVentaButton3.TextColor = Color.White;
-            clickVentaButton3.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -290,7 +277,7 @@
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
-            label1.Size = new Size(305, 46);
+            label1.Size = new Size(266, 35);
             label1.TabIndex = 1;
             label1.Text = "Buscar por nombre";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -299,41 +286,24 @@
             // 
             txtfilter.Dock = DockStyle.Fill;
             txtfilter.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtfilter.Location = new Point(314, 3);
+            txtfilter.Location = new Point(275, 2);
+            txtfilter.Margin = new Padding(3, 2, 3, 2);
             txtfilter.Multiline = true;
             txtfilter.Name = "txtfilter";
-            txtfilter.Size = new Size(531, 40);
+            txtfilter.Size = new Size(462, 31);
             txtfilter.TabIndex = 2;
             txtfilter.TextAlign = HorizontalAlignment.Right;
             // 
-            // btnempleado
-            // 
-            btnempleado.BackColor = Color.FromArgb(128, 128, 255);
-            btnempleado.BorderColor = Color.FromArgb(128, 128, 255);
-            btnempleado.BorderRadius = 5;
-            btnempleado.BorderSize = 0;
-            btnempleado.Dock = DockStyle.Fill;
-            btnempleado.FlatAppearance.BorderSize = 0;
-            btnempleado.FlatStyle = FlatStyle.Flat;
-            btnempleado.ForeColor = Color.White;
-            btnempleado.Location = new Point(851, 49);
-            btnempleado.Name = "btnempleado";
-            btnempleado.Size = new Size(185, 37);
-            btnempleado.TabIndex = 3;
-            btnempleado.Text = "Nuevo producto";
-            btnempleado.TextColor = Color.White;
-            btnempleado.UseVisualStyleBackColor = false;
-            btnempleado.Click += btnempleado_Click;
-            // 
             // frmproducto
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1045, 629);
+            ClientSize = new Size(914, 472);
             ControlBox = false;
             Controls.Add(tableLayoutPanel1);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "frmproducto";
             StartPosition = FormStartPosition.CenterScreen;
             Load += frmproducto_Load;

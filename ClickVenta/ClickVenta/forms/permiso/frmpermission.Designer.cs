@@ -43,7 +43,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(474, 51);
+            panel1.Size = new Size(415, 38);
             panel1.TabIndex = 18;
             // 
             // btnclose
@@ -56,10 +56,10 @@
             btnclose.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold);
             btnclose.ForeColor = Color.White;
             btnclose.ImageAlign = ContentAlignment.MiddleLeft;
-            btnclose.Location = new Point(434, 0);
+            btnclose.Location = new Point(380, 0);
             btnclose.Margin = new Padding(2);
             btnclose.Name = "btnclose";
-            btnclose.Size = new Size(40, 51);
+            btnclose.Size = new Size(35, 38);
             btnclose.TabIndex = 24;
             btnclose.Text = "X";
             btnclose.UseVisualStyleBackColor = false;
@@ -73,18 +73,19 @@
             label3.Location = new Point(0, 0);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(334, 39);
+            label3.Size = new Size(271, 31);
             label3.TabIndex = 9;
             label3.Text = "Gestor de Permisos";
             // 
             // frmpermission
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(474, 626);
+            ClientSize = new Size(415, 470);
             ControlBox = false;
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "frmpermission";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmpermission";
