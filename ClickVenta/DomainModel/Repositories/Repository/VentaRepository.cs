@@ -52,7 +52,7 @@ namespace DomainModel.Repositories.Repository
             {
                 throw ex;
             }
-        }
+        }   
         public async Task<Venta> GetById(string query, SqlParameter[] parameters,CancellationToken ct = default)
         {
             try

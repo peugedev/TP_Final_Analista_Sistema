@@ -1,9 +1,10 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
+using BusinessEntities.Dtos.DetalleVenta;
 using BusinessEntities.Dtos.Venta;
 using DataService.Services.IService;
 using DomainModel.Repositories.Interface;
 using Microsoft.Data.SqlClient;
+using System;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,24 +16,27 @@ namespace DataService.Services.Service
     public class VentaService : IVentaService
     {
         private readonly IVentaRepository _ventaRepository;
+        private readonly IDetalleVentaRepository _detalleVentaRepository;
         private readonly IMapper _mapper;
 
-        public VentaService(IVentaRepository ventaRepository, IMapper mapper)
+        public VentaService(IVentaRepository ventaRepository, IDetalleVentaRepository detalleVentaRepository, IMapper mapper)
         {
             _ventaRepository = ventaRepository;
+            _detalleVentaRepository = detalleVentaRepository;
             _mapper = mapper;
         }
 
-        public async Task<string> CreateVenta(CreateVentaDto ventaDto)
+        public async Task<List<DetalleVentaDto>> CreateVenta(CreateVentaDto ventaDto)
         {
             try
             {
+                List<DetalleVentaDto> ventas = new List<DetalleVentaDto>();
                 SqlParameter[] parameters = new SqlParameter[]
                 {
                     new SqlParameter("@UsuarioId", ventaDto.UsuarioId),
-                    new SqlParameter("@NroTicket", ventaDto.NroTicket),
+                    //new SqlParameter("@NroTicket", ventaDto.NroTicket),
                     new SqlParameter("@Total", ventaDto.Total),
-                    new SqlParameter("@FechaVenta", ventaDto.FechaVenta),
+                    //new SqlParameter("@FechaVenta", ventaDto.FechaVenta),
 
                     /* Detalle venta */
                     new SqlParameter("@ProductoId", ventaDto.ProductoId),
@@ -41,9 +45,18 @@ namespace DataService.Services.Service
                     new SqlParameter("@Subtotal", ventaDto.Subtotal)
                 };
 
-                var venta = _mapper.Map<BusinessEntities.Entities.Venta>(ventaDto);
-                await this._ventaRepository.Create("[dbo].[Sp_InsertVenta]", parameters);
-                return "Venta creada correctamente";
+                //var venta = _mapper.Map<BusinessEntities.Entities.Venta>(ventaDto);
+                var venta = await this._ventaRepository.Create("[dbo].[Sp_InsertVenta]", parameters);
+                if (venta is not null)
+                {
+                    SqlParameter[] ventaparameters = new SqlParameter[]
+                    {
+                        new SqlParameter("@ventaId", venta.Id),
+                    };
+                    var response = await _detalleVentaRepository.GetAllDetalleVentaById("[dbo].[Sp_GetAllDetalleVentaById]", ventaparameters);
+                    ventas =_mapper.Map<List<DetalleVentaDto>>(response);
+                }
+                return ventas;
             }
             catch (Exception ex)
             {

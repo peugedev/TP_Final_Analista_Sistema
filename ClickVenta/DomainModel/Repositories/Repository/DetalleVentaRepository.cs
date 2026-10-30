@@ -31,6 +31,18 @@ namespace DomainModel.Repositories.Repository
                 throw ex;
             }
         }
+        public Task<IEnumerable<DetalleVenta>> GetAllDetalleVentaById(string query, SqlParameter[] parameters, CancellationToken ct = default)
+        {
+            try
+            {
+                var response = this._genericRepository.GetAll(query, parameters, ct);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public async Task<bool> Delete(string query, SqlParameter[] parameters, CancellationToken ct = default)
         {
             try

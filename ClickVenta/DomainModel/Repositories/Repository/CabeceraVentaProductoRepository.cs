@@ -12,10 +12,10 @@ using System.Threading.Tasks;
 
 namespace DomainModel.Repositories.Repository
 {
-    public class CabeceraVentaRepository : GenericRepository<CabeceraVenta>, ICabeceraVentaRepository
+    public class CabeceraVentaProductoRepository : GenericRepository<CabeceraVenta>, ICabeceraVentaProductoRepository
     {
         private readonly IGenericRepository<CabeceraVenta> _genericRepository;
-        public CabeceraVentaRepository(IGenericRepository<CabeceraVenta> genericRepository, ISqlConnectionFactory factory) : base(factory)
+        public CabeceraVentaProductoRepository(IGenericRepository<CabeceraVenta> genericRepository, ISqlConnectionFactory factory) : base(factory)
         {
             _genericRepository = genericRepository;
         }

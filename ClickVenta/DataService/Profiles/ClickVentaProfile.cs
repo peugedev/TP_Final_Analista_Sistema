@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using BusinessEntities.Dtos;
 using BusinessEntities.Dtos.Cabecera;
 using BusinessEntities.Dtos.Categoria;
+using BusinessEntities.Dtos.DetalleVenta;
 using BusinessEntities.Dtos.Empleado;
 using BusinessEntities.Dtos.Login;
 using BusinessEntities.Dtos.Lote;
@@ -223,6 +225,23 @@ namespace DataService.Profiles
                 .ForMember(dest => dest.total, opt => opt.MapFrom(src => src.total))
                 .ForMember(dest => dest.FormaPago, opt => opt.MapFrom(src => src.FormaPago))
                 .ForMember(dest => dest.Count, opt => opt.MapFrom(src => src.Count))
+                .ReverseMap();
+
+            CreateMap<CabeceraVenta, ConsultaProductoCodigoBarraDto>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Nombre, opt => opt.MapFrom(src => src.Nombre))
+                .ForMember(dest => dest.PrecioVenta, opt => opt.MapFrom(src => src.PrecioVenta))
+                .ReverseMap();
+            #endregion
+
+            #region Venta y detalle de venta
+            CreateMap<DetalleVenta, DetalleVentaDto>()
+                .ForMember( dest => dest.Id, opt => opt.MapFrom( src => src.Id))
+                .ForMember(dest => dest.Cantidad, opt => opt.MapFrom(src => src.Cantidad))
+                .ForMember(dest => dest.ProductoId, opt => opt.MapFrom(src => src.ProductoId))
+                .ForMember(dest => dest.VentaId, opt => opt.MapFrom(src => src.VentaId))
+                .ForMember(dest => dest.Subtotal, opt => opt.MapFrom(src => src.Subtotal))
+                .ForMember(dest => dest.Nombre, opt => opt.MapFrom(src => src.Nombre))
                 .ReverseMap();
             #endregion
         }

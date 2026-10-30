@@ -1,5 +1,6 @@
-﻿using System;
+﻿using BusinessEntities.Dtos.DetalleVenta;
 using BusinessEntities.Dtos.Venta;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace DataService.Services.IService
 {
     public interface IVentaService
     {
-        Task<string> CreateVenta(CreateVentaDto ventaDto);
+        Task<List<DetalleVentaDto>> CreateVenta(CreateVentaDto ventaDto);
         Task<string> UpdateVenta(UpdateVentaDto ventaDto);
         Task<string> DeleteVenta(DeleteVentaDto ventaDto);
         Task<IEnumerable<VentaDto>> GetAllVentas(int state, int page, int pageSize, string filter = null);

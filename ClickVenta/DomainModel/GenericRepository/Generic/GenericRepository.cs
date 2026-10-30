@@ -7,9 +7,11 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace DomainModel.GenericRepository.Generic
@@ -22,12 +24,16 @@ namespace DomainModel.GenericRepository.Generic
             _factory = factory ?? throw new ArgumentNullException(nameof(factory));
         }
 
-        public Task<Entitty> Create(string query, SqlParameter[] parameters, CancellationToken ct = default)
+        public async Task<Entitty> Create(string query, SqlParameter[] parameters, CancellationToken ct = default)
         {
             try
             {
-                ExecuteNonQuery(query, parameters);
-                return Task.FromResult<Entitty>(null);
+                var result = await ExecuteNonQuery(query, parameters);
+                var idProperty = typeof(Entitty).GetProperty("Id") ?? typeof(Entitty).GetProperty("ID");
+                Entitty entity = Activator.CreateInstance<Entitty>();
+                idProperty.SetValue(entity, result);
+                return entity;
+                //return JsonSerializer.Deserialize<Entitty>(result); ;
             }
             catch (Exception ex)
             {
@@ -53,6 +59,9 @@ namespace DomainModel.GenericRepository.Generic
             List<Entitty> entities = new List<Entitty>();
             using (var connection = await _factory.CreateConnectionAsync(ct))
             {
+                // Asegúrate de que la conexión esté abierta
+                //if (connection.State != ConnectionState.Open)
+                //    await connection.OpenAsync(ct);
                 //await connection.OpenAsync(ct);
                 try
                 {
@@ -86,6 +95,9 @@ namespace DomainModel.GenericRepository.Generic
             using (var connection = await _factory.CreateConnectionAsync(ct))
             {
                 //await connection.OpenAsync(ct);
+                // Asegúrate de que la conexión esté abierta
+                //if (connection.State != ConnectionState.Open)
+                //    await connection.OpenAsync(ct);
                 try
                 {
                     using (var command = new SqlCommand())
@@ -127,12 +139,15 @@ namespace DomainModel.GenericRepository.Generic
             }
         }
 
-        private async Task ExecuteNonQuery(string query, SqlParameter[] parameters, CancellationToken ct = default)
+        private async Task<string> ExecuteNonQuery(string query, SqlParameter[] parameters, CancellationToken ct = default)
         {
             using (var connection = await _factory.CreateConnectionAsync(ct))
             {
                 try
                 {
+                    // Asegúrate de que la conexión esté abierta
+                    //if (connection.State != ConnectionState.Open)
+                    //    await connection.OpenAsync(ct);
                     //await connection.OpenAsync(ct);
                     using (var command = new SqlCommand())
                     {
@@ -141,9 +156,19 @@ namespace DomainModel.GenericRepository.Generic
                         {
                             command.Parameters.AddRange(parameters);
                         }
+
                         command.CommandText = query;
                         command.CommandType = CommandType.StoredProcedure;
-                        command.ExecuteNonQuery();
+                        //command.ExecuteNonQuery();
+                        //object resultado = command.ExecuteScalar();
+                        // ExecuteScalar lee el primer valor de la primera fila devuelta por el SP
+                        object result = await command.ExecuteScalarAsync(ct);
+
+                        if (result != null && result != DBNull.Value)
+                        {
+                            return ((Guid)result).ToString();
+                        }
+                        return null;
                     }
                 }
                 catch (Exception ex)

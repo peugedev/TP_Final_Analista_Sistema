@@ -1,4 +1,5 @@
-﻿using BusinessEntities.Dtos.Cabecera;
+﻿using BusinessEntities.Dtos;
+using BusinessEntities.Dtos.Cabecera;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace DataService.Services.IService
 {
-    public interface ICabeceraVentaService
+    public interface ICabeceraVentaProductoService
     {
         Task<CabeceraVentaDto> GetCabecera();
+        Task<ConsultaProductoCodigoBarraDto> ConsultaProductoCodigo(string codigo);
     }
 }
