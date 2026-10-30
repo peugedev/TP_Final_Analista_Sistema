@@ -1,6 +1,7 @@
 ﻿using System;
 using BusinessEntities.Dtos.Proveedor;
 using ClickVenta.Config;
+using ClickVenta.forms.Proveedor.single;
 using ClickVenta.forndesign;
 using DataService.Services.IService;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +25,13 @@ namespace ClickVenta.forms.Proveedor
         {
             radiusform.GetRadius(this);
             await LoadListAsync();
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            var frm = new frmsingleproveedor();
+            frm.ShowDialog();
+            _ = LoadListAsync();
         }
 
         private async Task LoadListAsync()
