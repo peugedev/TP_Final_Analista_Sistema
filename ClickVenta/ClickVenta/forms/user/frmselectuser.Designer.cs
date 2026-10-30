@@ -63,7 +63,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 51);
+            panel1.Size = new Size(700, 38);
             panel1.TabIndex = 21;
             // 
             // btnclose
@@ -76,10 +76,10 @@
             btnclose.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold);
             btnclose.ForeColor = Color.White;
             btnclose.ImageAlign = ContentAlignment.MiddleLeft;
-            btnclose.Location = new Point(760, 0);
+            btnclose.Location = new Point(665, 0);
             btnclose.Margin = new Padding(2);
             btnclose.Name = "btnclose";
-            btnclose.Size = new Size(40, 51);
+            btnclose.Size = new Size(35, 38);
             btnclose.TabIndex = 24;
             btnclose.Text = "X";
             btnclose.UseVisualStyleBackColor = false;
@@ -93,7 +93,7 @@
             label3.Location = new Point(0, 0);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(336, 39);
+            label3.Size = new Size(271, 31);
             label3.TabIndex = 9;
             label3.Text = "Seleccionar usuario";
             // 
@@ -105,13 +105,14 @@
             tableLayoutPanel1.Controls.Add(datalist, 0, 1);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(0, 51);
+            tableLayoutPanel1.Location = new Point(0, 38);
+            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 14.6853151F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 85.31468F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 71F));
-            tableLayoutPanel1.Size = new Size(800, 399);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 53F));
+            tableLayoutPanel1.Size = new Size(700, 300);
             tableLayoutPanel1.TabIndex = 22;
             // 
             // groupBox5
@@ -124,20 +125,20 @@
             groupBox5.Controls.Add(btnPrevious);
             groupBox5.Controls.Add(btnFirst);
             groupBox5.Dock = DockStyle.Fill;
-            groupBox5.Location = new Point(3, 329);
+            groupBox5.Location = new Point(3, 248);
             groupBox5.Margin = new Padding(3, 2, 3, 2);
             groupBox5.Name = "groupBox5";
             groupBox5.Padding = new Padding(3, 2, 3, 2);
-            groupBox5.Size = new Size(794, 68);
+            groupBox5.Size = new Size(694, 50);
             groupBox5.TabIndex = 26;
             groupBox5.TabStop = false;
             // 
             // label12
             // 
             label12.Anchor = AnchorStyles.Top;
-            label12.Location = new Point(439, 27);
+            label12.Location = new Point(384, 20);
             label12.Name = "label12";
-            label12.Size = new Size(209, 27);
+            label12.Size = new Size(183, 20);
             label12.TabIndex = 8;
             label12.Text = " Cantidad de registros";
             // 
@@ -145,9 +146,9 @@
             // 
             lblTotal.Anchor = AnchorStyles.Top;
             lblTotal.BorderStyle = BorderStyle.Fixed3D;
-            lblTotal.Location = new Point(650, 24);
+            lblTotal.Location = new Point(569, 18);
             lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(120, 30);
+            lblTotal.Size = new Size(105, 22);
             lblTotal.TabIndex = 7;
             lblTotal.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -156,9 +157,9 @@
             lblStatus.Anchor = AnchorStyles.Top;
             lblStatus.BorderStyle = BorderStyle.Fixed3D;
             lblStatus.FlatStyle = FlatStyle.Flat;
-            lblStatus.Location = new Point(188, 21);
+            lblStatus.Location = new Point(164, 16);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(150, 33);
+            lblStatus.Size = new Size(131, 25);
             lblStatus.TabIndex = 4;
             lblStatus.Text = "0 / 0";
             lblStatus.TextAlign = ContentAlignment.MiddleCenter;
@@ -166,10 +167,10 @@
             // btnNext
             // 
             btnNext.Anchor = AnchorStyles.Top;
-            btnNext.Location = new Point(347, 20);
+            btnNext.Location = new Point(304, 15);
             btnNext.Margin = new Padding(3, 2, 3, 2);
             btnNext.Name = "btnNext";
-            btnNext.Size = new Size(37, 34);
+            btnNext.Size = new Size(32, 26);
             btnNext.TabIndex = 3;
             btnNext.Text = ">";
             btnNext.UseVisualStyleBackColor = true;
@@ -177,10 +178,10 @@
             // btnLast
             // 
             btnLast.Anchor = AnchorStyles.Top;
-            btnLast.Location = new Point(386, 20);
+            btnLast.Location = new Point(338, 15);
             btnLast.Margin = new Padding(3, 2, 3, 2);
             btnLast.Name = "btnLast";
-            btnLast.Size = new Size(45, 34);
+            btnLast.Size = new Size(39, 26);
             btnLast.TabIndex = 2;
             btnLast.Text = ">|";
             btnLast.UseVisualStyleBackColor = true;
@@ -188,10 +189,10 @@
             // btnPrevious
             // 
             btnPrevious.Anchor = AnchorStyles.Top;
-            btnPrevious.Location = new Point(140, 20);
+            btnPrevious.Location = new Point(122, 15);
             btnPrevious.Margin = new Padding(3, 2, 3, 2);
             btnPrevious.Name = "btnPrevious";
-            btnPrevious.Size = new Size(36, 34);
+            btnPrevious.Size = new Size(32, 26);
             btnPrevious.TabIndex = 1;
             btnPrevious.Text = "<";
             btnPrevious.UseVisualStyleBackColor = true;
@@ -199,10 +200,10 @@
             // btnFirst
             // 
             btnFirst.Anchor = AnchorStyles.Top;
-            btnFirst.Location = new Point(94, 19);
+            btnFirst.Location = new Point(82, 14);
             btnFirst.Margin = new Padding(3, 2, 3, 2);
             btnFirst.Name = "btnFirst";
-            btnFirst.Size = new Size(43, 35);
+            btnFirst.Size = new Size(38, 26);
             btnFirst.TabIndex = 0;
             btnFirst.Text = "|<";
             btnFirst.UseVisualStyleBackColor = true;
@@ -218,12 +219,13 @@
             datalist.Columns.AddRange(new DataGridViewColumn[] { FirstName, LastName, Rol });
             datalist.Cursor = Cursors.Hand;
             datalist.Dock = DockStyle.Fill;
-            datalist.Location = new Point(3, 51);
+            datalist.Location = new Point(3, 38);
+            datalist.Margin = new Padding(3, 2, 3, 2);
             datalist.Name = "datalist";
             datalist.ReadOnly = true;
             datalist.RowHeadersWidth = 51;
             datalist.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            datalist.Size = new Size(794, 273);
+            datalist.Size = new Size(694, 206);
             datalist.TabIndex = 19;
             // 
             // FirstName
@@ -255,15 +257,16 @@
             tableLayoutPanel2.ColumnCount = 3;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 36.71233F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 63.28767F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 137F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 121F));
             tableLayoutPanel2.Controls.Add(label1, 0, 0);
             tableLayoutPanel2.Controls.Add(txtfilter, 1, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(3, 3);
+            tableLayoutPanel2.Location = new Point(3, 2);
+            tableLayoutPanel2.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(794, 42);
+            tableLayoutPanel2.Size = new Size(694, 32);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // label1
@@ -273,7 +276,7 @@
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
-            label1.Size = new Size(235, 42);
+            label1.Size = new Size(204, 32);
             label1.TabIndex = 1;
             label1.Text = "Buscar por nombre";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -282,22 +285,24 @@
             // 
             txtfilter.Dock = DockStyle.Fill;
             txtfilter.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtfilter.Location = new Point(244, 3);
+            txtfilter.Location = new Point(213, 2);
+            txtfilter.Margin = new Padding(3, 2, 3, 2);
             txtfilter.Multiline = true;
             txtfilter.Name = "txtfilter";
-            txtfilter.Size = new Size(409, 36);
+            txtfilter.Size = new Size(356, 28);
             txtfilter.TabIndex = 2;
             txtfilter.TextAlign = HorizontalAlignment.Right;
             // 
             // frmselectuser
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
             ControlBox = false;
             Controls.Add(tableLayoutPanel1);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "frmselectuser";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmselectuser";

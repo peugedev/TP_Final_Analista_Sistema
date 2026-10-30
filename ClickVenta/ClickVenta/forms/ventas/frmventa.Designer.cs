@@ -77,9 +77,9 @@
             panel1.Controls.Add(label3);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(2, 3, 2, 3);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1169, 51);
+            panel1.Size = new Size(1023, 38);
             panel1.TabIndex = 21;
             // 
             // btnclose
@@ -92,10 +92,10 @@
             btnclose.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold);
             btnclose.ForeColor = Color.White;
             btnclose.ImageAlign = ContentAlignment.MiddleLeft;
-            btnclose.Location = new Point(1129, 0);
-            btnclose.Margin = new Padding(2, 3, 2, 3);
+            btnclose.Location = new Point(988, 0);
+            btnclose.Margin = new Padding(2);
             btnclose.Name = "btnclose";
-            btnclose.Size = new Size(40, 51);
+            btnclose.Size = new Size(35, 38);
             btnclose.TabIndex = 24;
             btnclose.Text = "X";
             btnclose.UseVisualStyleBackColor = false;
@@ -109,7 +109,7 @@
             label3.Location = new Point(0, 0);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(329, 39);
+            label3.Size = new Size(267, 31);
             label3.TabIndex = 9;
             label3.Text = "Venta de productos";
             // 
@@ -120,19 +120,20 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 54.0433922F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 263F));
             tableLayoutPanel1.Controls.Add(lblcantidad, 2, 1);
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 231F));
+            tableLayoutPanel1.Controls.Add(label8, 2, 1);
             tableLayoutPanel1.Controls.Add(lblusername, 1, 1);
             tableLayoutPanel1.Controls.Add(label4, 2, 0);
             tableLayoutPanel1.Controls.Add(label2, 0, 0);
             tableLayoutPanel1.Controls.Add(label1, 1, 0);
             tableLayoutPanel1.Controls.Add(lblticket, 0, 1);
             tableLayoutPanel1.Dock = DockStyle.Top;
-            tableLayoutPanel1.Location = new Point(0, 51);
-            tableLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
+            tableLayoutPanel1.Location = new Point(0, 38);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(1169, 97);
+            tableLayoutPanel1.Size = new Size(1023, 73);
             tableLayoutPanel1.TabIndex = 22;
             // 
             // lblcantidad
@@ -157,9 +158,9 @@
             lblusername.FlatStyle = FlatStyle.Popup;
             lblusername.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblusername.ForeColor = SystemColors.ControlLightLight;
-            lblusername.Location = new Point(419, 48);
+            lblusername.Location = new Point(366, 36);
             lblusername.Name = "lblusername";
-            lblusername.Size = new Size(483, 49);
+            lblusername.Size = new Size(422, 37);
             lblusername.TabIndex = 5;
             lblusername.TextAlign = ContentAlignment.MiddleRight;
             // 
@@ -168,9 +169,9 @@
             label4.AutoSize = true;
             label4.Dock = DockStyle.Fill;
             label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            label4.Location = new Point(908, 0);
+            label4.Location = new Point(794, 0);
             label4.Name = "label4";
-            label4.Size = new Size(258, 48);
+            label4.Size = new Size(226, 36);
             label4.TabIndex = 2;
             label4.Text = "Cantidad de productos";
             label4.TextAlign = ContentAlignment.MiddleCenter;
@@ -182,7 +183,7 @@
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             label2.Location = new Point(3, 0);
             label2.Name = "label2";
-            label2.Size = new Size(410, 48);
+            label2.Size = new Size(357, 36);
             label2.TabIndex = 1;
             label2.Text = "Nro. Ticket";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -192,9 +193,9 @@
             label1.AutoSize = true;
             label1.Dock = DockStyle.Fill;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            label1.Location = new Point(419, 0);
+            label1.Location = new Point(366, 0);
             label1.Name = "label1";
-            label1.Size = new Size(483, 48);
+            label1.Size = new Size(422, 36);
             label1.TabIndex = 0;
             label1.Text = "Cajero(a)";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -207,9 +208,9 @@
             lblticket.FlatStyle = FlatStyle.Popup;
             lblticket.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblticket.ForeColor = SystemColors.ControlLightLight;
-            lblticket.Location = new Point(3, 48);
+            lblticket.Location = new Point(3, 36);
             lblticket.Name = "lblticket";
-            lblticket.Size = new Size(410, 49);
+            lblticket.Size = new Size(357, 37);
             lblticket.TabIndex = 3;
             lblticket.TextAlign = ContentAlignment.MiddleRight;
             // 
@@ -223,13 +224,12 @@
             tableLayoutPanel2.Controls.Add(label9, 1, 1);
             tableLayoutPanel2.Controls.Add(checkBox2, 0, 1);
             tableLayoutPanel2.Dock = DockStyle.Top;
-            tableLayoutPanel2.Location = new Point(0, 148);
-            tableLayoutPanel2.Margin = new Padding(3, 4, 3, 4);
+            tableLayoutPanel2.Location = new Point(0, 111);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 77F));
-            tableLayoutPanel2.Size = new Size(1169, 89);
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 58F));
+            tableLayoutPanel2.Size = new Size(1023, 67);
             tableLayoutPanel2.TabIndex = 23;
             // 
             // lblcobrar
@@ -251,9 +251,9 @@
             label9.AutoSize = true;
             label9.Dock = DockStyle.Fill;
             label9.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            label9.Location = new Point(421, 12);
+            label9.Location = new Point(369, 9);
             label9.Name = "label9";
-            label9.Size = new Size(301, 77);
+            label9.Size = new Size(262, 58);
             label9.TabIndex = 8;
             label9.Text = "Total a cobrar";
             label9.TextAlign = ContentAlignment.MiddleCenter;
@@ -264,10 +264,9 @@
             checkBox2.CheckAlign = ContentAlignment.MiddleRight;
             checkBox2.Dock = DockStyle.Fill;
             checkBox2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            checkBox2.Location = new Point(3, 16);
-            checkBox2.Margin = new Padding(3, 4, 3, 4);
+            checkBox2.Location = new Point(3, 12);
             checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(412, 69);
+            checkBox2.Size = new Size(360, 52);
             checkBox2.TabIndex = 7;
             checkBox2.Text = "¿Imprimir ticket?";
             checkBox2.UseVisualStyleBackColor = true;
@@ -276,11 +275,9 @@
             // 
             groupBox1.Controls.Add(tableLayoutPanel3);
             groupBox1.Dock = DockStyle.Top;
-            groupBox1.Location = new Point(0, 237);
-            groupBox1.Margin = new Padding(3, 4, 3, 4);
+            groupBox1.Location = new Point(0, 178);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(3, 4, 3, 4);
-            groupBox1.Size = new Size(1169, 85);
+            groupBox1.Size = new Size(1023, 64);
             groupBox1.TabIndex = 24;
             groupBox1.TabStop = false;
             groupBox1.Text = "Ultima venta";
@@ -290,19 +287,18 @@
             tableLayoutPanel3.ColumnCount = 4;
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 29.3924465F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70.60755F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 227F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 435F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 199F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 382F));
             tableLayoutPanel3.Controls.Add(lblformapago, 3, 0);
             tableLayoutPanel3.Controls.Add(label12, 2, 0);
             tableLayoutPanel3.Controls.Add(lbltotalultimoventa, 1, 0);
             tableLayoutPanel3.Controls.Add(label6, 0, 0);
             tableLayoutPanel3.Dock = DockStyle.Top;
-            tableLayoutPanel3.Location = new Point(3, 24);
-            tableLayoutPanel3.Margin = new Padding(3, 4, 3, 4);
+            tableLayoutPanel3.Location = new Point(3, 19);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Size = new Size(1163, 68);
+            tableLayoutPanel3.Size = new Size(1017, 51);
             tableLayoutPanel3.TabIndex = 24;
             // 
             // lblformapago
@@ -313,9 +309,9 @@
             lblformapago.FlatStyle = FlatStyle.Popup;
             lblformapago.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblformapago.ForeColor = SystemColors.ControlLightLight;
-            lblformapago.Location = new Point(730, 0);
+            lblformapago.Location = new Point(637, 0);
             lblformapago.Name = "lblformapago";
-            lblformapago.Size = new Size(430, 68);
+            lblformapago.Size = new Size(377, 51);
             lblformapago.TabIndex = 12;
             lblformapago.TextAlign = ContentAlignment.MiddleRight;
             // 
@@ -324,9 +320,9 @@
             label12.AutoSize = true;
             label12.Dock = DockStyle.Fill;
             label12.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            label12.Location = new Point(503, 0);
+            label12.Location = new Point(438, 0);
             label12.Name = "label12";
-            label12.Size = new Size(221, 68);
+            label12.Size = new Size(193, 51);
             label12.TabIndex = 11;
             label12.Text = "Forma de pago";
             label12.TextAlign = ContentAlignment.MiddleCenter;
@@ -339,9 +335,9 @@
             lbltotalultimoventa.FlatStyle = FlatStyle.Popup;
             lbltotalultimoventa.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lbltotalultimoventa.ForeColor = SystemColors.ControlLightLight;
-            lbltotalultimoventa.Location = new Point(150, 0);
+            lbltotalultimoventa.Location = new Point(131, 0);
             lbltotalultimoventa.Name = "lbltotalultimoventa";
-            lbltotalultimoventa.Size = new Size(347, 68);
+            lbltotalultimoventa.Size = new Size(301, 51);
             lbltotalultimoventa.TabIndex = 10;
             lbltotalultimoventa.TextAlign = ContentAlignment.MiddleRight;
             // 
@@ -352,7 +348,7 @@
             label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             label6.Location = new Point(3, 0);
             label6.Name = "label6";
-            label6.Size = new Size(141, 68);
+            label6.Size = new Size(122, 51);
             label6.TabIndex = 9;
             label6.Text = "Total ";
             label6.TextAlign = ContentAlignment.MiddleCenter;
@@ -402,11 +398,9 @@
             // 
             groupBox2.Controls.Add(datalist);
             groupBox2.Dock = DockStyle.Top;
-            groupBox2.Location = new Point(0, 322);
-            groupBox2.Margin = new Padding(3, 4, 3, 4);
+            groupBox2.Location = new Point(0, 242);
             groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(3, 4, 3, 4);
-            groupBox2.Size = new Size(1169, 437);
+            groupBox2.Size = new Size(1023, 328);
             groupBox2.TabIndex = 26;
             groupBox2.TabStop = false;
             // 
@@ -414,11 +408,9 @@
             // 
             groupBox3.Controls.Add(tableLayoutPanel4);
             groupBox3.Dock = DockStyle.Bottom;
-            groupBox3.Location = new Point(0, 756);
-            groupBox3.Margin = new Padding(3, 4, 3, 4);
+            groupBox3.Location = new Point(0, 567);
             groupBox3.Name = "groupBox3";
-            groupBox3.Padding = new Padding(3, 4, 3, 4);
-            groupBox3.Size = new Size(1169, 77);
+            groupBox3.Size = new Size(1023, 58);
             groupBox3.TabIndex = 27;
             groupBox3.TabStop = false;
             // 
@@ -427,17 +419,16 @@
             tableLayoutPanel4.ColumnCount = 3;
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35.2154541F));
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 64.7845459F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 210F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 185F));
             tableLayoutPanel4.Controls.Add(label14, 0, 0);
             tableLayoutPanel4.Controls.Add(btncobrar, 2, 0);
             tableLayoutPanel4.Controls.Add(txtcodebar, 1, 0);
             tableLayoutPanel4.Dock = DockStyle.Bottom;
-            tableLayoutPanel4.Location = new Point(3, 12);
-            tableLayoutPanel4.Margin = new Padding(3, 4, 3, 4);
+            tableLayoutPanel4.Location = new Point(3, 9);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 1;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.Size = new Size(1163, 61);
+            tableLayoutPanel4.Size = new Size(1017, 46);
             tableLayoutPanel4.TabIndex = 0;
             // 
             // label14
@@ -447,7 +438,7 @@
             label14.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             label14.Location = new Point(3, 0);
             label14.Name = "label14";
-            label14.Size = new Size(329, 61);
+            label14.Size = new Size(286, 46);
             label14.TabIndex = 10;
             label14.Text = "Codigo de barra";
             label14.TextAlign = ContentAlignment.MiddleCenter;
@@ -499,9 +490,9 @@
             // 
             // frmventa
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1169, 833);
+            ClientSize = new Size(1023, 625);
             ControlBox = false;
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
@@ -510,6 +501,7 @@
             Controls.Add(tableLayoutPanel1);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "frmventa";
             StartPosition = FormStartPosition.CenterScreen;
             FormClosing += frmventa_FormClosing;
