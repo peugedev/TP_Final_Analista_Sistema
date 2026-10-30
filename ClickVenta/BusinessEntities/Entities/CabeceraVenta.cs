@@ -13,5 +13,9 @@ namespace BusinessEntities.Entities
         public string total { get; set; }
         public string FormaPago { get; set; }
         public int Count { get; set; }
+
+        /* Consulta producto para la venta */
+        public string Nombre { get; set; }
+        public decimal PrecioVenta { get; set; }
     }
 }

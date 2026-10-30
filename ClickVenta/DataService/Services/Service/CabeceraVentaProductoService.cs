@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BusinessEntities.Dtos;
 using BusinessEntities.Dtos.Cabecera;
 using DataService.Services.IService;
 using DomainModel.Repositories.Interface;
@@ -11,15 +12,32 @@ using System.Threading.Tasks;
 
 namespace DataService.Services.Service
 {
-    public class CabeceraVentaService : ICabeceraVentaService
+    public class CabeceraVentaProductoService : ICabeceraVentaProductoService
     {
-        private readonly ICabeceraVentaRepository _cabeceraVentaRepository;
+        private readonly ICabeceraVentaProductoRepository _cabeceraVentaRepository;
         private readonly IMapper _mapper;
 
-        public CabeceraVentaService(ICabeceraVentaRepository cabeceraVentaRepository, IMapper mapper)
+        public CabeceraVentaProductoService(ICabeceraVentaProductoRepository cabeceraVentaRepository, IMapper mapper)
         {
             _cabeceraVentaRepository = cabeceraVentaRepository;
             _mapper = mapper;
+        }
+
+        public async Task<ConsultaProductoCodigoBarraDto> ConsultaProductoCodigo(string codigo)
+        {
+            try
+            {
+                SqlParameter[] sqlParameters = new SqlParameter[]
+                {
+                    new SqlParameter("@code", codigo)
+                };
+                var result = await _cabeceraVentaRepository.GetById("[dbo].[SP_GetProductoByCodigoBara]", sqlParameters);
+                return _mapper.Map<ConsultaProductoCodigoBarraDto>(result);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public async Task<CabeceraVentaDto> GetCabecera()

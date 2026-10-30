@@ -13,6 +13,7 @@ namespace BusinessEntities.Dtos.DetalleVenta
         public string VentaId { get; set; }
         public int Cantidad { get; set; }
         public decimal Precio { get; set; }
+        public string Nombre { get; set; }
         public decimal Subtotal { get; set; }
     }
 }

@@ -1,9 +1,12 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using BusinessEntities.Dtos.DetalleVenta;
+using BusinessEntities.Dtos.Venta;
+using BusinessEntities.Entities;
 using DataService.Services.IService;
 using DomainModel.Repositories.Interface;
+using DomainModel.Repositories.Repository;
 using Microsoft.Data.SqlClient;
+using System;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,22 +26,33 @@ namespace DataService.Services.Service
             _mapper = mapper;
         }
 
-        public async Task<string> CreateDetalleVenta(CreateDetalleVentaDto detalleVentaDto)
+        public async Task<List<DetalleVentaDto>> CreateDetalleVenta(CreateDetalleVentaDto detalleVentaDto)
         {
             try
             {
+                List<DetalleVentaDto> ventas = new List<DetalleVentaDto>();
+
                 SqlParameter[] parameters = new SqlParameter[]
                 {
                     new SqlParameter("@ProductoId", detalleVentaDto.ProductoId),
                     new SqlParameter("@VentaId", detalleVentaDto.VentaId),
                     new SqlParameter("@Cantidad", detalleVentaDto.Cantidad),
                     new SqlParameter("@Precio", detalleVentaDto.Precio),
-                    new SqlParameter("@SubTotal", detalleVentaDto.Subtotal)
+                    //new SqlParameter("@SubTotal", detalleVentaDto.Subtotal)
                 };
 
-                var detalle = _mapper.Map<BusinessEntities.Entities.DetalleVenta>(detalleVentaDto);
-                await this._detalleVentaRepository.Create("[dbo].[Sp_InsertDetalleVenta]", parameters);
-                return "Detalle de venta creado correctamente";
+                //var detalle = _mapper.Map<BusinessEntities.Entities.DetalleVenta>(detalleVentaDto);
+                var venta = await this._detalleVentaRepository.Create("[dbo].[Sp_InsertDetalleVenta]", parameters);
+                if (venta is not null)
+                {
+                    SqlParameter[] ventaparameters = new SqlParameter[]
+                    {
+                        new SqlParameter("@ventaId", venta.Id),
+                    };
+                    var response = await _detalleVentaRepository.GetAllDetalleVentaById("[dbo].[Sp_GetAllDetalleVentaById]", ventaparameters);
+                    ventas = _mapper.Map<List<DetalleVentaDto>>(response);
+                }
+                return ventas;
             }
             catch (Exception ex)
             {

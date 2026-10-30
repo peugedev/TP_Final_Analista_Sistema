@@ -60,7 +60,7 @@ namespace ClickVenta.Config
                         typeof(IPermissionRepository), typeof(PermissionRepository),
                         typeof(IUsuarioRepository), typeof(UsuarioRepository),
                         typeof(IEmpleadoRepository), typeof(EmpleadoRepository),
-                        typeof(ICabeceraVentaRepository), typeof(CabeceraVentaRepository),
+                        typeof(ICabeceraVentaProductoRepository), typeof(CabeceraVentaProductoRepository),
 
                         /* Aqui se inyecta los servicios*/
                         typeof(IEmpleadoService), typeof(EmpleadoService),
@@ -80,7 +80,7 @@ namespace ClickVenta.Config
                         typeof(IPermissionService), typeof(PermissionService),
                         typeof(IUsuarioService), typeof(UsuarioService),
                         typeof(ILoginService), typeof(LoginService),
-                        typeof(ICabeceraVentaService), typeof(CabeceraVentaService)
+                        typeof(ICabeceraVentaProductoService), typeof(CabeceraVentaProductoService)
                     );
 
                     //Aqui se inyecta los formulario

@@ -32,14 +32,14 @@
             btnclose = new Button();
             label3 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
-            label8 = new Label();
+            lblcantidad = new Label();
             lblusername = new Label();
             label4 = new Label();
             label2 = new Label();
             label1 = new Label();
             lblticket = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
-            label10 = new Label();
+            lblcobrar = new Label();
             label9 = new Label();
             checkBox2 = new CheckBox();
             groupBox1 = new GroupBox();
@@ -48,21 +48,23 @@
             label12 = new Label();
             lbltotalultimoventa = new Label();
             label6 = new Label();
-            dataGridView1 = new DataGridView();
+            datalist = new DataGridView();
             nombre = new DataGridViewTextBoxColumn();
             Cantidad = new DataGridViewTextBoxColumn();
-            precioVenta = new DataGridViewTextBoxColumn();
+            Precio = new DataGridViewTextBoxColumn();
             subtotal = new DataGridViewTextBoxColumn();
             groupBox2 = new GroupBox();
             groupBox3 = new GroupBox();
             tableLayoutPanel4 = new TableLayoutPanel();
             label14 = new Label();
+            btncobrar = new ClickVenta.CustomStyle.ClickVentaButton();
+            txtcodebar = new CustomControls.RJControls.ClickVentaTextBox();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             groupBox1.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)datalist).BeginInit();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
@@ -116,6 +118,8 @@
             tableLayoutPanel1.ColumnCount = 3;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 45.9566078F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 54.0433922F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 263F));
+            tableLayoutPanel1.Controls.Add(lblcantidad, 2, 1);
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 231F));
             tableLayoutPanel1.Controls.Add(label8, 2, 1);
             tableLayoutPanel1.Controls.Add(lblusername, 1, 1);
@@ -132,19 +136,19 @@
             tableLayoutPanel1.Size = new Size(1023, 73);
             tableLayoutPanel1.TabIndex = 22;
             // 
-            // label8
+            // lblcantidad
             // 
-            label8.AutoSize = true;
-            label8.BackColor = SystemColors.ActiveCaptionText;
-            label8.Dock = DockStyle.Fill;
-            label8.FlatStyle = FlatStyle.Popup;
-            label8.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.ForeColor = SystemColors.ControlLightLight;
-            label8.Location = new Point(794, 36);
-            label8.Name = "label8";
-            label8.Size = new Size(226, 37);
-            label8.TabIndex = 6;
-            label8.TextAlign = ContentAlignment.MiddleRight;
+            lblcantidad.AutoSize = true;
+            lblcantidad.BackColor = SystemColors.ActiveCaptionText;
+            lblcantidad.Dock = DockStyle.Fill;
+            lblcantidad.FlatStyle = FlatStyle.Popup;
+            lblcantidad.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblcantidad.ForeColor = SystemColors.ControlLightLight;
+            lblcantidad.Location = new Point(908, 48);
+            lblcantidad.Name = "lblcantidad";
+            lblcantidad.Size = new Size(258, 49);
+            lblcantidad.TabIndex = 6;
+            lblcantidad.TextAlign = ContentAlignment.MiddleRight;
             // 
             // lblusername
             // 
@@ -215,8 +219,8 @@
             tableLayoutPanel2.ColumnCount = 3;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 57.6592064F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 42.3407936F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 388F));
-            tableLayoutPanel2.Controls.Add(label10, 2, 1);
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 443F));
+            tableLayoutPanel2.Controls.Add(lblcobrar, 2, 1);
             tableLayoutPanel2.Controls.Add(label9, 1, 1);
             tableLayoutPanel2.Controls.Add(checkBox2, 0, 1);
             tableLayoutPanel2.Dock = DockStyle.Top;
@@ -228,19 +232,19 @@
             tableLayoutPanel2.Size = new Size(1023, 67);
             tableLayoutPanel2.TabIndex = 23;
             // 
-            // label10
+            // lblcobrar
             // 
-            label10.AutoSize = true;
-            label10.BackColor = SystemColors.ActiveCaptionText;
-            label10.Dock = DockStyle.Fill;
-            label10.FlatStyle = FlatStyle.Popup;
-            label10.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.ForeColor = SystemColors.ControlLightLight;
-            label10.Location = new Point(637, 9);
-            label10.Name = "label10";
-            label10.Size = new Size(383, 58);
-            label10.TabIndex = 9;
-            label10.TextAlign = ContentAlignment.MiddleRight;
+            lblcobrar.AutoSize = true;
+            lblcobrar.BackColor = SystemColors.ActiveCaptionText;
+            lblcobrar.Dock = DockStyle.Fill;
+            lblcobrar.FlatStyle = FlatStyle.Popup;
+            lblcobrar.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblcobrar.ForeColor = SystemColors.ControlLightLight;
+            lblcobrar.Location = new Point(728, 12);
+            lblcobrar.Name = "lblcobrar";
+            lblcobrar.Size = new Size(438, 77);
+            lblcobrar.TabIndex = 9;
+            lblcobrar.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label9
             // 
@@ -349,20 +353,22 @@
             label6.Text = "Total ";
             label6.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // dataGridView1
+            // datalist
             // 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { nombre, Cantidad, precioVenta, subtotal });
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 19);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1017, 306);
-            dataGridView1.TabIndex = 25;
+            datalist.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            datalist.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            datalist.Columns.AddRange(new DataGridViewColumn[] { nombre, Cantidad, Precio, subtotal });
+            datalist.Dock = DockStyle.Fill;
+            datalist.Location = new Point(3, 24);
+            datalist.Margin = new Padding(3, 4, 3, 4);
+            datalist.Name = "datalist";
+            datalist.RowHeadersWidth = 51;
+            datalist.Size = new Size(1163, 409);
+            datalist.TabIndex = 25;
             // 
             // nombre
             // 
+            nombre.DataPropertyName = "Nombre";
             nombre.HeaderText = "Nombre";
             nombre.MinimumWidth = 6;
             nombre.Name = "nombre";
@@ -374,21 +380,23 @@
             Cantidad.MinimumWidth = 6;
             Cantidad.Name = "Cantidad";
             // 
-            // precioVenta
+            // Precio
             // 
-            precioVenta.HeaderText = "Precio";
-            precioVenta.MinimumWidth = 6;
-            precioVenta.Name = "precioVenta";
+            Precio.DataPropertyName = "Precio";
+            Precio.HeaderText = "Precio";
+            Precio.MinimumWidth = 6;
+            Precio.Name = "Precio";
             // 
             // subtotal
             // 
+            subtotal.DataPropertyName = "Subtotal";
             subtotal.HeaderText = "Subtotal";
             subtotal.MinimumWidth = 6;
             subtotal.Name = "subtotal";
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(dataGridView1);
+            groupBox2.Controls.Add(datalist);
             groupBox2.Dock = DockStyle.Top;
             groupBox2.Location = new Point(0, 242);
             groupBox2.Name = "groupBox2";
@@ -413,6 +421,8 @@
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 64.7845459F));
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 185F));
             tableLayoutPanel4.Controls.Add(label14, 0, 0);
+            tableLayoutPanel4.Controls.Add(btncobrar, 2, 0);
+            tableLayoutPanel4.Controls.Add(txtcodebar, 1, 0);
             tableLayoutPanel4.Dock = DockStyle.Bottom;
             tableLayoutPanel4.Location = new Point(3, 9);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -433,6 +443,51 @@
             label14.Text = "Codigo de barra";
             label14.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // btncobrar
+            // 
+            btncobrar.BackColor = Color.FromArgb(128, 128, 255);
+            btncobrar.BorderColor = Color.FromArgb(128, 128, 255);
+            btncobrar.BorderRadius = 0;
+            btncobrar.BorderSize = 0;
+            btncobrar.Dock = DockStyle.Fill;
+            btncobrar.FlatAppearance.BorderSize = 0;
+            btncobrar.FlatStyle = FlatStyle.Flat;
+            btncobrar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btncobrar.ForeColor = Color.White;
+            btncobrar.Location = new Point(955, 4);
+            btncobrar.Margin = new Padding(3, 4, 3, 4);
+            btncobrar.Name = "btncobrar";
+            btncobrar.Size = new Size(205, 53);
+            btncobrar.TabIndex = 11;
+            btncobrar.Text = "Cobrar";
+            btncobrar.TextColor = Color.White;
+            btncobrar.UseVisualStyleBackColor = false;
+            // 
+            // txtcodebar
+            // 
+            txtcodebar.BackColor = SystemColors.Window;
+            txtcodebar.BorderColor = Color.MediumSlateBlue;
+            txtcodebar.BorderFocusColor = Color.HotPink;
+            txtcodebar.BorderRadius = 0;
+            txtcodebar.BorderSize = 2;
+            txtcodebar.Dock = DockStyle.Fill;
+            txtcodebar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtcodebar.ForeColor = Color.FromArgb(64, 64, 64);
+            txtcodebar.Location = new Point(340, 5);
+            txtcodebar.Margin = new Padding(5);
+            txtcodebar.Multiline = true;
+            txtcodebar.Name = "txtcodebar";
+            txtcodebar.Padding = new Padding(11, 9, 11, 9);
+            txtcodebar.PasswordChar = false;
+            txtcodebar.PlaceholderColor = Color.DarkGray;
+            txtcodebar.PlaceholderText = "";
+            txtcodebar.RightToLeft = RightToLeft.Yes;
+            txtcodebar.Size = new Size(607, 51);
+            txtcodebar.TabIndex = 12;
+            txtcodebar.Texts = "";
+            txtcodebar.UnderlinedStyle = false;
+            txtcodebar.KeyPress += clickVentaTextBox1_KeyPress;
+            // 
             // frmventa
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -449,6 +504,8 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "frmventa";
             StartPosition = FormStartPosition.CenterScreen;
+            FormClosing += frmventa_FormClosing;
+            FormClosed += frmventa_FormClosed;
             Load += frmventa_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -459,7 +516,7 @@
             groupBox1.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)datalist).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);
@@ -476,11 +533,11 @@
         private Label label4;
         private Label label2;
         private Label label1;
-        private Label label8;
+        private Label lblcantidad;
         private Label lblusername;
         private Label lblticket;
         private TableLayoutPanel tableLayoutPanel2;
-        private Label label10;
+        private Label lblcobrar;
         private Label label9;
         private CheckBox checkBox2;
         private GroupBox groupBox1;
@@ -489,16 +546,16 @@
         private Label label12;
         private Label lbltotalultimoventa;
         private Label label6;
-        private DataGridView dataGridView1;
+        private DataGridView datalist;
         private GroupBox groupBox2;
         private GroupBox groupBox3;
         private TableLayoutPanel tableLayoutPanel4;
         private Label label14;
-        private CustomStyle.ClickVentaButton clickVentaButton1;
-        private CustomControls.RJControls.ClickVentaTextBox clickVentaTextBox1;
+        private CustomStyle.ClickVentaButton btncobrar;
+        private CustomControls.RJControls.ClickVentaTextBox txtcodebar;
         private DataGridViewTextBoxColumn nombre;
         private DataGridViewTextBoxColumn Cantidad;
-        private DataGridViewTextBoxColumn precioVenta;
+        private DataGridViewTextBoxColumn Precio;
         private DataGridViewTextBoxColumn subtotal;
     }
 }

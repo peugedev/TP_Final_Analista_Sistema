@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DomainModel.Repositories.Interface
 {
-    public interface ICabeceraVentaRepository:IGenericRepository<BusinessEntities.Entities.CabeceraVenta>
+    public interface ICabeceraVentaProductoRepository:IGenericRepository<BusinessEntities.Entities.CabeceraVenta>
     {
     }
 }
