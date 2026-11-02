@@ -79,62 +79,70 @@ namespace ClickVenta.forms.ventas
         List<DetalleVentaDto> VentaList = null;
         private async void clickVentaTextBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter && !string.IsNullOrEmpty(this.txtcodebar.Texts))
+            try
             {
-                e.Handled = true; // Evita que se agregue un salto de línea
-                // Aquí puedes agregar la lógica que deseas ejecutar cuando se presiona Enter
-                var result = await Program.ServiceProvider.GetRequiredService<ICabeceraVentaProductoService>().ConsultaProductoCodigo(this.txtcodebar.Texts);
-
-                if (result != null)
+                if (e.KeyChar == (char)Keys.Enter && !string.IsNullOrEmpty(this.txtcodebar.Texts))
                 {
-                    if (this.datalist.DataSource is null || ((List<DetalleVentaDto>)this.datalist.DataSource).Count == 0)
+                    e.Handled = true; // Evita que se agregue un salto de línea
+                                      // Aquí puedes agregar la lógica que deseas ejecutar cuando se presiona Enter
+                    var result = await Program.ServiceProvider.GetRequiredService<ICabeceraVentaProductoService>().ConsultaProductoCodigo(this.txtcodebar.Texts);
+
+                    if (result != null)
                     {
-                        CreateVentaDto venta = new CreateVentaDto
+                        if (this.datalist.DataSource is null || ((List<DetalleVentaDto>)this.datalist.DataSource).Count == 0)
                         {
-                            UsuarioId = SystemConstant.UsuarioId,
-                            Precio = result.PrecioVenta,
-                            Total = 0,
-                            /* Detalle de venta*/
-                            ProductoId = result.Id,
-                            Subtotal = result.PrecioVenta,
-                            Cantidad = 1
-                        };
-                        VentaList = new List<DetalleVentaDto>();
-                        VentaList = await Program.ServiceProvider.GetRequiredService<IVentaService>().CreateVenta(venta);
+                            CreateVentaDto venta = new CreateVentaDto
+                            {
+                                UsuarioId = SystemConstant.UsuarioId,
+                                Precio = result.PrecioVenta,
+                                Total = 0,
+                                /* Detalle de venta*/
+                                ProductoId = result.Id,
+                                Subtotal = result.PrecioVenta,
+                                Cantidad = 1
+                            };
+                            VentaList = new List<DetalleVentaDto>();
+                            VentaList = await Program.ServiceProvider.GetRequiredService<IVentaService>().CreateVenta(venta);
+                        }
+                        else
+                        {
+                            if (VentaList is null)
+                                VentaList = new List<DetalleVentaDto>();
+
+                            //var selectedRow = this.datalist.SelectedRows[0];
+                            //var dto = (VentaDto)selectedRow.DataBoundItem;
+                            CreateDetalleVentaDto detalle = new CreateDetalleVentaDto
+                            {
+                                VentaId = VentaList.FirstOrDefault().Id,
+                                Precio = result.PrecioVenta,
+                                ProductoId = result.Id,
+                                Subtotal = result.PrecioVenta,
+                                Cantidad = 1
+                            };
+                            VentaList = await Program.ServiceProvider.GetRequiredService<IDetalleVentaService>().CreateDetalleVenta(detalle);
+                        }
+
+                        //this.datalist.Rows.Add(result.Id, result.Nombre, result.PrecioVenta, 1, result.PrecioVenta);
+                        if (VentaList.Count > 0)
+                        {
+                            this.btncobrar.Enabled = true;
+                        }
+                        //this.HideColunm();
+                        this.datalist.DataSource = VentaList;
+                        this.UpdateHeade(VentaList);
+                        this.CleanAnFocusTextBoxCodeBar();
                     }
                     else
                     {
-                        if (VentaList is null)
-                            VentaList = new List<DetalleVentaDto>();
-
-                        //var selectedRow = this.datalist.SelectedRows[0];
-                        //var dto = (VentaDto)selectedRow.DataBoundItem;
-                        CreateDetalleVentaDto detalle = new CreateDetalleVentaDto
-                        {
-                            VentaId = VentaList.FirstOrDefault().Id,
-                            Precio = result.PrecioVenta,
-                            ProductoId = result.Id,
-                            Subtotal = result.PrecioVenta,
-                            Cantidad = 1
-                        };
-                        VentaList = await Program.ServiceProvider.GetRequiredService<IDetalleVentaService>().CreateDetalleVenta(detalle);
+                        this.CleanAnFocusTextBoxCodeBar();
+                        RJMessageBox.Show("No se encontró el producto con el código ingresado.", "Sistema click venta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-
-                    //this.datalist.Rows.Add(result.Id, result.Nombre, result.PrecioVenta, 1, result.PrecioVenta);
-                    if (VentaList.Count > 0)
-                    {
-                        this.btncobrar.Enabled = true;
-                    }
-                    //this.HideColunm();
-                    this.datalist.DataSource = VentaList;
-                    this.UpdateHeade(VentaList);
-                    this.CleanAnFocusTextBoxCodeBar();
                 }
-                else
-                {
-                    this.CleanAnFocusTextBoxCodeBar();
-                    RJMessageBox.Show("No se encontró el producto con el código ingresado.", "Sistema click venta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+            }
+            catch (Exception ex)
+            {
+                this.CleanAnFocusTextBoxCodeBar();
+                RJMessageBox.Show(ex.Message, "Sistema click venta", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -152,7 +160,7 @@ namespace ClickVenta.forms.ventas
         {
             try
             {
-                if (this.VentaList is not null || this.VentaList.Count > 0)
+                if (this.VentaList is not null && this.VentaList.Count > 0)
                 {
                     // 1) Pedir confirmación al usuario
                     var resultado = MessageBox.Show(
@@ -195,6 +203,14 @@ namespace ClickVenta.forms.ventas
                 Total = this.VentaList.Sum(u => u.Subtotal).ToString()
             });
             form.ShowDialog();
+            if (form.iscompletar)
+            {
+                this.VentaList.Clear();
+                this.datalist.DataSource = null;
+                this.UpdateHeade(this.VentaList);
+                this.btncobrar.Enabled = false;
+                this.GetCabecera();
+            }
         }
     }
 }
