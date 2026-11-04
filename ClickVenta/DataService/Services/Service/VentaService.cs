@@ -125,13 +125,13 @@ namespace DataService.Services.Service
                 SqlParameter[] parameters = new SqlParameter[]
                 {
                     new SqlParameter("@Id", ventaDto.Id),
-                    new SqlParameter("@IdUsuario", ventaDto.IdUsuario),
-                    new SqlParameter("@NroTicket", ventaDto.NroTicket),
-                    new SqlParameter("@Total", ventaDto.Total),
-                    new SqlParameter("@FechaVenta", ventaDto.FechaVenta)
+                    new SqlParameter("@FormaPagoId1", ventaDto.FormaPagoId1),
+                    new SqlParameter("@FormaPagoId2", ventaDto.FormaPagoId2),
+                    new SqlParameter("@Total", ventaDto.Total)
+                    //new SqlParameter("@FechaVenta", ventaDto.FechaVenta)
                 };
 
-                var venta = _mapper.Map<BusinessEntities.Entities.Venta>(ventaDto);
+                //var venta = _mapper.Map<BusinessEntities.Entities.Venta>(ventaDto);
                 await this._ventaRepository.Update("[dbo].[Sp_UpdateVenta]", parameters);
                 return "Venta actualizada correctamente";
             }
