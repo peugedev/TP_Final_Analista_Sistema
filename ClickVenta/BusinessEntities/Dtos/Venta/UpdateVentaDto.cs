@@ -13,5 +13,9 @@ namespace BusinessEntities.Dtos.Venta
         public string NroTicket { get; set; }
         public decimal Total { get; set; }
         public DateTime FechaVenta { get; set; }
+
+        /* Forma de pago */
+        public string? FormaPagoId1 { get; set; }
+        public string? FormaPagoId2 { get; set; }
     }
 }

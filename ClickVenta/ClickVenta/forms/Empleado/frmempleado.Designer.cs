@@ -49,6 +49,7 @@
             label1 = new Label();
             txtfilter = new TextBox();
             chkEliminar = new CheckBox();
+            clickVentaButton3 = new ClickVenta.CustomStyle.ClickVentaButton();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             groupBox5.SuspendLayout();
@@ -265,6 +266,7 @@
             tableLayoutPanel2.Controls.Add(label1, 0, 0);
             tableLayoutPanel2.Controls.Add(txtfilter, 1, 0);
             tableLayoutPanel2.Controls.Add(chkEliminar, 0, 1);
+            tableLayoutPanel2.Controls.Add(clickVentaButton3, 3, 1);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(3, 3);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -310,6 +312,24 @@
             chkEliminar.Text = "Eliminar";
             chkEliminar.UseVisualStyleBackColor = true;
             chkEliminar.CheckedChanged += chkEliminar_CheckedChanged;
+            // 
+            // clickVentaButton3
+            // 
+            clickVentaButton3.BackColor = Color.FromArgb(128, 128, 255);
+            clickVentaButton3.BorderColor = Color.FromArgb(128, 128, 255);
+            clickVentaButton3.BorderRadius = 5;
+            clickVentaButton3.BorderSize = 0;
+            clickVentaButton3.FlatAppearance.BorderSize = 0;
+            clickVentaButton3.FlatStyle = FlatStyle.Flat;
+            clickVentaButton3.ForeColor = Color.White;
+            clickVentaButton3.Location = new Point(803, 45);
+            clickVentaButton3.Name = "clickVentaButton3";
+            clickVentaButton3.Size = new Size(172, 31);
+            clickVentaButton3.TabIndex = 20;
+            clickVentaButton3.Text = "Nueva empleado";
+            clickVentaButton3.TextColor = Color.White;
+            clickVentaButton3.UseVisualStyleBackColor = false;
+            clickVentaButton3.Click += btnempleado_Click;
             // 
             // frmempleado
             // 
@@ -361,5 +381,6 @@
         private DataGridViewTextBoxColumn Apellido;
         private DataGridViewTextBoxColumn DNI;
         private CustomStyle.ClickVentaButton clickVentaButton4;
+        private CustomStyle.ClickVentaButton clickVentaButton3;
     }
 }

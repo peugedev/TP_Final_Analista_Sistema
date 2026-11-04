@@ -4,6 +4,7 @@ using BusinessEntities.Dtos.Cabecera;
 using BusinessEntities.Dtos.Categoria;
 using BusinessEntities.Dtos.DetalleVenta;
 using BusinessEntities.Dtos.Empleado;
+using BusinessEntities.Dtos.FormaPago;
 using BusinessEntities.Dtos.Login;
 using BusinessEntities.Dtos.Lote;
 using BusinessEntities.Dtos.permision;
@@ -242,6 +243,59 @@ namespace DataService.Profiles
                 .ForMember(dest => dest.VentaId, opt => opt.MapFrom(src => src.VentaId))
                 .ForMember(dest => dest.Subtotal, opt => opt.MapFrom(src => src.Subtotal))
                 .ForMember(dest => dest.Nombre, opt => opt.MapFrom(src => src.Nombre))
+                .ReverseMap();
+            #endregion
+
+            #region Forma de pago
+
+            CreateMap<FormaPago, FormaPagoDto>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Nombre, opt => opt.MapFrom(src => src.Nombre))
+                .ForMember(dest => dest.Descripcion, opt => opt.MapFrom(src => src.Descripcion))
+                .ReverseMap();
+
+            CreateMap<FormaPago, CreateFormaPagoDto>()
+                .ForMember(dest => dest.Nombre, opt => opt.MapFrom(src => src.Nombre))
+                .ForMember(dest => dest.Descripcion, opt => opt.MapFrom(src => src.Descripcion))
+                .ReverseMap();  
+
+            CreateMap<FormaPago, UpdateFormaPagoDto>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Nombre, opt => opt.MapFrom(src => src.Nombre))
+                .ForMember(dest => dest.Descripcion, opt => opt.MapFrom(src => src.Descripcion))
+                .ReverseMap();  
+
+            CreateMap<FormaPago, DeleteFormaPagoDto>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ReverseMap();
+            #endregion
+
+            #region Proveedor
+            CreateMap<Proveedor, ProveedorDto>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.RazonSocial, opt => opt.MapFrom(src => src.RazonSocial))
+                .ForMember(dest => dest.Direccion, opt => opt.MapFrom(src => src.Direccion))
+                .ForMember(dest => dest.Telefono, opt => opt.MapFrom(src => src.Telefono))
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+                .ReverseMap();
+
+            CreateMap<Proveedor, CreateProveedorDto>()
+                .ForMember(dest => dest.RazonSocial, opt => opt.MapFrom(src => src.RazonSocial))
+                .ForMember(dest => dest.Direccion, opt => opt.MapFrom(src => src.Direccion))
+                .ForMember(dest => dest.Telefono, opt => opt.MapFrom(src => src.Telefono))
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+                .ReverseMap();
+
+            CreateMap<Proveedor, UpdateProveedorDto>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.RazonSocial, opt => opt.MapFrom(src => src.RazonSocial))
+                .ForMember(dest => dest.Direccion, opt => opt.MapFrom(src => src.Direccion))
+                .ForMember(dest => dest.Telefono, opt => opt.MapFrom(src => src.Telefono))
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+                .ReverseMap();
+
+            CreateMap<Proveedor, DeleteProveedorDto>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ReverseMap();
             #endregion
         }
