@@ -33,6 +33,8 @@
             label3 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
+            clickVentaButton4 = new ClickVenta.CustomStyle.ClickVentaButton();
+            clickVentaButton1 = new ClickVenta.CustomStyle.ClickVentaButton();
             txtfilter = new TextBox();
             label1 = new Label();
             groupBox1 = new GroupBox();
@@ -128,6 +130,8 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 38.7696724F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 61.2303276F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 229F));
+            tableLayoutPanel2.Controls.Add(clickVentaButton4, 2, 1);
+            tableLayoutPanel2.Controls.Add(clickVentaButton1, 2, 0);
             tableLayoutPanel2.Controls.Add(txtfilter, 1, 0);
             tableLayoutPanel2.Controls.Add(label1, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
@@ -139,6 +143,42 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.Size = new Size(1028, 86);
             tableLayoutPanel2.TabIndex = 26;
+            // 
+            // clickVentaButton4
+            // 
+            clickVentaButton4.BackColor = Color.FromArgb(128, 128, 255);
+            clickVentaButton4.BorderColor = Color.FromArgb(128, 128, 255);
+            clickVentaButton4.BorderRadius = 5;
+            clickVentaButton4.BorderSize = 0;
+            clickVentaButton4.Dock = DockStyle.Fill;
+            clickVentaButton4.FlatAppearance.BorderSize = 0;
+            clickVentaButton4.FlatStyle = FlatStyle.Flat;
+            clickVentaButton4.ForeColor = Color.White;
+            clickVentaButton4.Location = new Point(801, 46);
+            clickVentaButton4.Name = "clickVentaButton4";
+            clickVentaButton4.Size = new Size(224, 37);
+            clickVentaButton4.TabIndex = 26;
+            clickVentaButton4.Text = "Nueva proveedor";
+            clickVentaButton4.TextColor = Color.White;
+            clickVentaButton4.UseVisualStyleBackColor = false;
+            // 
+            // clickVentaButton1
+            // 
+            clickVentaButton1.BackColor = Color.FromArgb(128, 128, 255);
+            clickVentaButton1.BorderColor = Color.FromArgb(128, 128, 255);
+            clickVentaButton1.BorderRadius = 5;
+            clickVentaButton1.BorderSize = 0;
+            clickVentaButton1.Dock = DockStyle.Fill;
+            clickVentaButton1.FlatAppearance.BorderSize = 0;
+            clickVentaButton1.FlatStyle = FlatStyle.Flat;
+            clickVentaButton1.ForeColor = Color.White;
+            clickVentaButton1.Location = new Point(801, 3);
+            clickVentaButton1.Name = "clickVentaButton1";
+            clickVentaButton1.Size = new Size(224, 37);
+            clickVentaButton1.TabIndex = 23;
+            clickVentaButton1.Text = "Filtrar";
+            clickVentaButton1.TextColor = Color.White;
+            clickVentaButton1.UseVisualStyleBackColor = false;
             // 
             // txtfilter
             // 
@@ -376,5 +416,7 @@
         private DataGridViewTextBoxColumn Email;
         private DataGridViewTextBoxColumn Direccion;
         private DataGridViewTextBoxColumn Web;
+        private CustomStyle.ClickVentaButton clickVentaButton1;
+        private CustomStyle.ClickVentaButton clickVentaButton4;
     }
 }

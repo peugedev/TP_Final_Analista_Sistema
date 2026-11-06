@@ -319,6 +319,7 @@
             clickVentaButton3.BorderColor = Color.FromArgb(128, 128, 255);
             clickVentaButton3.BorderRadius = 5;
             clickVentaButton3.BorderSize = 0;
+            clickVentaButton3.Dock = DockStyle.Fill;
             clickVentaButton3.FlatAppearance.BorderSize = 0;
             clickVentaButton3.FlatStyle = FlatStyle.Flat;
             clickVentaButton3.ForeColor = Color.White;

@@ -141,7 +141,7 @@
             txtusuario.Padding = new Padding(10, 7, 10, 7);
             txtusuario.PasswordChar = false;
             txtusuario.PlaceholderColor = Color.DarkGray;
-            txtusuario.PlaceholderText = "";
+            txtusuario.PlaceholderText = "Ingresar usuario";
             txtusuario.Size = new Size(539, 35);
             txtusuario.TabIndex = 4;
             txtusuario.Texts = "";
@@ -164,7 +164,7 @@
             txtpassword.Padding = new Padding(10, 7, 10, 7);
             txtpassword.PasswordChar = true;
             txtpassword.PlaceholderColor = Color.DarkGray;
-            txtpassword.PlaceholderText = "*";
+            txtpassword.PlaceholderText = "Ingresar la contrase\u00F1a";
             txtpassword.Size = new Size(539, 35);
             txtpassword.TabIndex = 5;
             txtpassword.Texts = "";

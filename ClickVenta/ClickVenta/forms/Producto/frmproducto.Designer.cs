@@ -45,8 +45,10 @@
             PrecioCompra = new DataGridViewTextBoxColumn();
             PrecioVenta = new DataGridViewTextBoxColumn();
             tableLayoutPanel2 = new TableLayoutPanel();
+            clickVentaButton1 = new ClickVenta.CustomStyle.ClickVentaButton();
             label1 = new Label();
             txtfilter = new TextBox();
+            clickVentaButton3 = new ClickVenta.CustomStyle.ClickVentaButton();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             groupBox5.SuspendLayout();
@@ -250,8 +252,10 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 36.71233F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 63.28767F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 192F));
+            tableLayoutPanel2.Controls.Add(clickVentaButton1, 2, 0);
             tableLayoutPanel2.Controls.Add(label1, 0, 0);
             tableLayoutPanel2.Controls.Add(txtfilter, 1, 0);
+            tableLayoutPanel2.Controls.Add(clickVentaButton3, 2, 1);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(3, 3);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -260,6 +264,24 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 43F));
             tableLayoutPanel2.Size = new Size(1039, 89);
             tableLayoutPanel2.TabIndex = 0;
+            // 
+            // clickVentaButton1
+            // 
+            clickVentaButton1.BackColor = Color.FromArgb(128, 128, 255);
+            clickVentaButton1.BorderColor = Color.FromArgb(128, 128, 255);
+            clickVentaButton1.BorderRadius = 5;
+            clickVentaButton1.BorderSize = 0;
+            clickVentaButton1.Dock = DockStyle.Fill;
+            clickVentaButton1.FlatAppearance.BorderSize = 0;
+            clickVentaButton1.FlatStyle = FlatStyle.Flat;
+            clickVentaButton1.ForeColor = Color.White;
+            clickVentaButton1.Location = new Point(849, 3);
+            clickVentaButton1.Name = "clickVentaButton1";
+            clickVentaButton1.Size = new Size(187, 40);
+            clickVentaButton1.TabIndex = 22;
+            clickVentaButton1.Text = "Filtrar";
+            clickVentaButton1.TextColor = Color.White;
+            clickVentaButton1.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -283,6 +305,25 @@
             txtfilter.Size = new Size(530, 40);
             txtfilter.TabIndex = 2;
             txtfilter.TextAlign = HorizontalAlignment.Right;
+            // 
+            // clickVentaButton3
+            // 
+            clickVentaButton3.BackColor = Color.FromArgb(128, 128, 255);
+            clickVentaButton3.BorderColor = Color.FromArgb(128, 128, 255);
+            clickVentaButton3.BorderRadius = 5;
+            clickVentaButton3.BorderSize = 0;
+            clickVentaButton3.Dock = DockStyle.Fill;
+            clickVentaButton3.FlatAppearance.BorderSize = 0;
+            clickVentaButton3.FlatStyle = FlatStyle.Flat;
+            clickVentaButton3.ForeColor = Color.White;
+            clickVentaButton3.Location = new Point(849, 49);
+            clickVentaButton3.Name = "clickVentaButton3";
+            clickVentaButton3.Size = new Size(187, 37);
+            clickVentaButton3.TabIndex = 21;
+            clickVentaButton3.Text = "Nueva producto";
+            clickVentaButton3.TextColor = Color.White;
+            clickVentaButton3.UseVisualStyleBackColor = false;
+            clickVentaButton3.Click += btnempleado_Click;
             // 
             // frmproducto
             // 
@@ -329,5 +370,6 @@
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn PrecioCompra;
         private DataGridViewTextBoxColumn PrecioVenta;
+        private CustomStyle.ClickVentaButton clickVentaButton1;
     }
 }

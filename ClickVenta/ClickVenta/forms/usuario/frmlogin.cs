@@ -10,10 +10,18 @@ namespace ClickVenta
 {
     public partial class frmlogin : Form
     {
+        private const string PlaceholderUsuario = "Ingresar usuario";
+        private const string PlaceholderContrasena = "Ingresar la contrase\u00F1a";
+
         public frmlogin()
         {
             //this.Size = new Size(914, 366);
             InitializeComponent();
+
+            this.txtusuario.Enter += txtusuario_Enter;
+            this.txtusuario.Leave += txtusuario_Leave;
+            this.txtpassword.Enter += txtpassword_Enter;
+            this.txtpassword.Leave += txtpassword_Leave;
         }
 
         private void frmlogin_Load(object sender, EventArgs e)
@@ -46,14 +54,14 @@ namespace ClickVenta
         {
             try
             {
-                if (string.IsNullOrEmpty(this.txtusuario.Texts))
+                if (string.IsNullOrWhiteSpace(this.txtusuario.Texts) || this.txtusuario.Texts == PlaceholderUsuario)
                 {
                     RJMessageBox.Show("El usuario es requerido", "Sistema click venta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (string.IsNullOrEmpty(this.txtpassword.Texts))
+                if (string.IsNullOrWhiteSpace(this.txtpassword.Texts) || this.txtpassword.Texts == PlaceholderContrasena)
                 {
-                    RJMessageBox.Show("La contraseña es requerida", "Sistema click venta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    RJMessageBox.Show("La contrase\u00F1a es requerida", "Sistema click venta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 LoginDto loginDto = new LoginDto
@@ -75,7 +83,7 @@ namespace ClickVenta
                 }
                 else
                 {
-                    RJMessageBox.Show("Usuario o contraseña incorrectos", "Sistema click venta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    RJMessageBox.Show("Usuario o contraseï¿½a incorrectos", "Sistema click venta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -96,7 +104,7 @@ namespace ClickVenta
                 // Evita el sonido de "beep" por defecto de Windows
                 e.SuppressKeyPress = true;
 
-                // Aquí pones el código que quieres ejecutar o llamas al botón
+                // Aquï¿½ pones el cï¿½digo que quieres ejecutar o llamas al botï¿½n
                 btnentrar_Click(sender, e);
             }
         }
@@ -108,9 +116,47 @@ namespace ClickVenta
                 // Evita el sonido de "beep" por defecto de Windows
                 e.SuppressKeyPress = true;
 
-                // Aquí pones el código que quieres ejecutar o llamas al botón
+                // Aquï¿½ pones el cï¿½digo que quieres ejecutar o llamas al botï¿½n
                 btnentrar_Click(sender, e);
             }
         }
+        private void txtusuario_Enter(object sender, EventArgs e)
+        {
+            if (this.txtusuario.Texts == PlaceholderUsuario)
+            {
+                this.txtusuario.Texts = string.Empty;
+                this.txtusuario.ForeColor = Color.FromArgb(64, 64, 64);
+            }
+        }
+
+        private void txtusuario_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(this.txtusuario.Texts))
+            {
+                this.txtusuario.Texts = PlaceholderUsuario;
+                this.txtusuario.ForeColor = Color.DarkGray;
+            }
+        }
+
+        private void txtpassword_Enter(object sender, EventArgs e)
+        {
+            if (this.txtpassword.Texts == PlaceholderContrasena)
+            {
+                this.txtpassword.Texts = string.Empty;
+                this.txtpassword.ForeColor = Color.FromArgb(64, 64, 64);
+                this.txtpassword.PasswordChar = true;
+            }
+        }
+
+        private void txtpassword_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(this.txtpassword.Texts))
+            {
+                this.txtpassword.Texts = PlaceholderContrasena;
+                this.txtpassword.ForeColor = Color.DarkGray;
+                this.txtpassword.PasswordChar = false;
+            }
+        }
+
     }
 }

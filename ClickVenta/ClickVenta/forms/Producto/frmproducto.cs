@@ -68,7 +68,8 @@ namespace ClickVenta.forms.Producto
             this.datalist.Columns["Estado"].Visible = false;
             this.datalist.Columns["PresentacionId"].Visible = false;
             this.datalist.Columns["ProveedorProductoId"].Visible = false;
-            this.datalist.Columns["CategoriaId"].Visible = false;
+            //this.datalist.Columns["CategoriaId"].Visible = false;76
+
             //this.datalist.Columns["Product"].Visible = false;
             //this.datalist.Columns["LotProductCode"].Visible = false;
             //this.datalist.Columns["SalePriceSpecial"].Visible = false;
